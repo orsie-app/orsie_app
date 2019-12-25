@@ -11,7 +11,7 @@ The main ORSIE app for the Research Day 2020
   
   -- The services are set up so that you do not need to run the app (html and JS) on a live server. You can edit and run the app locally while still maintaining the connection to the server.
  
- -- Consider the _test.js_ and _test.html_ as the references and do not edit them on the github.
+ -- **_Consider the _test.js_ and _test.html_ as the references and do not edit them on the github._**
  
  -- Do not edit the services as it will have no effect on the app. They need to be modified on the server.
  
