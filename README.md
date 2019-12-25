@@ -11,4 +11,6 @@ Update [24 Dec 2019]
  
  -- Consider the test.js and test.html as the references and do not edit them on the github.
  
+ -- Do not edit the services as it will have no effect on the app. They need to be modified on the server.
+ 
  -- Start coding in the index.js, style.css, and main.js files as needed.
