@@ -16,14 +16,14 @@ foreach($dbo->query($query) as $row) {
 	$name_first = stripslashes($row["1"]);
 	$name_last = stripslashes($row["2"]);
 	
-	$movie["id"] = $id;
-	$movie["name_first"] = $name_first;
-	$movie["name_last"] = $name_last;
+	$attendee["id"] = $id;
+	$attendee["name_first"] = $name_first;
+	$attendee["name_last"] = $name_last;
 	
-	$movies[] = $movie;
+	$attendees[] = $attendee;
 }
 
-$newData["data"] = $movies;
+$newData["data"] = $attendees;
 
 $data = json_encode($newData);
 
