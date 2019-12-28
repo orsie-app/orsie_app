@@ -5,7 +5,7 @@ require_once("./inc/connect_pdo.php");
 
 $search_text = $_POST["search-text"];
 
-$query = "SELECT id, name_first, name_last
+$query = "SELECT id, name_first, name_last, organization_name
 FROM test_data
 WHERE name_first LIKE '%$search_text%'
 OR name_last LIKE '%$search_text%'
@@ -17,17 +17,19 @@ foreach($dbo->query($query) as $row) {
 	$id = stripslashes($row["0"]);
 	$name_first = stripslashes($row["1"]);
 	$name_last = stripslashes($row["2"]);
+	$organization_name = stripslashes($row["2"]);
 	
-	$movie["id"] = $id;
-	$movie["name_first"] = $name_first;
-	$movie["name_last"] = $name_last;
+	$attendee["id"] = $id;
+	$attendee["name_first"] = $name_first;
+	$attendee["name_last"] = $name_last;
+	$attendee["organization_name"] = $organization_name;
 	
-	$movies[] = $movie;
+	$attendees[] = $attendee;
 }
 
-ksort($movies);
+ksort($attendees);
 
-$data = json_encode($movies);
+$data = json_encode($attendees);
 
 header("Content-Type: application/json");
 
