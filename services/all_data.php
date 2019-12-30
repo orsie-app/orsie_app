@@ -23,9 +23,9 @@ foreach($dbo->query($query) as $row) {
 	$attendees[] = $attendee;
 }
 
-$newData["data"] = $attendees;
+// $newData["data"] = $attendees;
 
-$data = json_encode($newData);
+$data = json_encode($attendees);
 
 header("Content-Type: application/json");
 

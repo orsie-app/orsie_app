@@ -50,9 +50,9 @@ window.addEventListener("load", () => {
 		fetch(url)
 			.then(response => response.json())
 			.then(contents => {
-				console.log(contents.data)
+				console.log(contents)
 				let displayData = "";
-				contents.data.forEach(human => {
+				contents.forEach(human => {
 					displayData += `<p>${human.id}: ${human.name_first} ${human.name_last}</p>`;
 				});
 				allDataListDiv.innerHTML = displayData;
