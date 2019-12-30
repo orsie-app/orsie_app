@@ -4,7 +4,7 @@
 * Description: Event registration/sign-in form for DC events
 */
 
-// position form page logo on start
+// position form page logo on start (please change/fix this..)
 let h = (window.innerHeight/2)-(window.innerHeight/5.5);
 console.log(h);
 
@@ -34,8 +34,8 @@ window.onload = function () {
             transformOrigin: "right bottom",
             scaleY: 0,
             scaleX:0,
-            y:25,
-            ease: Back.easeOut.config(5.7),
+            y:-25,
+            ease: Power1.easeOut,
         })
         TweenMax.from(brownLine, .75, {
             delay:1,
@@ -43,7 +43,7 @@ window.onload = function () {
             scaleY: 0,
             scaleX:0,
             y:-25,
-            ease:Back.easeOut.config(5.7),
+            ease:Power1.easeOut,
         })
     }
 
@@ -89,3 +89,11 @@ window.onload = function () {
         },0.15)
     }
 }
+
+/*
+
+To Do:
+- add a "Thank you for registering" after click
+- have form automatically go to next input field?
+
+*/
