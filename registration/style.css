@@ -11,6 +11,12 @@
 * Cadbury Brown is used in bar graphic elements only.
 */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 :root {
     --dc-green: #0B8261;
     --dc-yellowgreen: #45A046;
@@ -33,7 +39,12 @@
 }
 
 /* font declarations */
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: Oswald;
     letter-spacing: 3px;
 }
@@ -52,20 +63,22 @@ body {
     /* background-color: rgb(241, 253, 242); */
     height: 100vh;
     width: 100vw;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     /* to make text size same in all browsers, and to zoom or resize text */
     font-size: 16px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
 
 }
 
 /* splash styles */
 #splash {
     width: 50vw;
-    height:100%;
+    height: 100%;
     margin: auto auto;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -94,9 +107,9 @@ body {
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 15% 10% 10% 65%;
     grid-template-areas: ". logo ."
-                        ". eventName ."
-                        ". description ."
-                        ". form .";
+        ". eventName ."
+        ". description ."
+        ". form .";
 
     border: 1px solid var(--dc-green);
     background-color: rgb(255, 255, 255);
@@ -145,7 +158,8 @@ body {
     grid-area: form;
 }
 
-input, button {
+input,
+button {
     min-width: 50%;
     width: 250px;
     max-width: 70vw;
