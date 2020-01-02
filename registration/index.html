@@ -13,43 +13,47 @@
 
 <body>
 
-<div class="container">
-    <!-- splash page -->
-    <main id="splash" class="page">
-        <!-- dc logo -->
-        <img id="splash-dc-logo" src="./images/dc-logo-new.svg" alt="DC Logo">
-    </main>
+    <div class="container">
+        <!-- splash page -->
+        <main id="splash" class="page">
+            <!-- dc logo -->
+            <img id="splash-dc-logo" src="./images/dc-logo-new.svg" alt="DC Logo">
+        </main>
 
-    <!-- main form -->
+        <!-- main form -->
 
-    <main id="registration-page" class="page">
-        <!-- ORSIE logo -->
-        <object id="registration-form-logo" data="./images/orsie-logo.svg" type="image/svg+xml" alt="Orsie"></object>
-        <!-- Event title -->
-        <h4 id="registration-event" class="reveal">Research Day 2020</h4>
-        <!-- Registration Instructions -->
-        <p id="registration-form-instruction" class="reveal">Enter your information below to register for the ORSIE's Research Day 2020.</p>
-        <!-- Registration form -->
-        <form id="registration-form" class="reveal">
-            <input type="text" placeholder="First Name" class="reveal">
-            <input type="text" placeholder="Last Name" class="reveal">
-            <input type="text" placeholder="Email Address" class="reveal">
-            <input type="text" placeholder="Company/School" class="reveal">
-            <input type="text" placeholder="Job Title" class="reveal">
-            <input type="text" placeholder="City/Town" class="reveal">
-            <button type="submit" class="reveal">Register</button>
-        </form>
-    </main>
+        <main id="registration-page" class="page">
+            <!-- ORSIE logo -->
+            <object id="registration-form-logo" data="./images/orsie-logo.svg" type="image/svg+xml"
+                alt="Orsie"></object>
+            <!-- Event title -->
+            <h4 id="registration-event" class="reveal">Research Day 2020</h4>
+            <!-- Registration Instructions -->
+            <p id="registration-form-instruction" class="reveal">Enter your information below to register for the
+                ORSIE's Research Day 2020.</p>
+            <!-- Registration form -->
+            <form id="registration-form" method="post" class="reveal">
+                <input type="text" name="name_first" placeholder="First Name" class="reveal" required>
+                <input type="text" name="name_last" placeholder="Last Name" class="reveal" required>
+                <input type="email" name="email" placeholder="Email Address" class="reveal" required>
+                <input type="text" name="organization_name" placeholder="Company/School" class="reveal">
+                <input type="text" name="job_desc" placeholder="Job Title" class="reveal">
+                <input type="text" name="city" placeholder="City/Town" class="reveal">
+                <input type="text" name="province" placeholder="Province" class="reveal">
+                <button type="submit" class="reveal">Register</button>
+            </form>
+        </main>
 
-    </div> 
+    </div>
 
 
 
     <!-- GSAP Link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/ScrollToPlugin.min.js"></script>
 
     <!-- js file -->
-    <!-- <script src="main.js"></script> -->
+    <script src="main.js"></script>
 
 
 </body>

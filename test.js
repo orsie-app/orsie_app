@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 		let url = "https://services.mullasuleman.com/insert_data.php";
 		fetch(url, {
 				body: new FormData(e.target),
-				method: "post"
+				method: "POST"
 			})
 			.then(response => response.json())
 			.then(message => {

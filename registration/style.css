@@ -29,8 +29,7 @@
 @font-face {
     /* should change font-family name to name of use (ex. paragraph, header) */
     font-family: Oswald;
-    src: url(../fonts/Oswald/static/Oswald-Regular.ttf);
-    /* src: url(../fonts/Oswald/Oswald-VariableFont:wght.ttf); */
+    src: url(./fonts/Oswald/static/Oswald-Regular.ttf);
 }
 
 @font-face {
@@ -57,32 +56,28 @@ p {
     width: 100vw;
     background-color: rgba(255, 255, 255, 0.3);
     overflow: scroll;
-    /* to make text size same in all browsers, and to zoom or resize text */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
 }
 
 /* splash styles */
 #splash {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
-    /* height: 100vh; */
-    /* display: flex; */
-    display: none;
+    height: 100vh;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 #splash img {
-    width: 15rem;
+    width: 20rem;
 }
 
 /* registration form page styles */
 #registration-page {
-    /* display: none; */
+    opacity: 0;
     width: 85%;
     margin: auto auto;
     padding: 2rem 2rem;
@@ -103,22 +98,17 @@ p {
     color: var(--dc-orange);
     font-size: 1.5rem;
     letter-spacing: 1px;
-    /* font-weight: 400; */
     font-family: 'Lato', sans-serif;
 }
 
 #registration-form-instruction {
-    margin: 1rem auto;
-    /* min-width: 50%; */
-    /* width: 250px; */
-    /* max-width: 70vw; */
+    margin: 1rem 1rem;
     font-size: 1rem;
     line-height: 1.3rem;
     color: var(--dc-green);
 }
 
 #registration-form {
-    margin: 0.5rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -127,7 +117,7 @@ p {
 
 input,
 button {
-    width: 90%;
+    width: 95%;
     margin: 0.5rem auto;
 }
 
@@ -143,8 +133,11 @@ input {
 }
 
 ::placeholder::before {
-    /* color: var(--dc-grey); */
     opacity: 0.7;
+}
+
+input:hover {
+    cursor: text;
 }
 
 input:focus {
@@ -159,20 +152,16 @@ button {
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     font-weight: bold;
-    letter-spacing: 1;
+    letter-spacing: 0.5px;
     color: #ffffff;
     border-radius: 5px;
     border: none;
     transition: 0.2s ease-in-out;
 }
 
-button:hover,
-input:hover {
-    cursor: pointer;
-}
-
 button:hover {
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (min-width: 650px) {
@@ -180,14 +169,28 @@ button:hover {
         font-size: 1em;
     }
 
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
     #registration-page {
-        width: 50%;
+        width: 70%;
     }
 }
 
 @media only screen and (min-width: 1025px) {
     body {
         font-size: 1em;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 
     #registration-page {
