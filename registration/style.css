@@ -146,7 +146,7 @@ input:focus {
 }
 
 button {
-    margin: 1rem;
+    margin: 0.5rem auto;
     padding: 10px;
     background-color: var(--dc-green);
     font-family: 'Lato', sans-serif;
