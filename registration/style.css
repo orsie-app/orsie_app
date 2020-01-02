@@ -24,8 +24,14 @@ To Do:
     box-sizing: border-box;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 :root {
-    --dc-green: #0B8261;
+    --dc-green: #0b8261;
     --dc-yellowgreen: #45A046;
     --dc-brown: #522C1B;
     --dc-grey: #455560;
@@ -36,104 +42,80 @@ To Do:
 @font-face {
     /* should change font-family name to name of use (ex. paragraph, header) */
     font-family: Oswald;
-    src: url(../fonts/Oswald/static/Oswald-Regular.ttf);
+    src: url(./fonts/Oswald/static/Oswald-Regular.ttf);
 }
 
 @font-face {
     font-family: Lato;
-    src: url(../fonts/Lato/Lato-Regular.ttf);
+    src: url(./fonts/Lato/Lato-Regular.ttf);
 }
 
-/* font declarations */
-h1,h2,h3,h4,h5,h6 {
-    font-family: Oswald, sans-serif;
-    letter-spacing: 3px;
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.5em;
+    background-image: url(./images/bg.svg);
+    background-attachment: fixed;
 }
 
 p {
     font-family: Lato, sans-serif;
 }
 
-body {
-    box-sizing: border-box;
-
-    background-color: #eff7f1;
-    background-image: url("images/circuit-board.svg");
+.container {
+    position: fixed;
+    padding: 2rem 0;
     height: 100vh;
     width: 100vw;
-    padding:0;
-    margin:0;
-    /* to make text size same in all browsers, and to zoom or resize text */
-    font-size: 16px;
-    display: flex;
+    background-color: rgba(255, 255, 255, 0.3);
+    overflow: scroll;
 }
 
 /* splash styles */
 #splash {
-    width: 50vw;
-    height:100%;
-    margin: auto auto;
-    display:flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#splash-event-name {
-    color: var(--dc-green);
-    text-align: center;
-    text-transform: uppercase;
+#splash img {
+    width: 20rem;
 }
 
 /* registration form page styles */
 #registration-page {
-    height: 95%;
-    width: 90%;
-    /* padding-top: 5%; */
-    padding: 4%;
+    opacity: 0;
+    width: 85%;
+    margin: auto auto;
+    padding: 2rem 2rem;
     text-align: center;
-
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 15% 10% 10% 65%;
-    grid-template-areas: ". logo ."
-                        ". eventName ."
-                        ". description ."
-                        ". form .";
-
-    border: 1px solid var(--dc-green);
+    border: 5px solid var(--dc-green);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    margin: auto auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 #registration-form-logo {
-    width: auto;
-    height: 90%;
-    margin: auto;
-    grid-area: logo;
+    margin: 0.5rem auto;
+    width: 90%;
 }
 
 #registration-event {
-    grid-area: eventName;
+    margin: 0.5rem;
     color: var(--dc-orange);
-    font-family: 'Lato';
-
     font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: normal;
+    letter-spacing: 1px;
+    font-family: 'Lato', sans-serif;
 }
 
 #registration-form-instruction {
-    grid-area: description;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    min-width: 50%;
-    width: 250px;
-    max-width: 70vw;
-
+    margin: 1rem 1rem;
+    font-size: 1rem;
     line-height: 1.3rem;
     color: var(--dc-green);
 }
@@ -142,36 +124,88 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-
-    grid-area: form;
+    justify-content: space-evenly;
 }
 
-input, button {
-    min-width: 50%;
-    width: 250px;
-    max-width: 70vw;
+input,
+button {
+    width: 95%;
+    margin: 0.5rem auto;
 }
 
 input {
+    padding: 10px;
     border: none;
-    border-bottom: 0.5px solid var(--dc-yellowgreen);
-    font-family: Oswald;
+    border-bottom: 2px solid var(--dc-brown);
     font-size: 1rem;
-    letter-spacing: 0.2em;
-    background-color: #fff0;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    color: #383838;
+    transition: 0.1s;
+}
+
+::placeholder::before {
+    opacity: 0.7;
+}
+
+input:hover {
+    cursor: text;
 }
 
 input:focus {
-    border: none;
-    border-bottom: 2px solid var(--dc-brown);
+    border-bottom: 2px solid var(--dc-yellowgreen);
     outline: none;
 }
 
 button {
-    height: 3em;
+    margin: 0.5rem auto;
+    padding: 10px;
     background-color: var(--dc-green);
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (min-width: 650px) {
+    body {
+        font-size: 1em;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #registration-page {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    body {
+        font-size: 1em;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #registration-page {
+        width: 30%;
+    }
 }

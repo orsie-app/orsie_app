@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 		let url = "https://services.mullasuleman.com/insert_data.php";
 		fetch(url, {
 				body: new FormData(e.target),
-				method: "post"
+				method: "POST"
 			})
 			.then(response => response.json())
 			.then(message => {
@@ -50,9 +50,9 @@ window.addEventListener("load", () => {
 		fetch(url)
 			.then(response => response.json())
 			.then(contents => {
-				console.log(contents.data)
+				console.log(contents)
 				let displayData = "";
-				contents.data.forEach(human => {
+				contents.forEach(human => {
 					displayData += `<p>${human.id}: ${human.name_first} ${human.name_last}</p>`;
 				});
 				allDataListDiv.innerHTML = displayData;
