@@ -1,1 +1,199 @@
 /* STYLES HERE */
+
+/* color declarations */
+/*
+* According to DC styling:
+* Black is used for text only.
+* White is the preferred background for DC materials. In other instances, white becomes the inverted colour on a DC Green background.
+* These colours are used to enhance our primary colour and create differentiation and emphasis.
+* We recommend using Samac Orange for a call to action.
+* Simcoe Grey is used to break up large portions of white, or for subtle elements to enhance the design and message.
+* Cadbury Brown is used in bar graphic elements only.
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dc-green: #0b8261;
+    --dc-yellowgreen: #45A046;
+    --dc-brown: #522C1B;
+    --dc-grey: #455560;
+    --dc-orange: #D33222;
+}
+
+/* font imports */
+@font-face {
+    /* should change font-family name to name of use (ex. paragraph, header) */
+    font-family: Oswald;
+    src: url(./fonts/Oswald/static/Oswald-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lato;
+    src: url(./fonts/Lato/Lato-Regular.ttf);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.5em;
+    background-image: url(./images/bg.svg);
+    background-attachment: fixed;
+}
+
+p {
+    font-family: Lato;
+    font-size: 0.9rem;
+}
+
+.container {
+    position: fixed;
+    padding: 2rem 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.3);
+    overflow: scroll;
+}
+
+/* splash styles */
+#splash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#splash img {
+    width: 20rem;
+}
+
+/* registration form page styles */
+#registration-page {
+    opacity: 0;
+    width: 85%;
+    margin: auto auto;
+    padding: 2rem 2rem;
+    text-align: center;
+    border: 5px solid var(--dc-green);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#registration-form-logo {
+    margin: 0.5rem auto;
+    width: 90%;
+}
+
+#registration-event {
+    margin: 0.5rem;
+    color: var(--dc-orange);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    font-family: 'Lato', sans-serif;
+}
+
+#registration-form-instruction {
+    margin: 1rem 1rem;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    color: var(--dc-green);
+}
+
+#registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+input,
+button {
+    width: 95%;
+    margin: 0.5rem auto;
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid var(--dc-brown);
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    color: #383838;
+    transition: 0.1s;
+}
+
+::placeholder::before {
+    opacity: 0.7;
+}
+
+input:hover {
+    cursor: text;
+}
+
+input:focus {
+    border-bottom: 2px solid var(--dc-yellowgreen);
+    outline: none;
+}
+
+button {
+    margin: 1rem;
+    padding: 10px;
+    background-color: var(--dc-green);
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (min-width: 650px) {
+    body {
+        font-size: 1em;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #registration-page {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    body {
+        font-size: 1em;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #registration-page {
+        width: 30%;
+    }
+}

@@ -7,41 +7,42 @@ require_once("./inc/connect_pdo.php");
 // grabbing the data from the URL through the get method
 $name_last = $_POST["name_last"];
 $name_first = $_POST["name_first"];
-// $email = $_POST["email"];
-// $organization_name = $_POST["organization_name"];
-// $job_desc = $_POST["job_desc"];
-// $city = $_POST["city"];
-// $province = $_POST["province"];
+$email = $_POST["email"];
+$organization_name = $_POST["organization_name"];
+$job_desc = $_POST["job_desc"];
+$city = $_POST["city"];
+$province = $_POST["province"];
 
-$errorCode["id"] = 0;
-$errorCode["message"] = "Insert successful";
+$errorCode["id"] = -1;
+$errorCode["message"] = "Service Connected";
 
 $name_last = addslashes($name_last);
 $name_first = addslashes($name_first);
-// $email = addslashes($email);
-// $organization_name = addslashes($organization_name);
-// $job_desc = addslashes($job_desc);
-// $city = addslashes($city);
-// $province = $_POST["province"];
+$email = addslashes($email);
+$organization_name = addslashes($organization_name);
+$job_desc = addslashes($job_desc);
+$city = addslashes($city);
+$province = $_POST["province"];
 
 if (!empty($name_last) && !empty($name_first)) {
 	try {
 		// the query to update the record with matching borrower_id
+		// $query = "INSERT INTO test_data
+		// SET name_last='$name_last',
+        // name_first='$name_first' ";
 		$query = "INSERT INTO test_data
 		SET name_last='$name_last',
-        name_first='$name_first' ";
-		// $query = "INSERT INTO borrower
-		// SET name_last='$name_last',
-        // name_first='$name_first',
-        // email='$email',
-		// organization_name='$organization_name',
-		// job_desc='$job_desc',
-		// city='$city',
-		// province='$province'
-        // ";
+        name_first='$name_first',
+        email='$email',
+		organization_name='$organization_name',
+		job_desc='$job_desc',
+		city='$city',
+		province='$province' ";
 
 		// executing the query to update the record from the database
 		$dbo -> query($query);
+		$errorCode["id"] = 0;
+		$errorCode["message"] = "Insert Successful: $query";
 	} catch (PDOException $e) {
 		$errorCode["id"] = -2;
 		$errorCode["message"] = "Insert failed: '$e'";
