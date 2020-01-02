@@ -57,3 +57,5 @@ if (!empty($name_last) && !empty($name_first)) {
 $data = json_encode($errorCode);
 header("Content-Type: application/json");
 print($data);
+
+?>
