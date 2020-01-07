@@ -22,7 +22,8 @@ body{
     align-items: center;
     align-content: center;
     z-index: 1;
-    border-bottom-left-radius: 80px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 #fader{
@@ -40,6 +41,9 @@ body{
     height: 100vh;
     width: 100vw;
     z-index: 3;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+
 }
 
 #dragBar{
@@ -51,6 +55,8 @@ body{
     align-content: center;
     align-items: center;
     color: #c5eff7;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
 
 #fullInfo{
@@ -71,4 +77,16 @@ body{
 
 #roomInfoText{
     margin-top: 25px;
+}
+
+#eventsTab{
+    height: 100vh;
+    width: 107vw;
+    background: #000;
+    position: absolute;
+    top: 25%;
+    left: -100vw;
+    z-index: 3;
+    border-top-right-radius: 500px;
+    border-bottom-right-radius: 500px;
 }
