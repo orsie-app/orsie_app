@@ -100,11 +100,16 @@ window.onload = function () {
         }, 0.15)
     }
 
+    // the event listener on input fields for automatic scroll
     inputFields.forEach(field => {
         field.addEventListener("focus", function () {
-            TweenMax.to(".container", 0.2, {
-                scrollTo: "+=60px"
-            });
+            // preventing the scroll on iphones (makes it really "jumpy")
+            if (!(navigator.vendor ===  "Apple Computer, Inc.")) {
+                TweenMax.to("html", 0.2, {
+                    scrollTo: "+=60px",
+                    ease: Sine.easeOut
+                });
+            }
         });
     })
 
