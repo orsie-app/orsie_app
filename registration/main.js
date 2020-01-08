@@ -56,19 +56,17 @@ window.onload = function () {
         // keep animated lines seperate for it to happen at same time after rest of logo is animated
         TweenMax.from(greenLine, .75, {
             delay: 1,
-            transformOrigin: "right bottom",
-            scaleY: 0,
+            transformOrigin: "left top",
             scaleX: 0,
-            y: -25,
-            ease: Power1.easeOut
+            scaleY: 0,
+            ease: Ease.easeOut
         })
         TweenMax.from(brownLine, .75, {
             delay: 1,
-            transformOrigin: "left bottom",
-            scaleY: 0,
+            transformOrigin: "right top",
             scaleX: 0,
-            y: -25,
-            ease: Power1.easeOut
+            scaleY:0,
+            ease: Ease.easeOut
         })
     }
 
