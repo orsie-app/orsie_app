@@ -40,7 +40,12 @@
                 <input type="text" name="job_desc" placeholder="Job Title" class="reveal">
                 <input type="text" name="city" placeholder="City/Town" class="reveal">
                 <input type="text" name="province" placeholder="Province" class="reveal">
-                <button type="submit" class="reveal">Register</button>
+                <button type="submit" class="reveal" id="submit">
+                    <span id="spinner"></span>
+                    <span id="register">Register</span>
+                    <span id="success">Awesome!<br>See you at the event.</span>
+                    <span id="failed">There was a problem.<br>Please Try again!</span>
+                </button>
             </form>
         </section>
     </main>

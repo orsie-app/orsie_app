@@ -1,33 +1,38 @@
 // JavaScript Document
 
 /*
-* Description: Event registration/sign-in form for DC events
-*/
+ * Description: Event registration/sign-in form for DC events
+ */
 
 
 window.onload = function () {
-    
+
     // page elements
     let splashPage = document.querySelector('#splash');
     let formPage = document.querySelector('#registration-page');
     let orsieLogo = document.querySelector('#registration-form-logo');
-    
+
     // svg elements
     let orsieLogoSVG = orsieLogo.contentDocument;
     let dcClip = orsieLogoSVG.querySelector('#clip-path');
     let orsieClip = orsieLogoSVG.querySelector('#clip-path-2');
     let greenLine = orsieLogoSVG.querySelector('#lineGreen');
     let brownLine = orsieLogoSVG.querySelector('#lineBrown');
-    
+
     // form elements
     const insertForm = document.querySelector("#registration-form");
     const inputFields = document.querySelectorAll("input");
-    
+    const submitButton = this.document.querySelector("#submit");
+    const spinner = document.querySelector("#spinner");
+    const registerText = document.querySelector("#register");
+    const successText = document.querySelector("#success");
+    const failureText = document.querySelector("#failed");
+
     // position form page logo on start
     let h = (formPage.offsetHeight / 2) - (formPage.offsetHeight / 5.5);
     console.log(h);
-    
-    
+
+
     // animate splash onto screen, then animate form
     TweenMax.to(splashPage, 0.5, {
         delay: 2.5,
@@ -65,7 +70,7 @@ window.onload = function () {
             delay: 1,
             transformOrigin: "right top",
             scaleX: 0,
-            scaleY:0,
+            scaleY: 0,
             ease: Ease.easeOut
         })
     }
@@ -102,7 +107,7 @@ window.onload = function () {
     inputFields.forEach(field => {
         field.addEventListener("focus", function () {
             // preventing the scroll on iphones (makes it really "jumpy")
-            if (!(navigator.vendor ===  "Apple Computer, Inc.")) {
+            if (!(navigator.vendor === "Apple Computer, Inc.")) {
                 TweenMax.to("html", 0.2, {
                     scrollTo: "+=60px",
                     ease: Sine.easeOut
@@ -113,19 +118,43 @@ window.onload = function () {
 
     // event listener to handel the form submit and send data
     insertForm.addEventListener("submit", (e) => {
-		console.log("submitting");
-		e.preventDefault();
+        console.log("submitting");
+        e.preventDefault();
 
-		let url = "https://services.mullasuleman.com/insert_data.php";
-		fetch(url, {
-				body: new FormData(e.target),
-				method: "post"
-			})
-			.then(response => response.json())
-			.then(message => {
+        submitButton.setAttribute("disabled", "disabled");
+        registerText.style.display = "none";
+        spinner.style.display = "block";
+
+        let url = "https://services.mullasuleman.com/insert_data.php";
+        fetch(url, {
+                body: new FormData(e.target),
+                method: "post"
+            })
+            .then(response => response.json())
+            .then(message => {
                 console.log(message);
-                if (message.id == 0)
-					alert (`Awesome, ${inputFields[0].value}! See you at the event!`);
-			});
-	});
+                if (message.id == 0) {
+                    spinner.style.display = "none";
+                    successText.style.display = "block";
+                } else {
+                    TweenMax.to(submitButton, 0.5, {
+                        backgroundColor: "#D33222",
+                        onComplete: function () {
+                            spinner.style.display = "none";
+                            failureText.style.display = "block";
+                        }
+                    })
+                    setTimeout(function () {
+                        TweenMax.to(submitButton, 2, {
+                            backgroundColor: "#0b8261",
+                            onComplete: function () {
+                                failureText.style.display = "none";
+                                registerText.style.display = "block";
+                                submitButton.removeAttribute("disabled");
+                            }
+                        })
+                    }, 3000);
+                }
+            });
+    });
 }
