@@ -25,12 +25,9 @@ window.onload = function () {
     const submitButton = this.document.querySelector("#submit");
     const spinner = document.querySelector("#spinner");
     const registerText = document.querySelector("#register");
-    const successText = document.querySelector("#success");
-    const failureText = document.querySelector("#failed");
 
     // position form page logo on start
     let h = (formPage.offsetHeight / 2) - (formPage.offsetHeight / 5.5);
-    console.log(h);
 
 
     // animate splash onto screen, then animate form
@@ -59,14 +56,14 @@ window.onload = function () {
             ease: Power2.easeOut,
         })
         // keep animated lines seperate for it to happen at same time after rest of logo is animated
-        TweenMax.from(greenLine, .75, {
+        TweenMax.from(greenLine, .50, {
             delay: 1,
             transformOrigin: "left top",
             scaleX: 0,
             scaleY: 0,
             ease: Ease.easeOut
         })
-        TweenMax.from(brownLine, .75, {
+        TweenMax.from(brownLine, .50, {
             delay: 1,
             transformOrigin: "right top",
             scaleX: 0,
@@ -121,10 +118,12 @@ window.onload = function () {
         console.log("submitting");
         e.preventDefault();
 
+        // disable button, hide text, show spinner
         submitButton.setAttribute("disabled", "disabled");
         registerText.style.display = "none";
         spinner.style.display = "block";
 
+        // sending/fetching data from the server
         let url = "https://services.mullasuleman.com/insert_data.php";
         fetch(url, {
                 body: new FormData(e.target),
@@ -132,29 +131,63 @@ window.onload = function () {
             })
             .then(response => response.json())
             .then(message => {
+                // code if connection is successful
                 console.log(message);
                 if (message.id == 0) {
+                    // show success message if data inserted
+                    registerText.innerHTML = `Awesome, ${inputFields[0].value}! <br>See you at the event.`;
                     spinner.style.display = "none";
-                    successText.style.display = "block";
+                    registerText.style.display = "block";
+
                 } else {
+                    // show failure message if data insertion fails
+                    // change color to red
                     TweenMax.to(submitButton, 0.5, {
                         backgroundColor: "#D33222",
                         onComplete: function () {
+                            // spinner.style.display = "none";
+                            registerText.innerHTML = `There was a problem. <br>Please try again.`;
                             spinner.style.display = "none";
-                            failureText.style.display = "block";
+                            registerText.style.display = "block";
                         }
                     })
-                    setTimeout(function () {
-                        TweenMax.to(submitButton, 2, {
-                            backgroundColor: "#0b8261",
-                            onComplete: function () {
-                                failureText.style.display = "none";
-                                registerText.style.display = "block";
-                                submitButton.removeAttribute("disabled");
-                            }
-                        })
-                    }, 3000);
+                    // enable button, change text back to register, change color back to green
+                    // executed after 3 seconds
+                    TweenMax.to(submitButton, 2, {
+                        delay: 3,
+                        backgroundColor: "#0b8261",
+                        onComplete: function () {
+                            registerText.innerHTML = `Register`;
+                            submitButton.removeAttribute("disabled");
+                        }
+                    })
                 }
+            })
+            .catch(error => {
+                // code to execute if internet fails
+                console.log(error);
+                // show failure message
+                // change color to red
+                TweenMax.to(submitButton, 0.5, {
+                    backgroundColor: "#D33222",
+                    onComplete: function () {
+                        // spinner.style.display = "none";
+                        registerText.innerHTML = `Please check your connection and try again.`;
+                        spinner.style.display = "none";
+                        registerText.style.display = "block";
+                    }
+                })
+
+                // enable button, change text back to register, change color back to green
+                // executed after 3 seconds
+                TweenMax.to(submitButton, 2, {
+                    delay: 3,
+                    backgroundColor: "#0b8261",
+                    onComplete: function () {
+                        registerText.innerHTML = `Register`;
+                        submitButton.removeAttribute("disabled");
+                    }
+                })
             });
     });
 }
