@@ -1,0 +1,232 @@
+/* STYLES HERE */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 1em;
+}
+
+#container {
+	width: 100vw;
+	height: 100vh;
+	background: #D0D3D499;
+	overflow: hidden;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 10vh;
+	width: 100vw;
+	/* border: 1px solid rgba(56, 56, 56, 0.2); */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 899;
+	background: #eee;
+	color: #da0000;
+}
+
+h1 {
+	font-size: 1.3rem;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 1rem;
+	/* font-weight: lighter; */
+	text-transform: uppercase;
+}
+
+header h1 {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 1rem;
+}
+
+#map-button,
+#events-button {
+	padding: 1.2vh;
+	height: 7vh;
+	width: 7vh;
+	/* width: 15vw; */
+	background: #37987D;
+	border-radius: 50%;
+	box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.3);
+	transition: 0.4s ease-in-out;
+}
+
+#map-tab{
+	z-index: 998;
+	width: 100px;
+	height: 7vh;
+	bottom: 30vw;
+	position: absolute;
+	background: #0b8261;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	left: -40px;
+}
+
+#map-button {
+	margin-left: 60px;
+	z-index: 999;
+	/* border-top-left-radius: 2rem; */
+	/* border-bottom-left-radius: 2rem; */
+}
+
+#events-tab{
+	z-index: 99998;
+	width: 60px;
+	height: 7vh;
+	bottom: 30vw;
+	position: absolute;
+	background: #eee;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	right: 0;
+	opacity: 0;
+	display: none;
+}
+
+#events-button {
+	margin-right: 3vw;
+	background: #fff;
+	/* border-top-right-radius: 2rem; */
+	/* border-bottom-right-radius: 2rem; */
+}
+
+#map-button img,
+#events-button img {
+	height: 100%;
+}
+
+#events-page {
+	/* display: none; */
+	position: fixed;
+	top: 10vh;
+	left: 0vw;
+	width: 100%;
+	height: 90vh;
+	padding: 1rem;
+	overflow: scroll;
+	background: #eee;
+	z-index: 888;
+}
+
+#events-page #current-events-container,
+#events-page #upcoming-events-container {
+	width: 100%;
+	margin: 1rem auto;
+	/* border: 1px solid rgba(0, 0, 0, 0.5); */
+	border-radius: 10px;
+	padding: 0.5rem 0;
+}
+
+#events-page #current-events-container {
+	height: 35%;
+	white-space: nowrap;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
+#events-page #upcoming-events-container {
+	/* To be changed to auto when functional */
+	height: 50%;
+	overflow: visible;
+}
+
+#events-page #current-events-container .event-box, 
+#events-page #upcoming-events-container .event-box {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.1);
+}
+
+#events-page #current-events-container .event-box {
+	display: inline-block;
+	height: 100%;
+	width: 40%;
+	margin-right: 0.5rem;
+}
+
+#events-page #upcoming-events-container .event-box {
+	height: 25%;
+	width: 100%;
+	margin-bottom: 0.5rem;
+}
+
+#map-page {
+	position: absolute;
+	background: #0b8261;
+	width: 100vw;
+	height: 60vh;
+	z-index: 2000;
+	border-top-right-radius: 600px;
+	border-bottom-right-radius: 600px;
+}
+
+#map {
+	height: 60%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	background-size: 70%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #f7f7f7;
+	border-bottom-right-radius: 50px;
+	border-bottom-left-radius: 50px;
+	color: #0b8261;
+}
+
+
+#fader {
+	/* required for effect z-index: 900; */
+	/* The z-index below is the baseline for scrolling */
+	z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000010;
+    position: absolute;
+}
+
+#map-info{
+	color: #eee;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 10vw;
+	opacity: 0;
+}
+
+#map-info-title{
+	margin-bottom: 5vw;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+#map-info-text{
+	margin-bottom: 5vw;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+
+/* used for laptop demonstration purposes  */
+img{
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}

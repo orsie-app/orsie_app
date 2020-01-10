@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ORSIE Research Day</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<main id="container">
+		<header>
+			<h1>Research Day 2020</h1>
+			<!-- <div id="events-button">
+				<img src="./images/map-icon.png" alt="Map Button" />
+			</div> -->
+		</header>
+		<section id="events-page">
+			<h2>Current Events</h2>
+			<div id="current-events-container">
+				<!-- will be dynamically generated from json data -->
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+			</div>
+			<h2>Upcoming Events</h2>
+			<div id="upcoming-events-container">
+				<!-- will be dynamically generated from json data -->
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+				<div class="event-box"></div>
+			</div>
+		</section>
+		<!-- the fader div enables the ability to add a darkening effect for page transitions -->
+		<div id="fader"></div>
+		<section id="map-page">
+			<!-- the current map div has a placeholder background image of the prototype map -->
+			<div id="map">Map</div>
+			<div id="map-info">
+				<h3 id="map-info-title">Placeholder</h3>
+				<p id="map-info-text">The map image above is a placeholder for proof of concept</p>
+			</div>
+		</section>
+		<aside id="map-tab">
+			<div id="map-button">
+				<img src="./images/map-icon-white.png" alt="Map Button" />
+			</div>
+		</aside>
+		<aside id="events-tab">
+			<div id="events-button">
+				<!-- add the below image tag when events button asset created -->
+				<!-- <img src="./images/map-icon-white.png" alt="Events Button" /> -->
+			</div>
+		</aside>
+
+	</main>
+
+	<!-- GSAP -->
+	<script src="./gsap.min.js"></script>
+
+	<!-- APP SCRIPT -->
+	<script src="./main.js"></script>
+</body>
+
+</html>
