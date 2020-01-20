@@ -275,6 +275,14 @@ window.onload = function () {
 				right: 0,
 				duration: 0.5
 			});
+
+
+			// fade the actual map in
+			gsap.to(["#map", "#map-info"], {
+				duration: 0.2,
+				opacity: 1,
+			})
+			
 			
 			
 		}
