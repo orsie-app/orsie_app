@@ -1,5 +1,4 @@
 // JavaScript Document
-
 window.onload = function () {
 	let mapTab = document.querySelector('#map-tab');
 	let eventsButton = document.querySelector('#events-button');
@@ -12,12 +11,13 @@ window.onload = function () {
 		let touch = event.targetTouches[0];
 		if (touch.pageX <= window.innerWidth * 0.7) {
 			mapTab.style.left = (touch.pageX - 60) + 'px';
-			//mapPage.style.top = window.innerHeight * 0.4 - touch.pageX / window.innerWidth * 350 + 'px';
-
+			mapTab.style.top = (touch.pageY - 10) + 'px';
 			mapPage.style.right = window.innerWidth - touch.pageX + 10 + 'px';
 			event.preventDefault();
 			// calculate the amount of the screen is covered by the draggable element
 			let percentCovered = (mapTab.offsetLeft*0.5) / window.innerWidth;
+			// move map page pull out with map tab
+			mapPage.style.top = (touch.pageY - 180) + 'px';
 			//  adjust border radius of map page accordingly
 			mapPage.style.borderTopRightRadius = `${600 - window.innerWidth  - percentCovered * 600}px`;
 			mapPage.style.borderBottomRightRadius = `${600 - window.innerWidth - percentCovered * 600}px`;
