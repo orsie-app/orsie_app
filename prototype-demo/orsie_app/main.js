@@ -95,6 +95,9 @@ window.onload = function () {
 			duration: 0.33,
 			left: -40,
 		})
+
+		//put fader below everything
+		document.getElementById('fader').style.zIndex = -1;
 			
 		}
 	}, false, {
