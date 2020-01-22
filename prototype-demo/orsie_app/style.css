@@ -184,6 +184,17 @@ header h1 {
 	border-bottom-right-radius: 600px;
 	right: 100vw;
 	top: 50vh;
+
+	/* use for reverse effect || from flat to round
+
+	height: 100vh;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	right: 100vw;
+
+	for the top change to 0 if you want the effect across the whole screen
+	top: 50vh;
+	*/
 }
 
 #map {

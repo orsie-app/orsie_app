@@ -20,6 +20,10 @@ window.onload = function () {
 			mapPage.style.borderTopRightRadius = `${600 - window.innerWidth  - percentCovered * 600}px`;
 			mapPage.style.borderBottomRightRadius = `${600 - window.innerWidth - percentCovered * 600}px`;
 			document.getElementById('fader').style.zIndex = 900;
+
+			//use for reverse effect || from flat to round
+			////mapPage.style.borderBottomRightRadius = `${percentCovered * 2000}px`;
+			////mapPage.style.borderTopRightRadius = `${percentCovered * 2000}px`;
 		}
 	}, false, {
 		passive: false
