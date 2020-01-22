@@ -96,10 +96,21 @@ header h1 {
 }
 
 #events-button {
+	z-index: 99998;
 	margin-right: 3vw;
 	background: #fff;
-	/* border-top-right-radius: 2rem; */
-	/* border-bottom-right-radius: 2rem; */
+	bottom: 30vw;
+	right: 0;
+	position: absolute;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	opacity: 0;
+	box-shadow: 2px 2px 7px #000;
+	cursor: pointer;
+	user-select: none;
 }
 
 #map-button img,
