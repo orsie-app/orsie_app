@@ -9,8 +9,8 @@ window.onload = function () {
 
 	mapTab.addEventListener("touchmove", function (event) {
 		let touch = event.targetTouches[0];
-		if (touch.pageX <= window.innerWidth * 0.7) {
-			mapTab.style.left = (touch.pageX - 60) + 'px';
+		if (touch.pageX <= window.innerWidth * 0.8) {
+			mapTab.style.left = (touch.pageX - 70) + 'px';
 			mapTab.style.top = (touch.pageY - 10) + 'px';
 			mapPage.style.right = window.innerWidth - touch.pageX + 10 + 'px';
 			event.preventDefault();
@@ -82,7 +82,6 @@ window.onload = function () {
 		gsap.to(mapPage, {
 			duration: 0.33,
 			right: window.innerWidth,
-			top: window.innerHeight * 0.5,
 			height: window.innerHeight * 0.6,
 			borderTopRightRadius: 600,
 			borderBottomRightRadius: 600,
