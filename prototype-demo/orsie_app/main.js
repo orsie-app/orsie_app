@@ -3,8 +3,6 @@ window.onload = function () {
 	let mapTab = document.querySelector('#map-tab');
 	let eventsButton = document.querySelector('#events-button');
 	let mapPage = document.querySelector('#map-page');
-	mapPage.style.right = window.innerWidth + 'px';
-	mapPage.style.top = window.innerHeight * 0.5 + 'px';
 	let mapOpen = false;
 
 	mapTab.addEventListener("touchmove", function (event) {

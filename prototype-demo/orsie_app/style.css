@@ -181,6 +181,8 @@ header h1 {
 	z-index: 2000;
 	border-top-right-radius: 600px;
 	border-bottom-right-radius: 600px;
+	right: 100vw;
+	top: 50vh;
 }
 
 #map {
