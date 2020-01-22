@@ -165,7 +165,6 @@ window.onload = function () {
 		gsap.to(mapPage, {
 			duration: 0.33,
 			right: window.innerWidth,
-			top: window.innerHeight * 0.5,
 			height: window.innerHeight * 0.6,
 			borderTopRightRadius: 600,
 			borderBottomRightRadius: 600,
