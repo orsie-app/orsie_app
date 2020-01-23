@@ -24,6 +24,8 @@ $job_desc = addslashes($job_desc);
 $city = addslashes($city);
 $province = $_POST["province"];
 
+$name = $name_first . " " . $name_last;
+
 if (!empty($name_last) && !empty($name_first)) {
 	try {
 		// the query to update the record with matching borrower_id
@@ -31,8 +33,7 @@ if (!empty($name_last) && !empty($name_first)) {
 		// SET name_last='$name_last',
         // name_first='$name_first' ";
 		$query = "INSERT INTO test_data
-		SET name_last='$name_last',
-        name_first='$name_first',
+		SET a_name='$name',
         email='$email',
 		organization_name='$organization_name',
 		job_desc='$job_desc',

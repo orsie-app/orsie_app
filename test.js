@@ -36,7 +36,7 @@ window.addEventListener("load", () => {
 				let displayData = "";
 				if (contents) {
 					contents.forEach(human => {
-						displayData += `<p>${human.id}: ${human.name_first} ${human.name_last}</p>`;
+						displayData += `<p>${human.id}: ${human.a_name}</p>`;
 					});
 				} else {
 					displayData = "<p>No data found</p>";
@@ -53,7 +53,7 @@ window.addEventListener("load", () => {
 				console.log(contents)
 				let displayData = "";
 				contents.forEach(human => {
-					displayData += `<p>${human.id}: ${human.name_first} ${human.name_last}</p>`;
+					displayData += `<p>${human.id}: ${human.a_name}</p>`;
 				});
 				allDataListDiv.innerHTML = displayData;
 			});

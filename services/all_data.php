@@ -8,17 +8,15 @@ date_default_timezone_set('America/Toronto');
 
 require_once("./inc/connect_pdo.php");
 
-$query = "SELECT id, name_first, name_last
+$query = "SELECT id, a_name
 FROM test_data";
 //print("$query");
 foreach($dbo->query($query) as $row) {
 	$id = stripslashes($row["0"]);
-	$name_first = stripslashes($row["1"]);
-	$name_last = stripslashes($row["2"]);
+	$a_name = stripslashes($row["1"]);
 	
 	$attendee["id"] = $id;
-	$attendee["name_first"] = $name_first;
-	$attendee["name_last"] = $name_last;
+	$attendee["a_name"] = $a_name;
 	
 	$attendees[] = $attendee;
 }

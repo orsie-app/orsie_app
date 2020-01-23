@@ -9,6 +9,7 @@
 body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 1em;
+	overflow: hidden;
 }
 
 #container {
@@ -96,10 +97,21 @@ header h1 {
 }
 
 #events-button {
+	z-index: 99998;
 	margin-right: 3vw;
 	background: #fff;
-	/* border-top-right-radius: 2rem; */
-	/* border-bottom-right-radius: 2rem; */
+	bottom: 30vw;
+	right: 0;
+	position: absolute;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	opacity: 0;
+	box-shadow: 2px 2px 7px #000;
+	cursor: pointer;
+	user-select: none;
 }
 
 #map-button img,
@@ -170,6 +182,19 @@ header h1 {
 	z-index: 2000;
 	border-top-right-radius: 600px;
 	border-bottom-right-radius: 600px;
+	right: 100vw;
+	top: 50vh;
+
+	/* use for reverse effect || from flat to round
+
+	height: 100vh;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	right: 100vw;
+
+	for the top change to 0 if you want the effect across the whole screen
+	top: 50vh;
+	*/
 }
 
 #map {
