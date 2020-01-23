@@ -188,13 +188,12 @@ header h1 {
 	border-bottom-left-radius: 50px;
 	color: #0b8261;
 }
-#floorMap {
-	z-index: 3000;
+#appFrame2Map {
+	/* z-index: 3000; */
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 }
-
 
 #fader {
 	/* required for effect z-index: 900; */
