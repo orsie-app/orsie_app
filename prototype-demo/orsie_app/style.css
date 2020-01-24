@@ -3,6 +3,14 @@
 /* importing fonts from Adobe Fonts */
 @import url("https://use.typekit.net/nat8tym.css");
 
+:root {
+    --dc-green: #0b8261;
+    --dc-yellowgreen: #45A046;
+    --dc-brown: #522C1B;
+    --dc-grey: #455560;
+    --dc-orange: #D33222;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -39,7 +47,7 @@ header {
 	justify-content: center;
 	z-index: 899;
 	background: #eee;
-	color: #da0000;
+	/* color: #da0000; */
 }
 
 h1 {
@@ -55,7 +63,7 @@ h2 {
 }
 
 header h1 {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(11, 130, 97, 1);
 	padding: 1rem;
 }
 
@@ -71,7 +79,7 @@ header h1 {
 	transition: 0.4s ease-in-out;
 }
 
-#map-tab{
+#map-tab {
 	z-index: 998;
 	width: 100px;
 	height: 7vh;
@@ -90,7 +98,7 @@ header h1 {
 	/* border-bottom-left-radius: 2rem; */
 }
 
-#events-tab{
+#events-tab {
 	z-index: 99998;
 	width: 60px;
 	height: 7vh;
@@ -162,7 +170,7 @@ header h1 {
 	overflow: visible;
 }
 
-#events-page #current-events-container .event-box, 
+#events-page #current-events-container .event-box,
 #events-page #upcoming-events-container .event-box {
 	background: #fff;
 	border-radius: 10px;
@@ -226,13 +234,13 @@ header h1 {
 	/* required for effect z-index: 900; */
 	/* The z-index below is the baseline for scrolling */
 	z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    background-color: #00000010;
-    position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: #00000010;
+	position: absolute;
 }
 
-#map-info{
+#map-info {
 	color: #eee;
 	width: 80%;
 	margin-left: 10%;
@@ -240,26 +248,62 @@ header h1 {
 	opacity: 0;
 }
 
-#map-info-title{
+#map-info-title {
 	margin-bottom: 5vw;
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
+	-webkit-user-select: none;
+	/* Safari */
+	-moz-user-select: none;
+	/* Firefox */
+	-ms-user-select: none;
+	/* IE10+/Edge */
+	user-select: none;
+	/* Standard */
 }
-#map-info-text{
+
+#map-info-text {
 	margin-bottom: 5vw;
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
+	-webkit-user-select: none;
+	/* Safari */
+	-moz-user-select: none;
+	/* Firefox */
+	-ms-user-select: none;
+	/* IE10+/Edge */
+	user-select: none;
+	/* Standard */
 }
 
 /* used for laptop demonstration purposes  */
-img{
+img {
 	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-drag: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
+}
+
+#search-page {
+	position: absolute;
+	top: 00vh;
+	width: 100vw;
+	height: 100vh;
+	padding: 1rem;
+	background: #eee;
+	z-index: 2500;
+}
+
+#search-page #content-box {
+    width: 90%;
+    margin: auto auto;
+    padding: 2rem 2rem;
+    text-align: center;
+    border: 5px solid var(--dc-green);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#search-page #content-box h1 {
+	margin: 0.5rem auto;
+	text-align: center;
+	color: var(--dc-orange);
 }
