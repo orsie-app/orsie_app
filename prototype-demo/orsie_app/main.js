@@ -206,21 +206,27 @@ window.onload = function () {
 
 	/*****************  SEARCH PAGE SCRIPTS  *********************/
 
+	// event handler to handle when the form is submitted
 	searchForm.addEventListener("submit", (e) => {
-		console.log("searching");
 		e.preventDefault();
 		let displayData = "";
 
+		// checking if the search field is empty or not
 		if (searchForm.firstElementChild.value) {
+			// if text entered
+			// set service URL
 			let url = "https://services.mullasuleman.com/search.php";
+			// fetching data from the database
 			fetch(url, {
 					body: new FormData(e.target),
 					method: "post"
 				})
 				.then(response => response.json())
 				.then(contents => {
+					// when fetch data complete
 					console.log(contents);
 					displayData = "";
+					// set the name list if any data found
 					if (contents) {
 						contents.forEach(guest => {
 							displayData += `
@@ -231,11 +237,13 @@ window.onload = function () {
 							</div>`;
 						});
 					} else {
+						// set to no result if no names are found
 						displayData = `
 						<div class="result">
 							<h3>No result found. Please register.</h3>
 						</div>`;
 					}
+
 					searchResults.innerHTML = displayData;
 				});
 		} else {
@@ -247,27 +255,22 @@ window.onload = function () {
 		}
 	});
 
-	// guestEntries = document.querySelectorAll(".result");
-
-	// guestEntries.forEach(guestEntry => {
-	// 	console.log(guestEntry);
-
-	// 	guestEntry.addEventListener("click", function (e) {
-	// 		console.log(e.target.getAttribute("data-id"));
-	// 	});
-	// });
-
+	// handling name list click event
 	let idClicked = "";
 	searchResults.addEventListener("click", e => {
+		// if result div is clicked
 		if (e.target.matches(".result")) {
 			// alert(e.target.getAttribute("data-id"));
 			idClicked = e.target.getAttribute("data-id");
 		} else if (e.target.matches(".result *")) {
+			// else if any of the inside elements are clicked
 			// alert(e.target.parentNode.getAttribute("data-id"));
 			idClicked = e.target.parentNode.getAttribute("data-id");
 		}
+		// handler to sign users in ONLY if the proper element is clicked
 		if (idClicked) {
 			alert(idClicked);
+			// handle sign in stuff here
 		}
 	})
 };
