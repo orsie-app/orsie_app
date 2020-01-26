@@ -10,6 +10,7 @@ window.onload = function () {
 	// search page elements
 	const searchForm = document.querySelector("#search-form");
 	const searchResults = document.querySelector("#search-results");
+	let guestEntries = document.querySelectorAll(".result");
 
 	mapTab.addEventListener("touchmove", function (event) {
 		let touch = event.targetTouches[0];
@@ -223,7 +224,7 @@ window.onload = function () {
 					if (contents) {
 						contents.forEach(guest => {
 							displayData += `
-							<div class="result" data-id="${guest.id}">
+							<div class="result a" data-id="${guest.id}">
 								<h3>${guest.a_name}</h3>
 								<p>${guest.organization_name ? guest.organization_name : "Not Available"}</p>
 								<p>${guest.job_desc ? guest.job_desc : "Not Available"}</p>
@@ -237,12 +238,36 @@ window.onload = function () {
 					}
 					searchResults.innerHTML = displayData;
 				});
-			} else {
-				displayData = `
+		} else {
+			displayData = `
 				<div class="result">
 					<p>Please enter your name to search.</p>
 				</div>`;
-				searchResults.innerHTML = displayData;
+			searchResults.innerHTML = displayData;
 		}
 	});
+
+	// guestEntries = document.querySelectorAll(".result");
+
+	// guestEntries.forEach(guestEntry => {
+	// 	console.log(guestEntry);
+
+	// 	guestEntry.addEventListener("click", function (e) {
+	// 		console.log(e.target.getAttribute("data-id"));
+	// 	});
+	// });
+
+	let idClicked = "";
+	searchResults.addEventListener("click", e => {
+		if (e.target.matches(".result")) {
+			// alert(e.target.getAttribute("data-id"));
+			idClicked = e.target.getAttribute("data-id");
+		} else if (e.target.matches(".result *")) {
+			// alert(e.target.parentNode.getAttribute("data-id"));
+			idClicked = e.target.parentNode.getAttribute("data-id");
+		}
+		if (idClicked) {
+			alert(idClicked);
+		}
+	})
 };
