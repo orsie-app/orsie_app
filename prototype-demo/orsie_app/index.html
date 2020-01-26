@@ -48,11 +48,17 @@
 		<section id="search-page">
 			<div id="content-box">
 				<img src="./images/orsie-logo-new.svg" />
-				<h1>Check In</h1>
+				<h1>ResearchDay Sign In</h1>
+				<h2>Please search and select your name from the list to sign in.</h2>
 				<form id="search-form" method="POST">
-					<input type="text" name="search-input" id="search-input" />
-					<input type="button" name="submit" value="Search" />
+					<input type="text" name="search-text" id="search-input" placeholder="Enter your name" />
+					<button type="submit" id="submit">
+						<img src="./images/search-icon.png" alt="Search Button" />
+					</button>
 				</form>
+				<div id="search-results">
+					
+				</div>
 			</div>
 		</section>
 		<aside id="map-tab">

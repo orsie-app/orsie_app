@@ -1,9 +1,15 @@
 // JavaScript Document
 window.onload = function () {
+
+	// map page elements
 	let mapTab = document.querySelector('#map-tab');
 	let eventsButton = document.querySelector('#events-button');
 	let mapPage = document.querySelector('#map-page');
 	let mapOpen = false;
+
+	// search page elements
+	const searchForm = document.querySelector("#search-form");
+	const searchResults = document.querySelector("#search-results");
 
 	mapTab.addEventListener("touchmove", function (event) {
 		let touch = event.targetTouches[0];
@@ -13,7 +19,7 @@ window.onload = function () {
 			mapPage.style.right = window.innerWidth - touch.pageX + 10 + 'px';
 			event.preventDefault();
 			// calculate the amount of the screen is covered by the draggable element
-			let percentCovered = (mapTab.offsetLeft*0.5) / window.innerWidth;
+			let percentCovered = (mapTab.offsetLeft * 0.5) / window.innerWidth;
 			// move map page pull out with map tab
 			mapPage.style.top = (touch.pageY - 180) + 'px';
 			//  adjust border radius of map page accordingly
@@ -31,7 +37,7 @@ window.onload = function () {
 
 	mapTab.addEventListener("touchend", function (event) {
 		// if map is not open
-		if (mapOpen == false && mapTab.offsetLeft > window.innerWidth*0.30) {
+		if (mapOpen == false && mapTab.offsetLeft > window.innerWidth * 0.30) {
 			//move the mapTab for continuity of animation
 			gsap.to(mapTab, {
 				duration: 0.5,
@@ -79,26 +85,26 @@ window.onload = function () {
 				backgroundColor: "rgba(0,0,0,0.9)",
 				ease: "Power3.InOut",
 			})
-		}else{
-		// remove the map page from the screen
-		gsap.to(mapPage, {
-			duration: 0.33,
-			right: window.innerWidth,
-			height: window.innerHeight * 0.6,
-			borderTopRightRadius: 600,
-			borderBottomRightRadius: 600,
-			ease: "Power3.Out",
-		});
+		} else {
+			// remove the map page from the screen
+			gsap.to(mapPage, {
+				duration: 0.33,
+				right: window.innerWidth,
+				height: window.innerHeight * 0.6,
+				borderTopRightRadius: 600,
+				borderBottomRightRadius: 600,
+				ease: "Power3.Out",
+			});
 
-		//move mapTab along with the map page
-		gsap.to(mapTab, {
-			duration: 0.33,
-			left: -40,
-		})
+			//move mapTab along with the map page
+			gsap.to(mapTab, {
+				duration: 0.33,
+				left: -40,
+			})
 
-		//put fader below everything
-		document.getElementById('fader').style.zIndex = -1;
-			
+			//put fader below everything
+			document.getElementById('fader').style.zIndex = -1;
+
 		}
 	}, false, {
 		passive: false
@@ -196,4 +202,47 @@ window.onload = function () {
 			}
 		})
 	})
+
+	/*****************  SEARCH PAGE SCRIPTS  *********************/
+
+	searchForm.addEventListener("submit", (e) => {
+		console.log("searching");
+		e.preventDefault();
+		let displayData = "";
+
+		if (searchForm.firstElementChild.value) {
+			let url = "https://services.mullasuleman.com/search.php";
+			fetch(url, {
+					body: new FormData(e.target),
+					method: "post"
+				})
+				.then(response => response.json())
+				.then(contents => {
+					console.log(contents);
+					displayData = "";
+					if (contents) {
+						contents.forEach(guest => {
+							displayData += `
+							<div class="result" data-id="${guest.id}">
+								<h3>${guest.a_name}</h3>
+								<p>${guest.organization_name ? guest.organization_name : "Not Available"}</p>
+								<p>${guest.job_desc ? guest.job_desc : "Not Available"}</p>
+							</div>`;
+						});
+					} else {
+						displayData = `
+						<div class="result">
+							<h3>No result found. Please register.</h3>
+						</div>`;
+					}
+					searchResults.innerHTML = displayData;
+				});
+			} else {
+				displayData = `
+				<div class="result">
+					<p>Please enter your name to search.</p>
+				</div>`;
+				searchResults.innerHTML = displayData;
+		}
+	});
 };
