@@ -40,10 +40,9 @@
 		<!-- the fader div enables the ability to add a darkening effect for page transitions -->
 		<div id="fader"></div>
 		<section id="map-page">
-			<!-- the current map div has a placeholder background image of the prototype map -->
+			<!-- the current map div has an outdated map svg -->
 			<div id="map">
-				<!-- <object id="floorMap" data="../orsie_app_map/images/floorPlan.svg" type="image/svg+xml"></object> -->
-				<iframe id="appFrame2Map" src="../orsie_map/index.html" frameborder="0"></iframe>
+				<object id="floorMap" data="./images/floorPlan.svg" type="image/svg+xml"></object>
 			</div>
 			<div id="map-info">
 				<h3 id="map-info-title">Placeholder</h3>
@@ -69,6 +68,8 @@
 
 	<!-- APP SCRIPT -->
 	<script src="./main.js"></script>
+	<!-- MAP SCRIPT -->
+	<script src="./map.js"></script>
 </body>
 
 </html>
