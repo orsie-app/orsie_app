@@ -205,66 +205,86 @@ window.onload = function () {
 
 	/*****************  SEARCH PAGE SCRIPTS  *********************/
 
+	// function to update display data
+	function updateDisplayData(displayData) {
+		searchResults.innerHTML = displayData;
+	}
+
 	// event handler to handle when the form is submitted
 	searchForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		let displayData = "";
+		let displayMsg = "";
 
 		// checking if the search field is empty or not
 		if (searchForm.firstElementChild.value) {
 			// if text entered
-			// set service URL
-			let url = "https://services.mullasuleman.com/search.php";
-			// fetching data from the database
-			fetch(url, {
-					body: new FormData(e.target),
-					method: "post"
-				})
-				.then(response => response.json())
-				.then(contents => {
-					// when fetch data complete
-					console.log(contents);
-					displayData = "";
-					// set the name list if any data found
-					if (contents) {
-						contents.forEach(guest => {
-							displayData += `
-							<div class="result" data-id="${guest.id}">
-								<h3>${guest.a_name}</h3>
-								<p>${guest.organization_name ? guest.organization_name : ""}</p>
-								<p>${guest.job_desc ? guest.job_desc : ""}</p>
-							</div>`;
-						});
-					} else {
-						// set to no result if no names are found
-						displayData = `
-						<div class="result" id="error">
-							<p>No result found.</p>
-						</div>
-						<div class="result" id="register">
-							<a href="../registration" target="blank">Please Register Here</a>
-						</div>
-						`;
-					}
-					searchResults.innerHTML = displayData;
-				});
+			let searchFormData = new FormData(e.target);
+			search(searchFormData);
 		} else {
 			// if search text not entered
-			displayData = `
+			displayMsg = `
 				<div class="result" id="error">
 					<p>Please enter your name or email to search.</p>
 				</div>`;
-			searchResults.innerHTML = displayData;
+			updateDisplayData(displayMsg);
 		}
 	});
 
-	// handling name list click event
-	let idClicked = "";
-	let elementClicked;
-	let nameToDisplay = "";
+	// function to handle search and fetch data
+	function search(searchData) {
+		// set service URL
+		let url = "https://services.mullasuleman.com/search.php";
+		let displayMsg = "";
+		// fetching data from the database
+		fetch(url, {
+				body: searchData,
+				method: "post"
+			})
+			.then(response => response.json())
+			.then(contents => {
+				// when fetch data complete
+				console.log(contents);
+				displayMsg = "";
+				// set the name list if any data found
+				if (contents) {
+					contents.forEach(guest => {
+						displayMsg += `
+						<div class="result" data-id="${guest.id}">
+							<h3>${guest.a_name}</h3>
+							<p>${guest.organization_name ? guest.organization_name : ""}</p>
+							<p>${guest.job_desc ? guest.job_desc : ""}</p>
+						</div>`;
+					});
+				} else {
+					// set to no result if no names are found
+					displayMsg = `
+					<div class="result" id="error">
+						<p>No result found.</p>
+					</div>
+					<div class="result" id="register">
+						<a href="../registration" target="blank">Please Register Here</a>
+					</div>
+					`;
+				}
+				updateDisplayData(displayMsg);
+			})
+			.catch(error => {
+				console.log(error);
+				// if search text not entered
+				displayMsg = `
+				<div class="result" id="error">
+					<p>Please check your connection and try again.</p>
+				</div>`;
+				updateDisplayData(displayMsg);
+			});
+	}
 
+	// handling name list click event
 	// adding event listener on the parent div because children divs are dynamically generated
 	searchResults.addEventListener("click", e => {
+		let idClicked = "";
+		let elementClicked;
+		let nameToDisplay = "";
 		// if result div is clicked
 		if (e.target.matches(".result")) {
 			// alert(e.target.getAttribute("data-id"));
@@ -280,50 +300,57 @@ window.onload = function () {
 		// handler to sign users in ONLY if the proper element is clicked
 		if (idClicked) {
 			console.log(idClicked);
+			// animating the name clicked
 			TweenMax.to(elementClicked, 0.1, {
 				scale: 0.9,
 				repeat: 1,
 				yoyo: true
 			})
 			// handle sign in stuff here
-			let formData = new this.FormData();
-			formData.append('id', idClicked);
-			let url = "https://services.mullasuleman.com/sign_in.php";
-			// fetching data from the database
-			fetch(url, {
-					body: formData,
-					method: "post"
-				})
-				.then(response => response.json())
-				.then(message => {
-					// when fetch data complete
-					console.log(message);
-					displayData = "";
-					// set the name list if any data found
-					if (message.id == 0) {
-						displayData += `
+			signIn(idClicked, nameToDisplay);
+		}
+	});
+
+	// function to handle sign in and send data
+	// and update the div as needed
+	function signIn(id, name) {
+		let displayMsg = ""
+		let formData = new FormData();
+		formData.append('id', id);
+		let url = "https://services.mullasuleman.com/sign_in.php";
+		// fetching data from the database
+		fetch(url, {
+				body: formData,
+				method: "post"
+			})
+			.then(response => response.json())
+			.then(message => {
+				// when fetch data complete
+				console.log(message);
+				displayMsg = "";
+				// set the name list if any data found
+				if (message.id == 0) {
+					displayMsg += `
 						<div class="result" id="success">
-							<p>Awesome, ${nameToDisplay}!</p>
-							<p>Welcome to Durham College!</p>
+							<p>Awesome, ${name}!</p>
 							<p>Enjoy the Research Day 2020!</p>
 						</div>`;
-					} else {
-						// set to no result if no names are found
-						displayData = `
+				} else {
+					// set to no result if no names are found
+					displayMsg = `
 						<div class="result" id="error">
 							<p>There was a problem signing in. Please try again</p>
 						</div>
 						`;
-					}
-					searchResults.innerHTML = displayData;
-				}).catch(error => {
-					// code to execute if internet fails
-					console.log(error);
-					displayData += `
+				}
+				updateDisplayData(displayMsg);
+			}).catch(error => {
+				// code to execute if internet fails
+				displayMsg += `
 					<div class="result" id="error">
-						<p>Please check your connection and try again.</p>
+					<p>Check your connection and try again.</p>
 					</div>`;
-				});
-		}
-	})
+				updateDisplayData(displayMsg);
+			});
+	}
 };

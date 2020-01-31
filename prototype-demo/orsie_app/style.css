@@ -427,9 +427,13 @@ img {
 	color: var(--dc-orange);
 }
 
+#success {
+	background-color: var(--dc-green);
+}
+
 #success p {
 	text-align: center;
-	color: var(--dc-green);
+	color: #ffffff;
 }
 
 #register {
