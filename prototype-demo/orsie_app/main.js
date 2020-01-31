@@ -210,6 +210,17 @@ window.onload = function () {
 		searchResults.innerHTML = displayData;
 	}
 
+	// function to show a spinner whenever necessary 
+	function showSpinner() {
+		let spinner = `
+			<div class="result">
+				<div id="spinner-box">
+					<span id="spinner"></span>
+				</div>
+			</div>`;
+		updateDisplayData(spinner);
+	}
+
 	// event handler to handle when the form is submitted
 	searchForm.addEventListener("submit", (e) => {
 		e.preventDefault();
@@ -219,6 +230,7 @@ window.onload = function () {
 		if (searchForm.firstElementChild.value) {
 			// if text entered
 			let searchFormData = new FormData(e.target);
+			showSpinner();
 			search(searchFormData);
 		} else {
 			// if search text not entered
@@ -307,6 +319,7 @@ window.onload = function () {
 				yoyo: true
 			})
 			// handle sign in stuff here
+			showSpinner();
 			signIn(idClicked, nameToDisplay);
 		}
 	});

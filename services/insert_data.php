@@ -28,10 +28,6 @@ $name = $name_first . " " . $name_last;
 
 if (!empty($name_last) && !empty($name_first)) {
 	try {
-		// the query to update the record with matching borrower_id
-		// $query = "INSERT INTO test_data
-		// SET name_last='$name_last',
-        // name_first='$name_first' ";
 		$query = "INSERT INTO test_data
 		SET a_name='$name',
         email='$email',
@@ -41,6 +37,8 @@ if (!empty($name_last) && !empty($name_first)) {
 		province='$province' ";
 
 		// executing the query to update the record from the database
+
+		// UNCOMMENT THE LINE BELOW FOR REGISTRATION TO WORK
 		// $dbo -> query($query);
 		$errorCode["id"] = 0;
 		$errorCode["message"] = "Insert Successful: $query";

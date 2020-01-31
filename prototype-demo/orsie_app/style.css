@@ -422,6 +422,33 @@ img {
 	border: none;
 }
 
+#spinner-box {
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+
+#spinner {
+	margin: auto;
+    height: 1.45rem;
+    width: 1.45rem;
+    border-radius: 50%;
+    background: transparent;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--dc-green);
+    border-bottom: 3px solid var(--dc-green);
+    animation: spin 1s forwards infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    } 
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 #error p {
 	text-align: center;
 	color: var(--dc-orange);
