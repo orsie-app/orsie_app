@@ -167,6 +167,8 @@ window.onload = function () {
 		// remove the map page from the screen
 		gsap.to(mapPage, {
 			duration: 0.33,
+			// the top here is to position close to the center of where the map tab is
+			top: mapTab.offsetTop - window.innerWidth*0.45,
 			right: window.innerWidth,
 			height: window.innerHeight * 0.6,
 			borderTopRightRadius: 600,
