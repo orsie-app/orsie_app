@@ -422,9 +422,14 @@ img {
 	border: none;
 }
 
-#no-result p, #no-name p {
+#error p {
 	text-align: center;
 	color: var(--dc-orange);
+}
+
+#success p {
+	text-align: center;
+	color: var(--dc-green);
 }
 
 #register {

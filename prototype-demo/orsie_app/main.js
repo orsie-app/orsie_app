@@ -238,7 +238,7 @@ window.onload = function () {
 					} else {
 						// set to no result if no names are found
 						displayData = `
-						<div class="result" id="no-result">
+						<div class="result" id="error">
 							<p>No result found.</p>
 						</div>
 						<div class="result" id="register">
@@ -251,7 +251,7 @@ window.onload = function () {
 		} else {
 			// if search text not entered
 			displayData = `
-				<div class="result" id="no-name">
+				<div class="result" id="error">
 					<p>Please enter your name or email to search.</p>
 				</div>`;
 			searchResults.innerHTML = displayData;
@@ -261,6 +261,7 @@ window.onload = function () {
 	// handling name list click event
 	let idClicked = "";
 	let elementClicked;
+	let nameToDisplay = "";
 
 	// adding event listener on the parent div because children divs are dynamically generated
 	searchResults.addEventListener("click", e => {
@@ -273,6 +274,8 @@ window.onload = function () {
 			// alert(e.target.parentNode.getAttribute("data-id"));
 			elementClicked = e.target.parentNode;
 		}
+
+		nameToDisplay = elementClicked.firstElementChild.innerText;
 		idClicked = elementClicked.getAttribute("data-id");
 		// handler to sign users in ONLY if the proper element is clicked
 		if (idClicked) {
@@ -283,6 +286,44 @@ window.onload = function () {
 				yoyo: true
 			})
 			// handle sign in stuff here
+			let formData = new this.FormData();
+			formData.append('id', idClicked);
+			let url = "https://services.mullasuleman.com/sign_in.php";
+			// fetching data from the database
+			fetch(url, {
+					body: formData,
+					method: "post"
+				})
+				.then(response => response.json())
+				.then(message => {
+					// when fetch data complete
+					console.log(message);
+					displayData = "";
+					// set the name list if any data found
+					if (message.id == 0) {
+						displayData += `
+						<div class="result" id="success">
+							<p>Awesome, ${nameToDisplay}!</p>
+							<p>Welcome to Durham College!</p>
+							<p>Enjoy the Research Day 2020!</p>
+						</div>`;
+					} else {
+						// set to no result if no names are found
+						displayData = `
+						<div class="result" id="error">
+							<p>There was a problem signing in. Please try again</p>
+						</div>
+						`;
+					}
+					searchResults.innerHTML = displayData;
+				}).catch(error => {
+					// code to execute if internet fails
+					console.log(error);
+					displayData += `
+					<div class="result" id="error">
+						<p>Please check your connection and try again.</p>
+					</div>`;
+				});
 		}
 	})
 };
