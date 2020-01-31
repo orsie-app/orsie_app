@@ -1,5 +1,9 @@
 // JavaScript Document
 window.onload = function () {
+
+	//call the get data function in getData.js to populate the current events tab with the events
+	getData();
+
 	let mapTab = document.querySelector('#map-tab');
 	let eventsButton = document.querySelector('#events-button');
 	let mapPage = document.querySelector('#map-page');
