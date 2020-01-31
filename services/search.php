@@ -6,9 +6,11 @@ require_once("./inc/connect_pdo.php");
 $search_text = $_POST["search-text"];
 
 $query = "SELECT id, a_name, organization_name, job_desc
-FROM test_data
-WHERE a_name LIKE '%$search_text%' OR
-email LIKE '%$search_text%'
+FROM test_data 
+WHERE id NOT IN (SELECT id from test_sign_in 
+	WHERE sign_in_status = 1) 
+AND (a_name LIKE '%$search_text%'
+OR email LIKE '%$search_text%')
 ORDER BY a_name";
 
 //print("$query");
@@ -34,4 +36,3 @@ $data = json_encode($attendees);
 header("Content-Type: application/json");
 
 print($data);
-?>
