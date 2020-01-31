@@ -7,7 +7,8 @@ $search_text = $_POST["search-text"];
 
 $query = "SELECT id, a_name, organization_name, job_desc
 FROM test_data
-WHERE a_name LIKE '%$search_text%'
+WHERE a_name LIKE '%$search_text%' OR
+email LIKE '%$search_text%'
 ORDER BY a_name";
 
 //print("$query");
