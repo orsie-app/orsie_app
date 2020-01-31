@@ -10,7 +10,6 @@ window.onload = function () {
 	// search page elements
 	const searchForm = document.querySelector("#search-form");
 	const searchResults = document.querySelector("#search-results");
-	let guestEntries = document.querySelectorAll(".result");
 
 	mapTab.addEventListener("touchmove", function (event) {
 		let touch = event.targetTouches[0];
@@ -230,26 +229,30 @@ window.onload = function () {
 					if (contents) {
 						contents.forEach(guest => {
 							displayData += `
-							<div class="result a" data-id="${guest.id}">
+							<div class="result" data-id="${guest.id}">
 								<h3>${guest.a_name}</h3>
-								<p>${guest.organization_name ? guest.organization_name : "Not Available"}</p>
-								<p>${guest.job_desc ? guest.job_desc : "Not Available"}</p>
+								<p>${guest.organization_name ? guest.organization_name : ""}</p>
+								<p>${guest.job_desc ? guest.job_desc : ""}</p>
 							</div>`;
 						});
 					} else {
 						// set to no result if no names are found
 						displayData = `
-						<div class="result">
-							<h3>No result found. Please register.</h3>
-						</div>`;
+						<div class="result" id="no-result">
+							<p>No result found.</p>
+						</div>
+						<div class="result" id="register">
+							<a href="../registration" target="blank">Please Register Here</a>
+						</div>
+						`;
 					}
-
 					searchResults.innerHTML = displayData;
 				});
 		} else {
+			// if search text not entered
 			displayData = `
-				<div class="result">
-					<p>Please enter your name to search.</p>
+				<div class="result" id="no-name">
+					<p>Please enter your name or email to search.</p>
 				</div>`;
 			searchResults.innerHTML = displayData;
 		}
@@ -257,19 +260,28 @@ window.onload = function () {
 
 	// handling name list click event
 	let idClicked = "";
+	let elementClicked;
+
+	// adding event listener on the parent div because children divs are dynamically generated
 	searchResults.addEventListener("click", e => {
 		// if result div is clicked
 		if (e.target.matches(".result")) {
 			// alert(e.target.getAttribute("data-id"));
-			idClicked = e.target.getAttribute("data-id");
+			elementClicked = e.target;
 		} else if (e.target.matches(".result *")) {
 			// else if any of the inside elements are clicked
 			// alert(e.target.parentNode.getAttribute("data-id"));
-			idClicked = e.target.parentNode.getAttribute("data-id");
+			elementClicked = e.target.parentNode;
 		}
+		idClicked = elementClicked.getAttribute("data-id");
 		// handler to sign users in ONLY if the proper element is clicked
 		if (idClicked) {
-			alert(idClicked);
+			console.log(idClicked);
+			TweenMax.to(elementClicked, 0.1, {
+				scale: 0.9,
+				repeat: 1,
+				yoyo: true
+			})
 			// handle sign in stuff here
 		}
 	})

@@ -284,24 +284,23 @@ img {
 
 #search-page {
 	position: absolute;
-	top: 00vh;
+	/* top: 0vh; */
 	width: 100vw;
 	height: 100vh;
 	padding: 1rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #eee;
 	z-index: 2500;
 	overflow: hidden;
 	background: url("./images/bg.svg");
-	background-attachment: fixed;
+	background: fixed contain;
 }
 
 #search-page #content-box {
 	width: 95%;
-	max-height: calc(100vh - 2rem) !important;
-	margin: auto auto;
+	max-width: 360px;
+	max-height: calc(100vh - 2rem);
 	padding: 2rem 2rem;
 	text-align: center;
 	border: 5px solid var(--dc-green);
@@ -339,13 +338,19 @@ img {
 #search-form #search-input {
 	width: 80%;
 	font-size: 1.2rem;
-	border: 2px solid var(--dc-yellowgreen);
+	border: 2px solid transparent;
+	background: rgba(0, 0, 0, 0.05);
 	transition: 0.3s;
+}
+
+#search-form #search-input::placeholder {
+	font-size: 1rem;
 }
 
 #search-form #search-input:focus {
 	outline: none;
-	border: 2px solid var(--dc-brown);
+	border: 2px solid var(--dc-green);
+	background: transparent;
 }
 
 #search-form #submit {
@@ -358,7 +363,6 @@ img {
 #search-form #submit:focus {
 	outline: none;
 	animation: click 0.1s alternate linear;
-	/* anima */
 }
 
 @keyframes click {
@@ -382,17 +386,19 @@ img {
 	margin: 0.5rem auto;
 	padding: 0.5rem;
 	width: 100%;
+	background: #ffffff;
 	/* height: 60px; */
 	border: 1px solid #555;
 	border-radius: 5px;
-	animation: load-entry 0.5s ease-in-out;
+	animation: load-entry 0.5s ease-out;
+	transform-origin: center;
 }
 
 @keyframes load-entry {
 	from {
 		opacity: 0;
-		margin: -2rem auto;
-		transform: scaleY(0);
+		margin: -1rem auto;
+		/* transform: scaleY(0); */
 		overflow: hidden;
 	}
 }
@@ -405,4 +411,28 @@ img {
 	text-align: left;
 	color: #888;
 	font-size: 0.9rem;
+}
+
+.result button {
+	background: var(--dc-grey);
+	opacity: 0.7;
+	color: #ffffff;
+	width: 100%;
+	padding: 0.5rem;
+	border: none;
+}
+
+#no-result p, #no-name p {
+	text-align: center;
+	color: var(--dc-orange);
+}
+
+#register {
+	text-align: center;
+	background-color: var(--dc-green);
+}
+
+#register a {
+	color: #ffffff;
+	text-decoration: none;
 }
