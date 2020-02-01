@@ -2,7 +2,7 @@
     "events": [
         {
             "zone": 1,
-            "name": "Students Take the Stage",
+            "name": "Experience Student Entrepreneurship",
             "location": "Global Classroom",
             "time": "23:59",
             "description": "Student competitions"
@@ -23,7 +23,7 @@
         },
         {
             "zone": 4,
-            "name": "Health and Technology",
+            "name": "Health Technology and Innovation",
             "location": "CFCE 118",
             "time": "23:59",
             "description": "Health"
@@ -37,14 +37,14 @@
         },
         {
             "zone": 6,
-            "name": "Autonomous Vehicles",
+            "name": "Experience Autonomous Vehicles",
             "location": "CFCE 119",
             "time": "23:59",
             "description": "AVIN"
         },
         {
             "zone": 7,
-            "name": "The AI Hub",
+            "name": "Impact: Artificial Intelligence ",
             "location": "CFCE 123 (FastStart)",
             "time": "23:59",
             "description": "AI Hub"
@@ -58,7 +58,7 @@
         },
         {
             "zone": 9,
-            "name": "The Ten Year Journey of Applied Research",
+            "name": "Makerspace Magic",
             "location": "CFCE/SSB Link",
             "time": "23:59",
             "description": "10-year journey"
