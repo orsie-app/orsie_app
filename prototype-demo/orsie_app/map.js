@@ -14,32 +14,32 @@ object.onload = function () {
     // setting up map elements
     let map = document.querySelector('#floorMap').contentDocument;
     let globalClass = map.querySelector("#globalClassroom");
-    let cefe116 = map.querySelector("#cefeRm116");
-    let cefe117 = map.querySelector("#cefeRm117");
-    let cefe118 = map.querySelector("#cefeRm118");
-    let cefe119 = map.querySelector("#cefeRm119");
-    let cefe123 = map.querySelector("#cefeRm123");
-    let cefeLink = map.querySelector("#cefeLink");
-    let ssb116 = map.querySelector("#ssbRm116");
+    let cfce116 = map.querySelector("#_116");
+    let cfce117 = map.querySelector("#_117");
+    let cfce118 = map.querySelector("#_118");
+    let cfce119 = map.querySelector("#_119");
+    let cfce123 = map.querySelector("#_123");
+    let cfceLink = map.querySelector("#cfce-link");
+    let ssb116 = map.querySelector("#ssb-rm116");
 
     // elements to be added with updated map
-    // let cefe123b = map.querySelector("#cefeRm123b");
-    // let atrium = map.querySelector("#atrium");
+    let cfce123b = map.querySelector("#_123B");
+    let atrium = map.querySelector("#mrc");
 
 
 
     // click events for map elements
     globalClass.addEventListener("click", roomClicked)
-    cefe116.addEventListener("click", roomClicked)
-    cefe117.addEventListener("click", roomClicked);
-    cefe118.addEventListener("click", roomClicked);
-    cefe119.addEventListener("click", roomClicked);
-    cefe123.addEventListener("click", roomClicked);
-    cefeLink.addEventListener("click", roomClicked);
+    cfce116.addEventListener("click", roomClicked)
+    cfce117.addEventListener("click", roomClicked);
+    cfce118.addEventListener("click", roomClicked);
+    cfce119.addEventListener("click", roomClicked);
+    cfce123.addEventListener("click", roomClicked);
+    cfceLink.addEventListener("click", roomClicked);
     ssb116.addEventListener("click", roomClicked);
 
-    // cefe123b.addEventListener("click", roomClicked);
-    // atrium.addEventListener("click", roomClicked);
+    cfce123b.addEventListener("click", roomClicked);
+    atrium.addEventListener("click", roomClicked);
 
     // animate fill on click
     function roomClicked(){
@@ -60,8 +60,8 @@ object.onload = function () {
 
 
     // can add a clear timeout here if needed
-    map.addEventListener("click", function(){
-        console.log("clicked map");
-    })
+    // map.addEventListener("click", function(){
+    //     console.log("clicked map");
+    // })
 
 }
