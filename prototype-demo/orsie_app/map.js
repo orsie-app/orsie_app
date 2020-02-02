@@ -29,23 +29,23 @@ object.onload = function () {
 
 
     // click events for map elements
-    globalClass.addEventListener("click", roomClicked)
-    cfce116.addEventListener("click", roomClicked)
-    cfce117.addEventListener("click", roomClicked);
-    cfce118.addEventListener("click", roomClicked);
-    cfce119.addEventListener("click", roomClicked);
-    cfce123.addEventListener("click", roomClicked);
-    cfceLink.addEventListener("click", roomClicked);
-    ssb116.addEventListener("click", roomClicked);
+    globalClass.addEventListener("click", roomClicked2)
+    cfce116.addEventListener("click", roomClicked2)
+    cfce117.addEventListener("click", roomClicked2);
+    cfce118.addEventListener("click", roomClicked2);
+    cfce119.addEventListener("click", roomClicked2);
+    cfce123.addEventListener("click", roomClicked2);
+    cfceLink.addEventListener("click", roomClicked2);
+    ssb116.addEventListener("click", roomClicked2);
 
-    cfce123b.addEventListener("click", roomClicked);
-    atrium.addEventListener("click", roomClicked);
+    cfce123b.addEventListener("click", roomClicked2);
+    atrium.addEventListener("click", roomClicked2);
 
+    /* old animation
     // animate fill on click
     function roomClicked(){
         gsap.to(this, 0.5, {
-            // temporary colour
-            fill: "green",
+            fill: "blue",
             ease: Power2.easeInOut,
         });
         setTimeout(() => {
@@ -57,11 +57,32 @@ object.onload = function () {
 
         console.log(`room clicked`);
     }
+    */
+
+    function roomClicked2(){
+        let t1 = gsap.timeline({repeat:1, repeatDelay:1});
+        t1.to(this, 
+            {fill: "green",
+            ease: "Power2.easeInOut",
+            duration: 1.5
+        });
+        t1.to(this, 
+            { delay: 5,
+            fill: "3a556d",
+            ease: "Power2.easeInOut",
+            duration: 0.5
+        });
+        console.log("room clicked");
+
+        // function restartTimeline(){
+        //     t1.restart(true, false);
+        //     console.log("roomClicked2 restarted")
+        // }
+
+        // map.addEventListener("click", restartTimeline)
+    }
 
 
-    // can add a clear timeout here if needed
-    // map.addEventListener("click", function(){
-    //     console.log("clicked map");
-    // })
+    // if any of the rooms with class active get clicked, clears timeline
 
 }
