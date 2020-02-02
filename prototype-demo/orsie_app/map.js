@@ -13,76 +13,37 @@ let object = document.querySelector('#floorMap');
 object.onload = function () {
     // setting up map elements
     let map = document.querySelector('#floorMap').contentDocument;
-    let globalClass = map.querySelector("#globalClassroom");
-    let cfce116 = map.querySelector("#_116");
-    let cfce117 = map.querySelector("#_117");
-    let cfce118 = map.querySelector("#_118");
-    let cfce119 = map.querySelector("#_119");
-    let cfce123 = map.querySelector("#_123");
-    let cfceLink = map.querySelector("#cfce-link");
-    let ssb116 = map.querySelector("#ssb-rm116");
 
-    // elements to be added with updated map
-    let cfce123b = map.querySelector("#_123B");
-    let atrium = map.querySelector("#mrc");
+    let activeRooms = [
+        {roomName:"Global Classroom", clickElement: map.querySelector("#gglobalClassroom"), animateElement:map.querySelector("#globalClassroomRect")},
+        {roomName:"CFCE 116", clickElement:map.querySelector("#gcfce116"), animateElement:map.querySelector("#cfce116")},
+        {roomName:"CFCE 117", clickElement:map.querySelector("#gcfce117"), animateElement:map.querySelector("#cfce117")},
+        {roomName:"CFCE 118", clickElement:map.querySelector("#gcfce118"), animateElement:map.querySelector("#cfce118")},
+        {roomName:"CFCE 119", clickElement:map.querySelector("#gcfce119"), animateElement:map.querySelector("#cfce119")},
+        {roomName:"CFCE 123", clickElement:map.querySelector("#gcfce123"), animateElement:map.querySelector("#cfce123")},
+        {roomName:"CFCE 123B", clickElement:map.querySelector("#gcfce123B"), animateElement:map.querySelector("#cfce123B")},
+        {roomName:"Atrium", clickElement:map.querySelector("#gmrc"), animateElement:map.querySelector("#mrcRect")},
+        {roomName:"CFCE/SSB Link", clickElement:map.querySelector("#gssbLink"), animateElement:map.querySelector("#ssbLinkRect")},
+        {roomName:"SSB 116A/B", clickElement:map.querySelector("#gssb116"), animateElement:map.querySelector("#ssb116")}
+    ];
 
-
-
-    // click events for map elements
-    globalClass.addEventListener("click", roomClicked2)
-    cfce116.addEventListener("click", roomClicked2)
-    cfce117.addEventListener("click", roomClicked2);
-    cfce118.addEventListener("click", roomClicked2);
-    cfce119.addEventListener("click", roomClicked2);
-    cfce123.addEventListener("click", roomClicked2);
-    cfceLink.addEventListener("click", roomClicked2);
-    ssb116.addEventListener("click", roomClicked2);
-
-    cfce123b.addEventListener("click", roomClicked2);
-    atrium.addEventListener("click", roomClicked2);
-
-    /* old animation
-    // animate fill on click
-    function roomClicked(){
-        gsap.to(this, 0.5, {
-            fill: "blue",
-            ease: Power2.easeInOut,
-        });
-        setTimeout(() => {
-            gsap.to(this, 0.5, {
-                fill: "3a556d",
-                ease: Power2.easeInOut,
+    // adding click event to all active rooms
+    activeRooms.forEach(activeRoom => {
+        activeRoom.clickElement.addEventListener("click", function (event) {
+            let t1 = gsap.timeline();
+            t1.to(activeRoom.animateElement, 
+                {fill: "green",
+                ease: "Power2.easeInOut",
+                duration: 1.5
             });
-        }, 5000);
-
-        console.log(`room clicked`);
-    }
-    */
-
-    function roomClicked2(){
-        let t1 = gsap.timeline({repeat:1, repeatDelay:1});
-        t1.to(this, 
-            {fill: "green",
-            ease: "Power2.easeInOut",
-            duration: 1.5
+            t1.to(activeRoom.animateElement, 
+                { delay: 5,
+                fill: "7fbdad",
+                ease: "Power2.easeInOut",
+                duration: 0.5
+            });
+            console.log(`${activeRoom.roomName} room was clicked`);
         });
-        t1.to(this, 
-            { delay: 5,
-            fill: "3a556d",
-            ease: "Power2.easeInOut",
-            duration: 0.5
-        });
-        console.log("room clicked");
-
-        // function restartTimeline(){
-        //     t1.restart(true, false);
-        //     console.log("roomClicked2 restarted")
-        // }
-
-        // map.addEventListener("click", restartTimeline)
-    }
-
-
-    // if any of the rooms with class active get clicked, clears timeline
+    });
 
 }
