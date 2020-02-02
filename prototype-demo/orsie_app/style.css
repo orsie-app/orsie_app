@@ -238,7 +238,8 @@ header h1 {
 	background-size: 70%;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-color: #f7f7f7;
+	background-color: #0b8261;
+	border: 1px solid #fff;
 	color: #0b8261;
 }
 
