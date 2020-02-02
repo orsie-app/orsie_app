@@ -1,0 +1,74 @@
+{
+    "events": [
+        {
+            "zone": 1,
+            "name": "Experience Student Entrepreneurship",
+            "location": "Global Classroom",
+            "time": "23:59",
+            "description": "Student competitions"
+        },
+        {
+            "zone": 2,
+            "name": "Seed to Celebration",
+            "location": "CFCE 116",
+            "time": "23:59",
+            "description": "Culinary / food / craft beer"
+        },
+        {
+            "zone": 3,
+            "name": "Partnership for Social Innovation",
+            "location": "CFCE 117",
+            "time": "23:59",
+            "description": "Social Innovation"
+        },
+        {
+            "zone": 4,
+            "name": "Health Technology and Innovation",
+            "location": "CFCE 118",
+            "time": "23:59",
+            "description": "Health"
+        },
+        {
+            "zone": 5,
+            "name": "The Future of Mixed Realities",
+            "location": "Atrium",
+            "time": "23:59",
+            "description": "Mixed reality demo in atrium with actors on a stage"
+        },
+        {
+            "zone": 6,
+            "name": "Experience Autonomous Vehicles",
+            "location": "CFCE 119",
+            "time": "23:59",
+            "description": "AVIN"
+        },
+        {
+            "zone": 7,
+            "name": "Impact: Artificial Intelligence ",
+            "location": "CFCE 123 (FastStart)",
+            "time": "23:59",
+            "description": "AI Hub"
+        },
+        {
+            "zone": 8,
+            "name": "Student Entrepreneurs",
+            "location": "CFCE 123b (FastTech)",
+            "time": "23:59",
+            "description": "Entrepreneurship / Makerspace / 3D printing"
+        },
+        {
+            "zone": 9,
+            "name": "Makerspace Magic",
+            "location": "CFCE/SSB Link",
+            "time": "23:59",
+            "description": "10-year journey"
+        },
+        {
+            "zone": 10,
+            "name": "Student Showcase",
+            "location": "SSB 116A/B",
+            "time": "23:59",
+            "description": "Student capstone projects for 2 programs"
+        }
+    ]
+}
