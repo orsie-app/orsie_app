@@ -41,7 +41,7 @@ if (!empty($name_last) && !empty($name_first)) {
 		province='$province' ";
 
 		// executing the query to update the record from the database
-		$dbo -> query($query);
+		// $dbo -> query($query);
 		$errorCode["id"] = 0;
 		$errorCode["message"] = "Insert Successful: $query";
 	} catch (PDOException $e) {

@@ -36,7 +36,9 @@
 		<div id="fader"></div>
 		<section id="map-page">
 			<!-- the current map div has a placeholder background image of the prototype map -->
-			<div id="map">Map</div>
+			<div id="map">
+				<object id="floorMap" data="./images/map-02.svg" type="image/svg+xml"></object>
+			</div>
 			<div id="map-info">
 				<h3 id="map-info-title">Placeholder</h3>
 				<p id="map-info-text">Text</p>
@@ -47,11 +49,11 @@
 				<img src="./images/map-icon-white.png" alt="Map Button" />
 			</div>
 		</aside>
-			<div id="events-button">
-				X
-				<!-- add the below image tag when events button asset created -->
-				<!-- <img src="./images/map-icon-white.png" alt="Events Button" /> -->
-			</div>
+		<div id="events-button">
+			X
+			<!-- add the below image tag when events button asset created -->
+			<!-- <img src="./images/map-icon-white.png" alt="Events Button" /> -->
+		</div>
 	</main>
 
 	<!-- GSAP -->
@@ -59,7 +61,12 @@
 
 	<!-- APP SCRIPTS -->
 	<script src="./main.js"></script>
+
+  <!-- GET DATA SCRIPT -->
 	<script src="./getData.js"></script>
+
+	<!-- MAP SCRIPT -->
+	<script src="./map.js"></script>
 </body>
 
 </html>
