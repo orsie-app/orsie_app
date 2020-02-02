@@ -15,7 +15,7 @@ object.onload = function () {
     let map = document.querySelector('#floorMap').contentDocument;
 
     let activeRooms = [
-        {roomName:"Global Classroom", clickElement: map.querySelector("#gglobalClassroom"), animateElement:map.querySelector("#globalClassroomRect")},
+        {roomName:"Global Classroom", clickElement: map.querySelector("#gglobalClassroom"), animateElement:map.querySelector("#globalClassroom")},
         {roomName:"CFCE 116", clickElement:map.querySelector("#gcfce116"), animateElement:map.querySelector("#cfce116")},
         {roomName:"CFCE 117", clickElement:map.querySelector("#gcfce117"), animateElement:map.querySelector("#cfce117")},
         {roomName:"CFCE 118", clickElement:map.querySelector("#gcfce118"), animateElement:map.querySelector("#cfce118")},
@@ -23,7 +23,7 @@ object.onload = function () {
         {roomName:"CFCE 123", clickElement:map.querySelector("#gcfce123"), animateElement:map.querySelector("#cfce123")},
         {roomName:"CFCE 123B", clickElement:map.querySelector("#gcfce123B"), animateElement:map.querySelector("#cfce123B")},
         {roomName:"Atrium", clickElement:map.querySelector("#gmrc"), animateElement:map.querySelector("#mrcRect")},
-        {roomName:"CFCE/SSB Link", clickElement:map.querySelector("#gssbLink"), animateElement:map.querySelector("#ssbLinkRect")},
+        {roomName:"CFCE/SSB Link", clickElement:map.querySelector("#gssbLink"), animateElement:map.querySelector("#ssbLink")},
         {roomName:"SSB 116A/B", clickElement:map.querySelector("#gssb116"), animateElement:map.querySelector("#ssb116")}
     ];
 
@@ -32,7 +32,7 @@ object.onload = function () {
         activeRoom.clickElement.addEventListener("click", function (event) {
             let t1 = gsap.timeline();
             t1.to(activeRoom.animateElement, 
-                {fill: "green",
+                {fill: "orange",
                 ease: "Power2.easeInOut",
                 duration: 1.5
             });
