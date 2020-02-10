@@ -24,7 +24,7 @@ $organization_name = addslashes($organization_name);
 $guest_type = addslashes($guest_type);
 $job_desc = addslashes($job_desc);
 $city = addslashes($city);
-$province = $_POST["province"];
+$province = addslashes($province);
 
 $name = $name_first . " " . $name_last;
 
@@ -38,7 +38,7 @@ if (!empty($name_last) && !empty($name_first)) {
 		SET a_name='$name',
         email='$email',
 		organization_name='$organization_name',
-		guest_type='$guest_type'
+		guest_type='$guest_type',
 		job_desc='$job_desc',
 		city='$city',
 		province='$province' ";
