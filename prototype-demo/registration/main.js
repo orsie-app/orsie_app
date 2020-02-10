@@ -29,6 +29,11 @@ window.onload = function () {
     // position form page logo on start
     let h = (formPage.offsetHeight / 2) - (formPage.offsetHeight / 5.5);
 
+    // If user has scrolled down, resets the scroll to the top
+    TweenMax.to("html", 0.5, {
+        scrollTo: 0,
+        ease: Sine.easeOut
+    });
 
     // animate splash onto screen, then animate form
     TweenMax.to(splashPage, 0.5, {

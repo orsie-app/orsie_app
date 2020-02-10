@@ -37,9 +37,28 @@
                 <input type="text" name="name_last" placeholder="*Last Name" class="reveal" required>
                 <input type="email" name="email" placeholder="*Email Address" class="reveal" required>
                 <input type="text" name="organization_name" placeholder="Company/School" class="reveal">
-                <input type="text" name="job_desc" placeholder="Job Title" class="reveal">
+                <!-- <input type="text" name="job_desc" placeholder="Job Title" class="reveal"> -->
                 <input type="text" name="city" placeholder="City/Town" class="reveal">
                 <input type="text" name="province" placeholder="Province" class="reveal">
+                <p id="type_selector" class="reveal">
+                    <span>* You are a ...</span>
+                    <span>
+                        <input type="radio" name="a_type" id="type_faculty" required>
+                        <label for="type_faculty">Faculty</label>
+                    </span>
+                    <span>
+                        <input type="radio" name="a_type" id="type_staff" required>
+                        <label for="type_staff">Staff</label>
+                    </span>
+                    <span>
+                        <input type="radio" name="a_type" id="type_student" required>
+                        <label for="type_student">Student</label>
+                    </span>
+                    <span>
+                        <input type="radio" name="a_type" id="type_guest" required>
+                        <label for="type_guest">Guest</label>
+                    </span>
+                </p>
                 <p class="reveal" id="formNote">* Required</p>
                 <button type="submit" class="reveal" id="submit">
                     <span id="spinner"></span>
