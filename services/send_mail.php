@@ -8,7 +8,7 @@ function sendMail($name, $email)
     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
     $headers .= "From: $from" . "\n";
 
-    $message = "Thank you for registering for ORSIE Research Day 2020.<br>- The ORSIE Team, Durham College";
+    $message = "Hello $name, <br>Thank you for registering for ORSIE Research Day 2020.<br>- The ORSIE Team, Durham College";
 
     // Sending email
 
