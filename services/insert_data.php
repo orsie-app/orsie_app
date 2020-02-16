@@ -29,34 +29,48 @@ $event_name = addslashes($event_name);
 
 $name = $name_first . " " . $name_last;
 
-if (!empty($name_last) && !empty($name_first)) {
-	try {
-		// the query to update the record with matching borrower_id
-		// $query = "INSERT INTO test_data
-		// SET name_last='$name_last',
-        // name_first='$name_first' ";
-		$query = "INSERT INTO test_data
-		SET a_name='$name',
-        email='$email',
-		organization_name='$organization_name',
-		guest_type='$guest_type',
-		city='$city',
-		province='$province',
-		event_name='$event_name' ";
+$query_search = "SELECT id, a_name
+FROM test_data
+WHERE email='$email'
+ORDER BY a_name";
 
-		// executing the query to update the record from the database
-		$dbo -> query($query);
-		$errorCode["id"] = 0;
-		$errorCode["message"] = "Insert Successful: $query";
-		$email_status = sendMail($name_first, $email, $event_name);
-		$errorCode["email_status"] = $email_status;
-	} catch (PDOException $e) {
-		$errorCode["id"] = -2;
-		$errorCode["message"] = "Insert failed: '$e'";
+$match_found = 0;
+foreach($dbo->query($query_search) as $row) {
+	$match_found++;
+};
+
+$errorCode["match_found"] = $match_found;
+
+if (!$match_found > 0) {
+	if (!empty($name_last) && !empty($name_first)) {
+		try {
+			// the query to insert data
+			$query = "INSERT INTO test_data
+			SET a_name='$name',
+			email='$email',
+			organization_name='$organization_name',
+			guest_type='$guest_type',
+			city='$city',
+			province='$province',
+			event_name='$event_name' ";
+	
+			// executing the query to update the record from the database
+			// $dbo -> query($query);
+			$errorCode["id"] = 0;
+			$errorCode["message"] = "Insert Successful: $query";
+			// $email_status = sendMail($name_first, $email, $event_name);
+			// $errorCode["email_status"] = $email_status;
+		} catch (PDOException $e) {
+			$errorCode["id"] = -2;
+			$errorCode["message"] = "Insert failed: '$e'";
+		}
+	} else {
+		$errorCode["id"] = 2;
+		$errorCode["message"] = "No name sent.";
 	}
 } else {
-	$errorCode["id"] = 2;
-	$errorCode["message"] = "No name sent.";
+	$errorCode["id"] = 3;
+	$errorCode["message"] = "Duplicate entry";
 }
 
 // creating a variable $data
@@ -64,5 +78,3 @@ if (!empty($name_last) && !empty($name_first)) {
 $data = json_encode($errorCode);
 header("Content-Type: application/json");
 print($data);
-
-?>
