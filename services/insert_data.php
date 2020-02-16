@@ -11,9 +11,9 @@ $name_first = $_POST["name_first"];
 $email = $_POST["email"];
 $organization_name = $_POST["organization_name"];
 $guest_type = $_POST["a_type"];
-$job_desc = $_POST["job_desc"];
 $city = $_POST["city"];
 $province = $_POST["province"];
+$event_name = $_POST["event_name"];
 
 $errorCode["id"] = -1;
 $errorCode["message"] = "Service Connected";
@@ -23,9 +23,9 @@ $name_first = addslashes($name_first);
 $email = addslashes($email);
 $organization_name = addslashes($organization_name);
 $guest_type = addslashes($guest_type);
-$job_desc = addslashes($job_desc);
 $city = addslashes($city);
 $province = addslashes($province);
+$event_name = addslashes($event_name);
 
 $name = $name_first . " " . $name_last;
 
@@ -40,15 +40,15 @@ if (!empty($name_last) && !empty($name_first)) {
         email='$email',
 		organization_name='$organization_name',
 		guest_type='$guest_type',
-		job_desc='$job_desc',
 		city='$city',
-		province='$province' ";
+		province='$province',
+		event_name='$event_name' ";
 
 		// executing the query to update the record from the database
-		// $dbo -> query($query);
+		$dbo -> query($query);
 		$errorCode["id"] = 0;
 		$errorCode["message"] = "Insert Successful: $query";
-		$email_status = sendMail($name_first, $email);
+		$email_status = sendMail($name_first, $email, $event_name);
 		$errorCode["email_status"] = $email_status;
 	} catch (PDOException $e) {
 		$errorCode["id"] = -2;

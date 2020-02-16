@@ -1,5 +1,5 @@
 <?php
-function sendMail($name, $email)
+function sendMail($name, $email, $event_name)
 {
     $to = "$email";
     $subject = "ORSIE Research Day Registration";
@@ -8,7 +8,7 @@ function sendMail($name, $email)
     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
     $headers .= "From: $from" . "\n";
 
-    $message = "Hello $name, <br><br>Thank you for registering for ORSIE Research Day 2020. See you at the event.<br><br>The ORSIE Team, <br>Durham College";
+    $message = "Hello $name, <br><br>Thank you for registering for $event_name. See you at the event.<br><br>The $event_name Team, <br>Durham College";
 
     // Sending email
     if (mail($to, $subject, $message, $headers)) {
