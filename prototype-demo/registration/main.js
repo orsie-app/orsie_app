@@ -144,7 +144,29 @@ window.onload = function () {
                     spinner.style.display = "none";
                     registerText.style.display = "block";
 
-                } else {
+                } else if(message.id == 3) {
+                    // show failure message if data insertion fails
+                    // change color to red
+                    TweenMax.to(submitButton, 0.5, {
+                        backgroundColor: "#D33222",
+                        onComplete: function () {
+                            // spinner.style.display = "none";
+                            registerText.innerHTML = `You have already registered for this event.`;
+                            spinner.style.display = "none";
+                            registerText.style.display = "block";
+                        }
+                    })
+                    // enable button, change text back to register, change color back to green
+                    // executed after 3 seconds
+                    TweenMax.to(submitButton, 2, {
+                        delay: 3,
+                        backgroundColor: "#0b8261",
+                        onComplete: function () {
+                            registerText.innerHTML = `Register`;
+                            submitButton.removeAttribute("disabled");
+                        }
+                    })
+                }else {
                     // show failure message if data insertion fails
                     // change color to red
                     TweenMax.to(submitButton, 0.5, {
