@@ -48,7 +48,8 @@ if (!empty($name_last) && !empty($name_first)) {
 		// $dbo -> query($query);
 		$errorCode["id"] = 0;
 		$errorCode["message"] = "Insert Successful: $query";
-		sendMail($name_first, $email);
+		$email_status = sendMail($name_first, $email);
+		$errorCode["email_status"] = $email_status;
 	} catch (PDOException $e) {
 		$errorCode["id"] = -2;
 		$errorCode["message"] = "Insert failed: '$e'";
