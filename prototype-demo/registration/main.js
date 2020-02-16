@@ -151,7 +151,7 @@ window.onload = function () {
                         backgroundColor: "#D33222",
                         onComplete: function () {
                             // spinner.style.display = "none";
-                            registerText.innerHTML = `Looks like you have already registered with this email.`;
+                            registerText.innerHTML = `You have already registered for this event.`;
                             spinner.style.display = "none";
                             registerText.style.display = "block";
                         }

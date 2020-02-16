@@ -32,6 +32,7 @@ $name = $name_first . " " . $name_last;
 $query_search = "SELECT id, a_name
 FROM test_data
 WHERE email='$email'
+AND event_name='$event_name'
 ORDER BY a_name";
 
 $match_found = 0;
@@ -55,7 +56,7 @@ if (!$match_found > 0) {
 			event_name='$event_name' ";
 	
 			// executing the query to update the record from the database
-			// $dbo -> query($query);
+			$dbo -> query($query);
 			$errorCode["id"] = 0;
 			$errorCode["message"] = "Insert Successful: $query";
 			// $email_status = sendMail($name_first, $email, $event_name);
