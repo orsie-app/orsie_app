@@ -4,6 +4,7 @@ header("Access-Control-Allow-Origin: *");
 // file with connection to the database
 require_once("./inc/connect_pdo.php");
 require_once("./send_mail.php");
+require_once("./send_mail_template.php");
 
 // grabbing the data from the URL through the get method
 $name_last = $_POST["name_last"];
@@ -59,8 +60,9 @@ if (!$match_found > 0) {
 			$dbo -> query($query);
 			$errorCode["id"] = 0;
 			$errorCode["message"] = "Insert Successful: $query";
-			// $email_status = sendMail($name_first, $email, $event_name);
-			// $errorCode["email_status"] = $email_status;
+			$email_status = sendMail($name_first, $email, $event_name);
+			sendMailTemplate($name_first, $email);
+			$errorCode["email_status"] = $email_status;
 		} catch (PDOException $e) {
 			$errorCode["id"] = -2;
 			$errorCode["message"] = "Insert failed: '$e'";

@@ -1,5 +1,5 @@
 <?php
-function sendMail($name, $email)
+function sendMailTemplate($name, $email)
 {
     $to = "$email";
     $subject = "ORSIE Research Day Registration";
