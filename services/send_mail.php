@@ -8,10 +8,9 @@ function sendMail($name, $email)
     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
     $headers .= "From: $from" . "\n";
 
-    $message = "Hello $name, <br>Thank you for registering for ORSIE Research Day 2020.<br><br>The ORSIE Team, <br>Durham College";
+    $message = "Hello $name, <br><br>Thank you for registering for ORSIE Research Day 2020. See you at the event.<br><br>The ORSIE Team, <br>Durham College";
 
     // Sending email
-
     if (mail($to, $subject, $message, $headers)) {
         return 'The mail has been sent successfully.';
     } else {
