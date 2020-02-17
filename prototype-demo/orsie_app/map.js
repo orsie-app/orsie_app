@@ -6,6 +6,32 @@
  * on click map itself clearTimeout of roomClicked for other elements?
  */
 
+// pinch zoom function
+function zoom(elementTouched, zoomer){
+    //object to store touch positions
+    elementTouched.addEventListener("touchmove",(e) => {
+        // get all touches
+        let touches = e.targetTouches;
+        // only run if two or more fingers are touching
+        if(touches.length==2){
+            // zoom in
+            gsap.to(zoomer,{
+                duration: 0.005,
+                transformOrigin: "center center",
+                scale: zoomer.style.width + Math.abs(((touches[0].pageX - touches[1].pageX) + (touches[1].pageY/2 - touches[1].pageY/2))/100),
+            });
+        }else{
+            // move
+            gsap.to(zoomer,{
+                duration: 0.01,
+                transformOrigin: "center center",
+                x: (zoomer.style.x + (touches[0].pageX - window.innerWidth/2)*9),
+                y: (zoomer.style.y + (touches[0].pageY - window.innerHeight/3))*9,
+            });
+        }
+
+    })
+}
 
 //  set object for onload
 let object = document.querySelector('#floorMap');
@@ -13,6 +39,11 @@ let object = document.querySelector('#floorMap');
 object.onload = function () {
     // setting up map elements
     let map = document.querySelector('#floorMap').contentDocument;
+    // svg
+    let svgMap = map.querySelector("svg");
+    // map group
+    let mapContainer = map.querySelector("#Layer_2");
+    
     let globalClass = map.querySelector("#globalClassroom");
     let cfce116 = map.querySelector("#_116");
     let cfce117 = map.querySelector("#_117");
@@ -64,4 +95,6 @@ object.onload = function () {
     //     console.log("clicked map");
     // })
 
+    // call to enable pinch zoom;
+    zoom(svgMap,mapContainer);
 }
