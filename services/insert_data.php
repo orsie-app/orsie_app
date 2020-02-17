@@ -57,11 +57,11 @@ if (!$match_found > 0) {
 			event_name='$event_name' ";
 	
 			// executing the query to update the record from the database
-			$dbo -> query($query);
+			// $dbo -> query($query);
 			$errorCode["id"] = 0;
 			$errorCode["message"] = "Insert Successful: $query";
-			$email_status = sendMail($name_first, $email, $event_name);
-			sendMailTemplate($name_first, $email);
+			// $email_status = sendMail($name_first, $email, $event_name);
+			// sendMailTemplate($name_first, $email);
 			$errorCode["email_status"] = $email_status;
 		} catch (PDOException $e) {
 			$errorCode["id"] = -2;

@@ -22,7 +22,7 @@ window.onload = function () {
     // form elements
     const insertForm = document.querySelector("#registration-form");
     const inputFields = document.querySelectorAll("input");
-    const submitButton = this.document.querySelector("#submit");
+    const submitButton = document.querySelector("#submit");
     const spinner = document.querySelector("#spinner");
     const registerText = document.querySelector("#register");
 
@@ -118,6 +118,47 @@ window.onload = function () {
         });
     })
 
+    submitButton.addEventListener("click", (e) => {
+        let checkedRadio = document.querySelector("input[type=radio]:checked");
+        let invalidInput = document.querySelectorAll("input:invalid");
+
+        TweenMax.staggerTo("input", 0.25, {
+            borderBottom: "2px solid #522C1B"
+        })
+
+        TweenMax.staggerTo("#type_selector", 0.25, {
+            borderBottom: "2px solid transparent"
+        })
+
+        TweenMax.to("#formNote", 0.25, {
+            color: "grey"
+        });
+
+        if (invalidInput.length == "") {
+            return;
+        } else {
+            e.preventDefault();
+            TweenMax.staggerTo(invalidInput, 0.25, {
+                borderBottom: "2px solid red"
+            })
+            TweenMax.to("#formNote", 0.25, {
+                color: "red"
+            });
+        }
+
+        if (checkedRadio) {
+            return;
+        } else {
+            e.preventDefault();
+            TweenMax.staggerTo("#type_selector", 0.25, {
+                borderBottom: "2px solid red"
+            })
+            TweenMax.to("#formNote", 0.25, {
+                color: "red"
+            });
+        }
+    });
+
     // event listener to handel the form submit and send data
     insertForm.addEventListener("submit", (e) => {
         console.log("submitting");
@@ -143,8 +184,14 @@ window.onload = function () {
                     registerText.innerHTML = `Awesome, ${inputFields[0].value}! <br>See you at the event.`;
                     spinner.style.display = "none";
                     registerText.style.display = "block";
+                    document.querySelectorAll("input, label").forEach(input => {
+                        TweenMax.to(input, 0.3, {
+                            opacity: 0.5
+                        });
+                        input.setAttribute("disabled", "disabled");
+                    });
 
-                } else if(message.id == 3) {
+                } else if (message.id == 3) {
                     // show failure message if data insertion fails
                     // change color to red
                     TweenMax.to(submitButton, 0.5, {
@@ -166,7 +213,7 @@ window.onload = function () {
                             submitButton.removeAttribute("disabled");
                         }
                     })
-                }else {
+                } else {
                     // show failure message if data insertion fails
                     // change color to red
                     TweenMax.to(submitButton, 0.5, {
