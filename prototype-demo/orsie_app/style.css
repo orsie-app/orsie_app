@@ -143,38 +143,35 @@ header h1 {
 	z-index: 888;
 }
 
-#events-page #current-events-container,
-#events-page #upcoming-events-container {
+#events-page #current-events-container{
 	width: 100%;
 	margin: 1rem auto;
+	margin-bottom: 10vh;
 	border-radius: 10px;
 	padding: 0.5rem 0;
 }
 
 #events-page #current-events-container {
 	height: 35%;
-	white-space: nowrap;
-	overflow-x: scroll;
-	overflow-y: hidden;
 }
 
-#events-page #upcoming-events-container {
-	/* To be changed to auto when functional */
-	height: 50%;
-	overflow: visible;
-}
-
-#events-page #current-events-container .event-box, 
-#events-page #upcoming-events-container .event-box {
+#events-page #current-events-container .event-box {
 	background: rgb(253, 252, 249);
 	border-radius: 5px;
 	border: 1px solid rgba(0, 128, 0, 0.13);
 	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
 	position: relative;
+
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	padding: 0.5rem;
+	vertical-align: top;
+	margin-bottom: 4%;
 }
 
-#events-page #current-events-container .event-box-inner, 
-#events-page #upcoming-events-container .event-box-inner {
+#events-page #current-events-container .event-box-inner {
 	border-left: 4px solid orange;
 	height: 100%;
 	padding: 3px;
@@ -184,15 +181,6 @@ header h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-}
-
-#events-page #current-events-container .event-box {
-	display: inline-block;
-	height: 100%;
-	width: 95%;
-	margin-right: 0.5rem;
-	padding: 0.5rem;
-	vertical-align: top
 }
 
 #events-page #current-events-container .event-box h3{
@@ -230,12 +218,6 @@ header h1 {
 }
 #events-page #current-events-container .event-box p.event-description {
 	font-size: 0.9rem;
-}
-
-#events-page #upcoming-events-container .event-box {
-	height: 25%;
-	width: 100%;
-	margin-bottom: 0.5rem;
 }
 
 #map-page {
