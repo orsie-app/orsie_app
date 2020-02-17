@@ -24,7 +24,6 @@ function zoom(elementTouched, zoomer){
             // move
             gsap.to(zoomer,{
                 duration: 0.01,
-                transformOrigin: "center center",
                 x: (zoomer.style.x + (touches[0].pageX - window.innerWidth/2)*9),
                 y: (zoomer.style.y + (touches[0].pageY - window.innerHeight/3))*9,
             });
