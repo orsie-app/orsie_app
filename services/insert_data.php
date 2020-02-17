@@ -32,7 +32,7 @@ $name = $name_first . " " . $name_last;
 
 // query to search for existing entry with same email
 $query_search = "SELECT id, a_name
-FROM test_data
+FROM dc_events_data
 WHERE email='$email'
 AND event_name='$event_name'
 ORDER BY a_name";
@@ -50,7 +50,7 @@ if (!$match_found > 0) {
 	if (!empty($name_last) && !empty($name_first)) {
 		try {
 			// the query to insert data
-			$query = "INSERT INTO test_data
+			$query = "INSERT INTO dc_events_data
 			SET a_name='$name',
 			email='$email',
 			organization_name='$organization_name',
