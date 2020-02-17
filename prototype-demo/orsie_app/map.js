@@ -6,6 +6,20 @@
  * on click map itself clearTimeout of roomClicked for other elements?
  */
 
+let theEventData;
+
+window.addEventListener("DOMContentLoaded", function(){
+    function getData(){
+        fetch('./events.json')
+        .then(data => data.json())
+        .then(data => {
+            theEventData = data.events;
+        })
+    }
+    getData();
+})
+
+
 // pinch zoom function
 function zoom(elementTouched, zoomer){
     //object to store touch positions
@@ -36,6 +50,7 @@ function zoom(elementTouched, zoomer){
 let object = document.querySelector('#floorMap');
 
 object.onload = function () {
+
     // setting up map elements
     let map = document.querySelector('#floorMap').contentDocument;
     // svg
@@ -59,31 +74,38 @@ object.onload = function () {
 
 
     // click events for map elements
-    globalClass.addEventListener("click", roomClicked)
-    cfce116.addEventListener("click", roomClicked)
-    cfce117.addEventListener("click", roomClicked);
-    cfce118.addEventListener("click", roomClicked);
-    cfce119.addEventListener("click", roomClicked);
-    cfce123.addEventListener("click", roomClicked);
-    cfceLink.addEventListener("click", roomClicked);
-    ssb116.addEventListener("click", roomClicked);
-
-    cfce123b.addEventListener("click", roomClicked);
-    atrium.addEventListener("click", roomClicked);
+    // globalClass.addEventListener("click", roomClicked(1))
+    // cfce116.addEventListener("click", roomClicked(2))
+    // cfce117.addEventListener("click", roomClicked(3));
+    // cfce118.addEventListener("click", roomClicked(4));
+    // atrium.addEventListener("click", roomClicked(5));
+    // cfce119.addEventListener("click", roomClicked(6));
+    // cfce123.addEventListener("click", roomClicked(7));
+    // cfce123b.addEventListener("click", roomClicked(8));
+    // cfceLink.addEventListener("click", roomClicked(9));
+    // ssb116.addEventListener("click", roomClicked(10));
 
     // animate fill on click
-    function roomClicked(){
-        gsap.to(this, 0.5, {
-            // temporary colour
-            fill: "green",
-            ease: Power2.easeInOut,
-        });
-        setTimeout(() => {
-            gsap.to(this, 0.5, {
-                fill: "3a556d",
-                ease: Power2.easeInOut,
-            });
-        }, 5000);
+    function roomClicked(zone){
+        // // this animation only works on one room?
+        // gsap.to(this, 0.5, {
+        //     // temporary colour
+        //     fill: "green",
+        //     ease: Power2.easeInOut,
+        // });
+        // setTimeout(() => {
+        //     gsap.to(this, 0.5, {
+        //         fill: "3a556d",
+        //         ease: Power2.easeInOut,
+        //     });
+        // }, 5000);
+
+        let filteredEvents = theEventData.filter(even => even.zone == zone);
+        let title = document.querySelector("#map-info-title");
+        let text = document.querySelector("#map-info-text");
+
+        title.innerText = filteredEvents[0].name;
+        text.innerText = filteredEvents[0].description;
 
         console.log(`room clicked`);
     }
