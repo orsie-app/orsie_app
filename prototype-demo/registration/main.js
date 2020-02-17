@@ -161,7 +161,6 @@ window.onload = function () {
 
     // event listener to handel the form submit and send data
     insertForm.addEventListener("submit", (e) => {
-        console.log("submitting");
         e.preventDefault();
 
         // disable button, hide text, show spinner
@@ -178,7 +177,6 @@ window.onload = function () {
             .then(response => response.json())
             .then(message => {
                 // code if connection is successful
-                console.log(message);
                 if (message.id == 0) {
                     // show success message if data inserted
                     registerText.innerHTML = `Awesome, ${inputFields[0].value}! <br>See you at the event.`;
@@ -239,7 +237,6 @@ window.onload = function () {
             })
             .catch(error => {
                 // code to execute if internet fails
-                console.log(error);
                 // show failure message
                 // change color to red
                 TweenMax.to(submitButton, 0.5, {
