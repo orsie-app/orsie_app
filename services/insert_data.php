@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 // file with connection to the database
 require_once("./inc/connect_pdo.php");
-require_once("./send_mail.php");
+// file for sending email
 require_once("./send_mail_template.php");
 
 // grabbing the data from the URL through the get method
@@ -30,12 +30,14 @@ $event_name = addslashes($event_name);
 
 $name = $name_first . " " . $name_last;
 
+// query to search for existing entry with same email
 $query_search = "SELECT id, a_name
 FROM test_data
 WHERE email='$email'
 AND event_name='$event_name'
 ORDER BY a_name";
 
+// counting no of matched entries
 $match_found = 0;
 foreach($dbo->query($query_search) as $row) {
 	$match_found++;
@@ -43,6 +45,7 @@ foreach($dbo->query($query_search) as $row) {
 
 $errorCode["match_found"] = $match_found;
 
+// register only if no duplicate entry
 if (!$match_found > 0) {
 	if (!empty($name_last) && !empty($name_first)) {
 		try {
@@ -56,12 +59,13 @@ if (!$match_found > 0) {
 			province='$province',
 			event_name='$event_name' ";
 	
-			// executing the query to update the record from the database
+			// executing the query to add the record to the database
 			$dbo -> query($query);
 			$errorCode["id"] = 0;
 			$errorCode["message"] = "Insert Successful: $query";
-			// $email_status = sendMail($name_first, $email, $event_name);
-			sendMailTemplate($name_first, $email);
+			
+			// sending email
+			$email_status = sendMailTemplate($name_first, $email);
 			$errorCode["email_status"] = $email_status;
 		} catch (PDOException $e) {
 			$errorCode["id"] = -2;
@@ -81,3 +85,4 @@ if (!$match_found > 0) {
 $data = json_encode($errorCode);
 header("Content-Type: application/json");
 print($data);
+?>

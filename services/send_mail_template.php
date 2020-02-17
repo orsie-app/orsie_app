@@ -3,7 +3,7 @@ function sendMailTemplate($name, $email)
 {
     $to = "$email";
     $subject = "ORSIE Research Day Registration";
-    $from = "Office of Research Services, Innovation and Entrepreneurship (ORSIE) <appliedresearch@durhamcollege.ca>";
+    $from = "ORSIE Durham College <appliedresearch@durhamcollege.ca>";
     $headers = "MIME-Version: 1.0" . "\n";
     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
     $headers .= "From: $from" . "\n";
@@ -13,6 +13,7 @@ function sendMailTemplate($name, $email)
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta property="og:title" content="ORSIE Research Day Registration">
+	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -949,8 +950,7 @@ function sendMailTemplate($name, $email)
 																						style="padding: 0px 18px 9px;font-family: Lato, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;font-size: 12px;line-height: 125%;text-align: left;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #FFFFFF;">
 
 																						<span
-																							style="font-size:12px">Tel:
-																							905.721.2000<br>
+																							style="font-size:12px">Tel:&nbsp;<a href="tel:905-721-2000">905-721-2000</a><br>
 																							Email:&nbsp;<a
 																								href="mailto:dccares@durhamcollege.ca"
 																								style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: underline;">dccares@durhamcollege.ca</a></span><br>
