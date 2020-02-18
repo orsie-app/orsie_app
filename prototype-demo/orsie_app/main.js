@@ -264,7 +264,7 @@ window.onload = function () {
 						<div class="result" data-id="${guest.id}">
 							<h3>${guest.a_name}</h3>
 							<p>${guest.organization_name ? guest.organization_name : ""}</p>
-							<p>${guest.job_desc ? guest.job_desc : ""}</p>
+							<p>${guest.guest_type ? guest.guest_type : ""}</p>
 						</div>`;
 					});
 				} else {

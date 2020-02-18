@@ -5,7 +5,7 @@ require_once("./inc/connect_pdo.php");
 
 $search_text = $_POST["search-text"];
 
-$query = "SELECT id, a_name, organization_name, job_desc
+$query = "SELECT id, a_name, organization_name, guest_type
 FROM test_data 
 WHERE id NOT IN (SELECT id from test_sign_in 
 	WHERE sign_in_status = 1) 
@@ -19,12 +19,12 @@ foreach($dbo->query($query) as $row) {
 	$id = stripslashes($row["0"]);
 	$a_name = stripslashes($row["1"]);
 	$organization_name = stripslashes($row["2"]);
-	$job_desc = stripslashes($row["3"]);
+	$guest_type = stripslashes($row["3"]);
 	
 	$attendee["id"] = $id;
 	$attendee["a_name"] = $a_name;
 	$attendee["organization_name"] = $organization_name;
-	$attendee["job_desc"] = $job_desc;
+	$attendee["guest_type"] = $guest_type;
 	
 	$attendees[] = $attendee;
 }
@@ -36,3 +36,4 @@ $data = json_encode($attendees);
 header("Content-Type: application/json");
 
 print($data);
+?>
