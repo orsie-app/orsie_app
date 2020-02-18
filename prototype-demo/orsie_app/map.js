@@ -37,7 +37,7 @@ function zoom(elementTouched, zoomer){
         }else{
             // move
             gsap.to(zoomer,{
-                duration: 0.01,
+                duration: 0.05,
                 x: (zoomer.style.x + (touches[0].pageX - window.innerWidth/2)*9),
                 y: (zoomer.style.y + (touches[0].pageY - window.innerHeight/3))*9,
             });
