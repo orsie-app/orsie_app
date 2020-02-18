@@ -5,70 +5,70 @@
             "name": "Experience Student Entrepreneurship",
             "location": "Global Classroom",
             "time": "23:59",
-            "description": "Student competitions"
+            "description": "At FastStartDC we help innovate, develop and launch student businesses, and impactful social enterprise projects. Watch current students compete in lightning round pitch contests exploring: AI, food, and social enterprise."
         },
         {
             "zone": 2,
             "name": "Seed to Celebration",
             "location": "CFCE 116",
             "time": "23:59",
-            "description": "Culinary / food / craft beer"
+            "description": "Learn about the W. Galen Weston Centre for Food’s ‘seed-to-celebration’ approach – from horticulture to food science and product development, from culinary to hospitality experiences, and gardens to craft brewing."
         },
         {
             "zone": 3,
-            "name": "Partnership for Social Innovation",
+            "name": "Partnerships for Social Innovation",
             "location": "CFCE 117",
             "time": "23:59",
-            "description": "Social Innovation"
+            "description": "We build partnerships that put social innovation at the centre of research. Come and be inspired with our lightning talks and success stories, and explore our interactive sessions. There are prizes and surprises for everyone."
         },
         {
             "zone": 4,
             "name": "Health Technology and Innovation",
             "location": "CFCE 118",
             "time": "23:59",
-            "description": "Health"
+            "description": "The future of health care at the community, provincial, and federal levels is dependent on advances in technology and innovation. Explore the research that is being conducted by students, faculty, and community members to improve health in our society."
         },
         {
             "zone": 5,
             "name": "The Future of Mixed Realities",
             "location": "Atrium",
             "time": "23:59",
-            "description": "Mixed reality demo in atrium with actors on a stage"
+            "description": "The MRC Studio is helping businesses to develop experiential applications that integrate motion capture, virtual reality, augmented reality and virtual production. Experience interactive demos that blend the physical and digital worlds."
         },
         {
             "zone": 6,
             "name": "Experience Autonomous Vehicles",
             "location": "CFCE 119",
             "time": "23:59",
-            "description": "AVIN"
+            "description": "The future is coming faster than you think! For insights into what life will be like with autonomous vehicles, visit the AVIN zone."
         },
         {
             "zone": 7,
-            "name": "Impact: Artificial Intelligence ",
+            "name": "Research and Innovation in AI and Cybersecurity",
             "location": "CFCE 123 (FastStart)",
             "time": "23:59",
-            "description": "AI Hub"
+            "description": "Engage with students on how they have applied Artificial Intelligence solutions to datasets to impact service optimization, proactive security measures, and overall ROI for companies across Ontario."
         },
         {
             "zone": 8,
-            "name": "Student Entrepreneurs",
-            "location": "CFCE 123b (FastTech)",
+            "name": "Makerspace Magic",
+            "location": "CFCE 123b",
             "time": "23:59",
-            "description": "Entrepreneurship / Makerspace / 3D printing"
+            "description": "Experience the magic of creative collisions! Check out FastStartDC’s interdisciplinary project with our SET & MAD team collaboration, and explore ‘Project X’ - FastStartDC’s new experiential partnership with OPG’s X-Lab."
         },
         {
             "zone": 9,
-            "name": "Makerspace Magic",
-            "location": "CFCE/SSB Link",
+            "name": "The 10-year Journey of Innovation",
+            "location": "CFCE/SSB link",
             "time": "23:59",
-            "description": "10-year journey"
+            "description": "A great story can be told by the culmination of its moments. Visit us to experience some of the most remarkable achievements, projects, and impacts of ORSIE’s 10-year innovation journey at Durham College."
         },
         {
             "zone": 10,
-            "name": "Student Showcase",
+            "name": "Student Innovations",
             "location": "SSB 116A/B",
             "time": "23:59",
-            "description": "Student capstone projects for 2 programs"
+            "description": "Explore innovative new food and natural health products, developed by students of both the Food and Farming and the Pharmaceutical and Food Science programs. Meet the students to try these new products and hear all about their exciting projects."
         }
     ]
 }
