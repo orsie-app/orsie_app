@@ -21,30 +21,29 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
 // pinch zoom function
-function zoom(elementTouched, zoomer){
-    //object to store touch positions
-    elementTouched.addEventListener("touchmove",(e) => {
-        // get all touches
-        let touches = e.targetTouches;
-        // only run if two or more fingers are touching
-        if(touches.length==2){
-            // zoom in
-            gsap.to(zoomer,{
-                duration: 0.005,
-                transformOrigin: "center center",
-                scale: zoomer.style.width + Math.abs(((touches[0].pageX - touches[1].pageX) + (touches[1].pageY/2 - touches[1].pageY/2))/100),
-            });
-        }else{
-            // move
-            gsap.to(zoomer,{
-                duration: 0.05,
-                x: (zoomer.style.x + (touches[0].pageX - window.innerWidth/2)*9),
-                y: (zoomer.style.y + (touches[0].pageY - (window.innerHeight*0.8)/2))*9,
-            });
-        }
-
-    })
-}
+// function zoom(elementTouched, zoomer){
+//     //object to store touch positions
+//     elementTouched.addEventListener("touchmove",(e) => {
+//         // get all touches
+//         let touches = e.targetTouches;
+//         // only run if two or more fingers are touching
+//         if(touches.length==2){
+//             // zoom in
+//             gsap.to(zoomer,{
+//                 duration: 0.005,
+//                 transformOrigin: "center center",
+//                 scale: zoomer.style.width + Math.abs(((touches[0].pageX - touches[1].pageX) + (touches[1].pageY/2 - touches[1].pageY/2))/100),
+//             });
+//         }else{
+//             // move
+//             gsap.to(zoomer,{
+//                 duration: 0.05,
+//                 x: (zoomer.style.x + (touches[0].pageX - window.innerWidth/2)),
+//                 y: (zoomer.style.y + (touches[0].pageY - (window.innerHeight*0.8)/2)),
+//             });
+//         }
+//     })
+// }
 
 //  set object for onload
 let object = document.querySelector('#floorMap');
@@ -117,5 +116,5 @@ object.onload = function () {
     // })
 
     // call to enable pinch zoom;
-    zoom(svgMap,mapContainer);
+    // zoom(svgMap,svgMap);
 }
