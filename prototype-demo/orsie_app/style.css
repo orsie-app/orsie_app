@@ -117,8 +117,7 @@ header h1 {
 #events-button {
 	z-index: 99998;
 	margin-right: 3vw;
-	background: #fff;
-	bottom: 30vw;
+	bottom: 10vw;
 	right: 0;
 	position: absolute;
 	border-radius: 50%;
@@ -127,7 +126,7 @@ header h1 {
 	align-content: center;
 	align-items: center;
 	opacity: 0;
-	box-shadow: 2px 2px 7px #000;
+	box-shadow: inset -2px -2px 7px #000;
 	cursor: pointer;
 	user-select: none;
 }
@@ -256,7 +255,7 @@ header h1 {
 }
 
 #map {
-	height: 60%;
+	height: 80%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
