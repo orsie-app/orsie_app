@@ -291,6 +291,7 @@ header h1 {
 	padding-bottom: 5%;
 	overflow: scroll;
 	height: 40vh;
+	opacity: 0;
 }
 
 #map-info-inner{
