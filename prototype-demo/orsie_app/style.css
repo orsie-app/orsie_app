@@ -93,6 +93,7 @@ header h1 {
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 	left: -40px;
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
 }
 
 #map-button {
