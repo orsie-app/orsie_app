@@ -241,6 +241,7 @@ header h1 {
 	border-bottom-right-radius: 600px;
 	right: 100vw;
 	top: 50vh;
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
 
 	/* use for reverse effect || from flat to round
 
