@@ -13,6 +13,7 @@
 	<main id="container">
 		<header>
 			<h1>Research Day 2020</h1>
+			<img id="profileIcon" src="./images/profile3.svg" alt="profile">
 			<!-- <div id="events-button">
 				<img src="./images/map-icon.png" alt="Map Button" />
 			</div> -->
@@ -21,15 +22,6 @@
 			<h2>Current Events</h2>
 			<div id="current-events-container">
 				<!-- will be dynamically generated from json data -->
-			</div>
-			<h2>Upcoming Events</h2>
-			<div id="upcoming-events-container">
-				<!-- will be dynamically generated from json data -->
-				<div class="event-box"></div>
-				<div class="event-box"></div>
-				<div class="event-box"></div>
-				<div class="event-box"></div>
-				<div class="event-box"></div>
 			</div>
 		</section>
 		<!-- the fader div enables the ability to add a darkening effect for page transitions -->
@@ -40,8 +32,11 @@
 				<object id="floorMap" data="./images/map-02.svg" type="image/svg+xml"></object>
 			</div>
 			<div id="map-info">
-				<h3 id="map-info-title">Placeholder</h3>
-				<p id="map-info-text">Text</p>
+				<div id="map-info-inner">
+					<h3 id="map-info-title">Experience Student Entrepreneurship</h3>
+					<p id="map-info-location">Global Classroom</p>
+					<p id="map-info-text">At FastStartDC we help innovate, develop and launch student businesses, and impactful social enterprise projects. Watch current students compete in lightning round pitch contests exploring: AI, food, and social enterprise.</p>
+				</div>
 			</div>
 		</section>
 		<aside id="map-tab">
@@ -62,7 +57,7 @@
 	<!-- APP SCRIPTS -->
 	<script src="./main.js"></script>
 
-  <!-- GET DATA SCRIPT -->
+    <!-- GET DATA SCRIPT -->
 	<script src="./getData.js"></script>
 
 	<!-- MAP SCRIPT -->
