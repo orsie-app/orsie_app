@@ -11,7 +11,7 @@ window.onload = function () {
 
 	mapTab.addEventListener("touchmove", function (event) {
 		let touch = event.targetTouches[0];
-		if (touch.pageX <= window.innerWidth * 0.8) {
+		if (touch.pageX <= window.innerWidth * 0.8 && (touch.pageY <= window.innerHeight - 30 && touch.pageY > 15)) {
 			mapTab.style.left = (touch.pageX - 70) + 'px';
 			mapTab.style.top = (touch.pageY - 10) + 'px';
 			mapPage.style.right = window.innerWidth - touch.pageX + 10 + 'px';
