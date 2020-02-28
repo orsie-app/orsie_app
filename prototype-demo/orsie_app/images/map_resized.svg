@@ -182,8 +182,10 @@
         <path class="cls-3" d="M266.28,497.42a.8.8,0,0,0-.8.8V510.8a.8.8,0,1,0,1.6,0v-5.94c2.71-.26,4.74-1.79,4.74-3.7C271.82,499.06,269.39,497.42,266.28,497.42Zm.8,5.83v-4.19c1.88.22,3.14,1.2,3.14,2.1S269,503,267.08,503.25Z"/>
       </g>
     </g>
-    <rect id="ssb116" class="cls-5" x="142.77" y="441.97" width="31.7" height="42.7" transform="translate(218.82 -22.69) rotate(25.96)"/>
-    <text id="numssb116" class="cls-6" transform="translate(159.27 484.3) rotate(-64.15)">116A/B</text>
+    <g id="gssb116">
+      <rect id="ssb116" class="cls-5" x="142.77" y="441.97" width="31.7" height="42.7" transform="translate(218.82 -22.69) rotate(25.96)"/>
+      <text id="numssb116" class="cls-6" transform="translate(159.27 484.3) rotate(-64.15)">116A/B</text>
+    </g>
     <g id="gcfce123B">
       <rect id="cfce123B" class="cls-7" x="348.51" y="20.18" width="18.18" height="44.82"/>
       <g>
