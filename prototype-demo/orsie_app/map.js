@@ -54,7 +54,8 @@ object.onload = function () {
            t1.to(activeRoom.animateElement, 
                {fill: "orange",
                ease: "Power2.easeInOut",
-               duration: 1.5
+               duration: 0.5,
+               onComplete: closeMap,
            });
            t1.to(activeRoom.animateElement, 
                { delay: 5,

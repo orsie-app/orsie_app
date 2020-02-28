@@ -1,4 +1,5 @@
 // JavaScript Document
+let openMap,closeMap;
 window.onload = function () {
 
 	//call the get data function in getData.js to populate the current events tab with the events
@@ -109,7 +110,7 @@ window.onload = function () {
 	})
 
 	//click function to cover people tapping the button
-	function openMap (event) {
+	openMap = function (event) {
 		//move the mapTab for continuity of animation
 		gsap.to(mapTab, {
 			duration: 0.5,
@@ -162,7 +163,7 @@ window.onload = function () {
 		passive: false
 	})
 	//click function to close the map
-	function closeMap (event) {
+	closeMap = function (event) {
 		// remove the eventsButton from the screen and reset it's location
 		gsap.to(eventsButton, {
 			duration: 0.01,
@@ -192,7 +193,7 @@ window.onload = function () {
 		})
 		// map is now closed
 		mapOpen = false;
-		event.preventDefault();
+		//event.preventDefault();
 		// set fader div to 0.9 alpha black and put fader below other elements
 		gsap.to("#fader", {
 			duration: 0.5,
