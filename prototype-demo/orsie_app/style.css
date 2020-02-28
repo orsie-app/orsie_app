@@ -119,7 +119,7 @@ header h1 {
 #events-button {
 	z-index: 99998;
 	margin-right: 3vw;
-	bottom: 10vw;
+	bottom: 30vw;
 	right: 0;
 	position: absolute;
 	border-radius: 50%;
