@@ -34,17 +34,27 @@ object.onload = function () {
    let map = document.querySelector('#floorMap').contentDocument;
 
    let activeRooms = [
-       {roomName:"Global Classroom", clickElement: map.querySelector("#gglobalClassroom"), animateElement:map.querySelector("#globalClassroom")},
-       {roomName:"CFCE 116", clickElement:map.querySelector("#gcfce116"), animateElement:map.querySelector("#cfce116")},
-       {roomName:"CFCE 117", clickElement:map.querySelector("#gcfce117"), animateElement:map.querySelector("#cfce117")},
-       {roomName:"CFCE 118", clickElement:map.querySelector("#gcfce118"), animateElement:map.querySelector("#cfce118")},
-       {roomName:"CFCE 119", clickElement:map.querySelector("#gcfce119"), animateElement:map.querySelector("#cfce119")},
-       {roomName:"CFCE 123", clickElement:map.querySelector("#gcfce123"), animateElement:map.querySelector("#cfce123")},
-       {roomName:"CFCE 123B", clickElement:map.querySelector("#gcfce123B"), animateElement:map.querySelector("#cfce123B")},
-       {roomName:"Atrium", clickElement:map.querySelector("#gmrc"), animateElement:map.querySelector("#mrc polygon")},
-       {roomName:"CFCE/SSB Link", clickElement:map.querySelector("#gssbLink"), animateElement:map.querySelector("#ssbLink")},
-       {roomName:"SSB 116A/B", clickElement:map.querySelector("#gssb116"), animateElement:map.querySelector("#ssb116")}
+       { zone: 1, roomName:"Global Classroom", clickElement: map.querySelector("#gglobalClassroom"), animateElement:map.querySelector("#globalClassroom")},
+       { zone: 2, roomName:"CFCE 116", clickElement:map.querySelector("#gcfce116"), animateElement:map.querySelector("#cfce116")},
+       { zone: 3, roomName:"CFCE 117", clickElement:map.querySelector("#gcfce117"), animateElement:map.querySelector("#cfce117")},
+       { zone: 4, roomName:"CFCE 118", clickElement:map.querySelector("#gcfce118"), animateElement:map.querySelector("#cfce118")},
+       { zone: 5, roomName:"CFCE 119", clickElement:map.querySelector("#gcfce119"), animateElement:map.querySelector("#cfce119")},
+       { zone: 6, roomName:"CFCE 123", clickElement:map.querySelector("#gcfce123"), animateElement:map.querySelector("#cfce123")},
+       { zone: 7, roomName:"CFCE 123B", clickElement:map.querySelector("#gcfce123B"), animateElement:map.querySelector("#cfce123B")},
+       { zone: 8, roomName:"Atrium", clickElement:map.querySelector("#gmrc"), animateElement:map.querySelector("#mrc polygon")},
+       { zone: 9, roomName:"CFCE/SSB Link", clickElement:map.querySelector("#gssbLink"), animateElement:map.querySelector("#ssbLink")},
+       { zone: 10, roomName:"SSB 116A/B", clickElement:map.querySelector("#gssb116"), animateElement:map.querySelector("#ssb116")}
    ];
+
+   //function for room click results
+   function roomClick(eventCard){
+        closeMap();
+        eventCard.scrollIntoView();
+        gsap.from(eventCard, {
+            duration: 3,
+            backgroundColor: "orange",
+        })
+   }
 
    // adding click event to all active rooms
    activeRooms.forEach(activeRoom => {
@@ -55,7 +65,7 @@ object.onload = function () {
                {fill: "orange",
                ease: "Power2.easeInOut",
                duration: 0.5,
-               onComplete: closeMap,
+               onComplete: roomClick(document.querySelector(`#zone${activeRoom.zone}`)),
            });
            t1.to(activeRoom.animateElement, 
                { delay: 5,
