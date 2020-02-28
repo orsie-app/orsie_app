@@ -98,15 +98,18 @@ object.onload = function () {
     //function for room click results
     function roomClick(eventCard) {
         closeMap();
-        //meta data for viewport
+        //get meta data for viewport
         viewport = document.querySelector("#viewport");
         original = viewport.attributes.content.value;
         force_scale = original + ", maximum-scale=1";
         viewport.setAttribute("content", force_scale);
+        //reset to allow for user zoom
         setTimeout(function () {
             viewport.setAttribute("content", original);
         }, 100);
+        //scroll relevant card into view
         eventCard.scrollIntoView();
+        //highlight it briefly
         gsap.from(eventCard, {
             duration: 3,
             backgroundColor: "orange",
