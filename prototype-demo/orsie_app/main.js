@@ -109,7 +109,7 @@ window.onload = function () {
 	})
 
 	//click function to cover people tapping the button
-	mapTab.addEventListener("click", function (event) {
+	function openMap (event) {
 		//move the mapTab for continuity of animation
 		gsap.to(mapTab, {
 			duration: 0.5,
@@ -157,11 +157,12 @@ window.onload = function () {
 			backgroundColor: "rgba(0,0,0,0.9)",
 			ease: "Power3.InOut",
 		})
-	}, false, {
+	}
+	mapTab.addEventListener("click", openMap, false, {
 		passive: false
 	})
 	//click function to close the map
-	eventsButton.addEventListener("click", function (event) {
+	function closeMap (event) {
 		// remove the eventsButton from the screen and reset it's location
 		gsap.to(eventsButton, {
 			duration: 0.01,
@@ -201,5 +202,6 @@ window.onload = function () {
 				document.getElementById('fader').style.zIndex = -1;
 			}
 		})
-	})
+	}
+	eventsButton.addEventListener("click", closeMap);
 };
