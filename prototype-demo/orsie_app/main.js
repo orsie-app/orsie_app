@@ -1,5 +1,5 @@
 // global declarations
-let openMap,closeMap;
+let openMap, closeMap;
 let mapTab = document.querySelector('#map-tab');
 let eventsButton = document.querySelector('#events-button');
 let mapPage = document.querySelector('#map-page');
@@ -85,7 +85,7 @@ window.onload = function () {
 		gsap.to(mapPage, {
 			duration: 0.33,
 			// the top here is to position close to the center of where the map tab is
-			top: mapTab.offsetTop - window.innerWidth*0.45,
+			top: mapTab.offsetTop - window.innerWidth * 0.45,
 			right: window.innerWidth,
 			height: window.innerHeight * 0.6,
 			borderTopRightRadius: 600,
