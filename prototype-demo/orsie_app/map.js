@@ -118,7 +118,6 @@ object.onload = function () {
 
     // adding click event to all active rooms
     activeRooms.forEach(activeRoom => {
-        console.log(activeRoom.roomName)
         activeRoom.clickElement.addEventListener("click", function (event) {
             let t1 = gsap.timeline();
             t1.to(activeRoom.animateElement, {
@@ -133,7 +132,6 @@ object.onload = function () {
                 ease: "Power2.easeInOut",
                 duration: 0.5
             });
-            console.log(`${activeRoom.roomName} room was clicked`);
         });
     });
 
@@ -141,7 +139,6 @@ object.onload = function () {
         let cards = Array.from(document.querySelectorAll(".event-box"));
         
         function cardClick(mapId){
-            console.log(mapId)
             openMap();
             gsap.from(mapId, {
                 duration: 10,
@@ -150,7 +147,6 @@ object.onload = function () {
         }
     
         cards.forEach(card => {
-            console.log(card.dataset.mapid);
             card.addEventListener("click", function(){cardClick(map.querySelector(`${card.dataset.mapid}`))});
         })
     }
