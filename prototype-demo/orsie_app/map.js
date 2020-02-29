@@ -1,29 +1,10 @@
 /**
+ * 
+ * Everything in this file requires the svg information to function properly
+ * 
  * To do:
  * 
  * update map with new colors/specs
- * add zoom with viewbox change?
- * on click map itself clearTimeout of roomClicked for other elements?
- */
-
-let theEventData;
-
-window.addEventListener("DOMContentLoaded", function () {
-    function getData() {
-        fetch('./events.json')
-            .then(data => data.json())
-            .then(data => {
-                theEventData = data.events;
-            })
-    }
-    getData();
-})
-/**
- * To do:
- * 
- * update map with new colors/specs
- * add zoom with viewbox change?
- * on click map itself clearTimeout of roomClicked for other elements?
  */
 
 //  set object for onload
@@ -114,7 +95,7 @@ object.onload = function () {
             duration: 3,
             backgroundColor: "orange",
         })
-    }
+    };
 
     // adding click event to all active rooms
     activeRooms.forEach(activeRoom => {
@@ -145,11 +126,10 @@ object.onload = function () {
                 fill: "orange",
             })
         }
-    
         cards.forEach(card => {
             card.addEventListener("click", function(){cardClick(map.querySelector(`${card.dataset.mapid}`))});
         })
-    }
+    };
 
     setTimeout(cardInteraction, 1000);
 }
