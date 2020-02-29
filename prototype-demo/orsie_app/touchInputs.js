@@ -1,4 +1,4 @@
-function touchMove(event){
+function touchMove(event) {
     let touch = event.targetTouches[0];
     if (touch.pageX <= window.innerWidth * 0.8 && (touch.pageY <= window.innerHeight - 30 && touch.pageY > 15)) {
         mapTab.style.left = (touch.pageX - 70) + 'px';
@@ -6,13 +6,13 @@ function touchMove(event){
         mapPage.style.right = window.innerWidth - touch.pageX + 10 + 'px';
         event.preventDefault();
         // calculate the amount of the screen is covered by the draggable element
-        let percentCovered = (mapTab.offsetLeft*0.5) / window.innerWidth;
+        let percentCovered = (mapTab.offsetLeft * 0.5) / window.innerWidth;
         // move map page pull out with map tab
         mapPage.style.top = (touch.pageY - 180) + 'px';
         //  adjust border radius of map page accordingly
         mapPage.style.borderTopRightRadius = `${600 - window.innerWidth  - percentCovered * 600}px`;
         mapPage.style.borderBottomRightRadius = `${600 - window.innerWidth - percentCovered * 600}px`;
-        document.getElementById('fader').style.zIndex = 900;	
+        document.getElementById('fader').style.zIndex = 900;
         //use for reverse effect || from flat to round
         ////mapPage.style.borderBottomRightRadius = `${percentCovered * 2000}px`;
         ////mapPage.style.borderTopRightRadius = `${percentCovered * 2000}px`;
@@ -21,7 +21,7 @@ function touchMove(event){
 
 function touchEnd(event) {
     // if map is not open
-    if (mapOpen == false && mapTab.offsetLeft > window.innerWidth*0.30) {
+    if (mapOpen == false && mapTab.offsetLeft > window.innerWidth * 0.30) {
         //move the mapTab for continuity of animation
         gsap.to(mapTab, {
             duration: 0.5,
@@ -69,22 +69,22 @@ function touchEnd(event) {
             backgroundColor: "rgba(0,0,0,0.9)",
             ease: "Power3.InOut",
         })
-    }else{
-    // remove the map page from the screen
-    gsap.to(mapPage, {
-        duration: 0.33,
-        right: window.innerWidth,
-        height: window.innerHeight * 0.6,
-        borderTopRightRadius: 600,
-        borderBottomRightRadius: 600,
-        ease: "Power3.Out",
-    });
-    //move mapTab along with the map page
-    gsap.to(mapTab, {
-        duration: 0.33,
-        left: -40,
-    })
-    //put fader below everything
-    document.getElementById('fader').style.zIndex = -1;
+    } else {
+        // remove the map page from the screen
+        gsap.to(mapPage, {
+            duration: 0.33,
+            right: window.innerWidth,
+            height: window.innerHeight * 0.6,
+            borderTopRightRadius: 600,
+            borderBottomRightRadius: 600,
+            ease: "Power3.Out",
+        });
+        //move mapTab along with the map page
+        gsap.to(mapTab, {
+            duration: 0.33,
+            left: -40,
+        })
+        //put fader below everything
+        document.getElementById('fader').style.zIndex = -1;
     }
-}
+};
