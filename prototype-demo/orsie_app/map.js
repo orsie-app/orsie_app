@@ -100,20 +100,8 @@ object.onload = function () {
     // adding click event to all active rooms
     activeRooms.forEach(activeRoom => {
         activeRoom.clickElement.addEventListener("click", function (event) {
-            let t1 = gsap.timeline();
-            t1.to(activeRoom.animateElement, {
-                fill: "orange",
-                ease: "Power2.easeInOut",
-                duration: 0.5,
-                onComplete: roomClick(document.querySelector(`#zone${activeRoom.zone}`)),
-            });
-            t1.to(activeRoom.animateElement, {
-                delay: 2,
-                fill: "7fbdad",
-                ease: "Power2.easeInOut",
-                duration: 0.5
-            });
-        });
+                roomClick(document.querySelector(`#zone${activeRoom.zone}`))
+        })
     });
 
     function cardInteraction(){
@@ -122,7 +110,7 @@ object.onload = function () {
         function cardClick(mapId){
             openMap();
             gsap.from(mapId, {
-                duration: 10,
+                duration: 5,
                 fill: "orange",
             })
         }
