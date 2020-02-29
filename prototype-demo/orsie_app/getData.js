@@ -7,7 +7,7 @@ function getData(){
 
         for(zone of eventData){
             currentEventsContainer.innerHTML += `
-                <div id="zone${zone.zone}" class="event-box">
+                <div id="zone${zone.zone}" data-mapId="${zone.mapId}" class="event-box">
                     <div class="event-box-inner">
                         <h3 class="event-name">${zone.name}</h3>
                         <h4 class="event-time">${zone.time}</h4>

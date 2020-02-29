@@ -151,7 +151,6 @@ window.onload = function () {
 		});
 		// map is now open
 		mapOpen = true;
-		event.preventDefault();
 		// set fader div to 0.9 alpha black
 		gsap.to("#fader", {
 			duration: 0.5,

@@ -2,6 +2,7 @@
     "events": [
         {
             "zone": 1,
+            "mapId": "#globalClassroom",
             "name": "Experience Student Entrepreneurship",
             "location": "Global Classroom",
             "time": "23:59",
@@ -9,6 +10,7 @@
         },
         {
             "zone": 2,
+            "mapId": "#cfce116",
             "name": "Seed to Celebration",
             "location": "CFCE 116",
             "time": "23:59",
@@ -16,6 +18,7 @@
         },
         {
             "zone": 3,
+            "mapId": "#cfce117",
             "name": "Partnerships for Social Innovation",
             "location": "CFCE 117",
             "time": "23:59",
@@ -23,6 +26,7 @@
         },
         {
             "zone": 4,
+            "mapId": "#cfce118",
             "name": "Health Technology and Innovation",
             "location": "CFCE 118",
             "time": "23:59",
@@ -30,6 +34,7 @@
         },
         {
             "zone": 5,
+            "mapId": "#mrc polygon",
             "name": "The Future of Mixed Realities",
             "location": "Atrium",
             "time": "23:59",
@@ -37,6 +42,7 @@
         },
         {
             "zone": 6,
+            "mapId": "#cfce119",
             "name": "Experience Autonomous Vehicles",
             "location": "CFCE 119",
             "time": "23:59",
@@ -44,6 +50,7 @@
         },
         {
             "zone": 7,
+            "mapId": "#cfce123",
             "name": "Research and Innovation in AI and Cybersecurity",
             "location": "CFCE 123 (FastStart)",
             "time": "23:59",
@@ -51,6 +58,7 @@
         },
         {
             "zone": 8,
+            "mapId": "#cfce123b",
             "name": "Makerspace Magic",
             "location": "CFCE 123b",
             "time": "23:59",
@@ -58,6 +66,7 @@
         },
         {
             "zone": 9,
+            "mapId": "#ssbLink",
             "name": "The 10-year Journey of Innovation",
             "location": "CFCE/SSB link",
             "time": "23:59",
@@ -65,6 +74,7 @@
         },
         {
             "zone": 10,
+            "mapId": "#ssb116",
             "name": "Student Innovations",
             "location": "SSB 116A/B",
             "time": "23:59",

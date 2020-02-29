@@ -128,7 +128,7 @@ object.onload = function () {
                 onComplete: roomClick(document.querySelector(`#zone${activeRoom.zone}`)),
             });
             t1.to(activeRoom.animateElement, {
-                delay: 5,
+                delay: 2,
                 fill: "7fbdad",
                 ease: "Power2.easeInOut",
                 duration: 0.5
@@ -136,4 +136,24 @@ object.onload = function () {
             console.log(`${activeRoom.roomName} room was clicked`);
         });
     });
+
+    function cardInteraction(){
+        let cards = Array.from(document.querySelectorAll(".event-box"));
+        
+        function cardClick(mapId){
+            console.log(mapId)
+            openMap();
+            gsap.from(mapId, {
+                duration: 10,
+                fill: "orange",
+            })
+        }
+    
+        cards.forEach(card => {
+            console.log(card.dataset.mapid);
+            card.addEventListener("click", function(){cardClick(map.querySelector(`${card.dataset.mapid}`))});
+        })
+    }
+
+    setTimeout(cardInteraction, 1000);
 }
