@@ -271,7 +271,7 @@ window.onload = function () {
 					// set to no result if no names are found
 					displayMsg = `
 					<div class="result" id="error">
-						<p>No result found.</p>
+						<p>No results found. Make sure you entered your name correctly. If you did not register for the event, register now.</p>
 					</div>
 					<div class="result" id="register">
 						<a href="../registration" target="blank">Please Register Here</a>
