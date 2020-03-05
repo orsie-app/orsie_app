@@ -168,6 +168,7 @@ window.onload = function () {
 	}, false, {
 		passive: false
 	})
+	
 	//click function to close the map
 	eventsButton.addEventListener("click", function (event) {
 		// remove the eventsButton from the screen and reset it's location
@@ -270,7 +271,7 @@ window.onload = function () {
 				// when fetch data complete
 				console.log(contents);
 				displayMsg = "";
-				// set the name list if any data found
+				// set the names list if any data found
 				if (contents) {
 					contents.forEach(guest => {
 						displayMsg += `
@@ -282,7 +283,9 @@ window.onload = function () {
 					});
 					signInButton.style.display = "block";
 				} else {
-					// set to no result if no names are found
+					// error to show if no names are found
+					// also shows link to registration page
+					// TODO: Update the registration page link
 					displayMsg = `
 					<div class="result" id="error">
 						<p>No results found. Make sure you entered your name correctly. If you did not register for the event, you can register now.</p>
@@ -295,7 +298,7 @@ window.onload = function () {
 				updateDisplayData(displayMsg);
 			})
 			.catch(error => {
-				// if search text not entered
+				// error to show when search text not entered
 				displayMsg = `
 				<div class="result" id="error">
 					<p>Please check your connection and try again.</p>
@@ -316,23 +319,20 @@ window.onload = function () {
 			elementClicked = e.target.parentNode;
 		}
 
+		// removing styles from selected element when other name is picked
 		Array.from(searchResults.children).forEach(result => {
 			result.classList.remove("selected");
 		});
 
 		// handler to sign users in ONLY if the proper element is clicked
 		if (elementClicked) {
-			console.log(idClicked);
+			// setting values for signing in
 			idClicked = elementClicked.getAttribute("data-id");
 			nameToDisplay = elementClicked.firstElementChild.innerText;
+
 			// animating the name clicked
 			elementClicked.classList.add("selected");
 			signInButton.removeAttribute("disabled");
-			// TweenMax.to(elementClicked, 0.1, {
-			// 	scale: 0.9,
-			// 	repeat: 1,
-			// 	yoyo: true
-			// })
 		}
 	});
 
@@ -374,10 +374,12 @@ window.onload = function () {
 					signInButton.style.display = "none";
 					signInButton.setAttribute("disabled", "1");
 					searchForm.style.display = "none";
+
+					// updating instruction text on sign in page
 					searchPageInstruction.innerText = "You have checked in!"
 
 				} else {
-					// set to no result if no names are found
+					// display message to show if could not sign in because of PHP error
 					displayMsg = `
 					<div class="result" id="error">
 						<p>There was a problem signing in. Please try again</p>
@@ -386,7 +388,7 @@ window.onload = function () {
 				}
 				updateDisplayData(displayMsg);
 			}).catch(error => {
-				// code to execute if internet fails
+				// error message to show if internet fails
 				displayMsg += `
 				<div class="result" id="error">
 				<p>Check your connection and try again.</p>
