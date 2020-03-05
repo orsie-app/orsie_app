@@ -6,17 +6,20 @@ require_once("./inc/connect_pdo.php");
 
 // grabbing the data from the URL through the get method
 $id = $_POST["id"];
+$event_name = $_POST["event_name"];
 
 $errorCode["id"] = -1;
 $errorCode["message"] = "Service Connected";
 
 $id = addslashes($id);
+$event_name = addslashes($event_name);
 
 if (!empty($id)) {
 	try {
 		$query = "INSERT INTO test_sign_in
 		SET id='$id',
-		sign_in_status = 1 ";
+		sign_in_status = 1,
+		event_name = '$event_name' ";
 
 		// executing the query to update the record from the database
 		$dbo -> query($query);
