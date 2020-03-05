@@ -56,7 +56,7 @@ h1 {
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-weight: 400;
 }
 
@@ -336,10 +336,11 @@ img {
 }
 
 #search-form #search-input {
-	width: 80%;
+	width: 79%;
 	font-size: 1.2rem;
 	border: 2px solid transparent;
-	background: rgba(0, 0, 0, 0.05);
+	/* background: rgba(0, 0, 0, 0.05); */
+	background: #eee;
 	transition: 0.3s;
 }
 
@@ -377,21 +378,37 @@ img {
 
 #search-results {
 	width: 100%;
-	max-height: 50%;
+	max-height: 300px;
+	overflow: scroll;
 	text-align: left;
-	padding-top: 1rem;
+	margin: 0.5rem auto;
+	border-radius: 5px;
 }
 
 .result {
 	margin: 0.5rem auto;
 	padding: 0.5rem;
 	width: 100%;
-	background: #ffffff;
-	/* height: 60px; */
-	border: 1px solid #555;
+	background: #eee;
 	border-radius: 5px;
 	animation: load-entry 0.5s ease-out;
 	transform-origin: center;
+	transition: 0.1s;
+}
+
+.selected {
+	background: var(--dc-green);
+	color: #fff;
+}
+
+.selected p {
+	color: #fff !important;
+	transition: 0.1s;
+	opacity: 0.8;
+}
+
+.no-margin {
+	margin: 0;
 }
 
 @keyframes load-entry {
@@ -413,15 +430,6 @@ img {
 	font-size: 0.9rem;
 }
 
-.result button {
-	background: var(--dc-grey);
-	opacity: 0.7;
-	color: #ffffff;
-	width: 100%;
-	padding: 0.5rem;
-	border: none;
-}
-
 #spinner-box {
 	width: 100%;
 	height: auto;
@@ -430,23 +438,24 @@ img {
 
 #spinner {
 	margin: auto;
-    height: 1.45rem;
-    width: 1.45rem;
-    border-radius: 50%;
-    background: transparent;
-    border: 3px solid transparent;
-    border-top: 3px solid var(--dc-green);
-    border-bottom: 3px solid var(--dc-green);
-    animation: spin 1s forwards infinite;
+	height: 1.45rem;
+	width: 1.45rem;
+	border-radius: 50%;
+	background: transparent;
+	border: 3px solid transparent;
+	border-top: 3px solid var(--dc-green);
+	border-bottom: 3px solid var(--dc-green);
+	animation: spin 1s forwards infinite;
 }
 
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    } 
-    to {
-        transform: rotate(360deg);
-    }
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 #error p {
@@ -471,4 +480,22 @@ img {
 #register a {
 	color: #ffffff;
 	text-decoration: none;
+}
+
+#sign-in-button {
+	display: none;
+	width: 100%;
+	background-color: var(--dc-green);
+	color: #fff;
+	padding: 0.5rem;
+	font-size: 1rem;
+	font-family: urbane, sans-serif;
+	letter-spacing: 0.7px;
+	border-radius: 5px;
+	border: none;
+	transition: 0.5s;
+}
+
+#sign-in-button:disabled {
+	opacity: 0.4;
 }

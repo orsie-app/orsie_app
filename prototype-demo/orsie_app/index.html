@@ -58,10 +58,11 @@
 		<section id="search-page">
 			<div id="content-box">
 				<img src="./images/orsie-logo-new.svg" />
-				<h1>ResearchDay Sign In</h1>
-				<h2>Please search and select your name from the list to sign in.</h2>
+				<h1>ResearchDay Check In</h1>
+				<h2 id="instruction">Please search and select your name from the list to check in.</h2>
 				<form id="search-form" method="POST">
 					<input type="text" name="search-text" id="search-input" placeholder="Enter your name or email" />
+					<input type="hidden" name="event_name" id="event_name" value="ORSIE Research Day 2020" />
 					<button type="submit" id="submit">
 						<img src="./images/search-icon.png" alt="Search Button" />
 					</button>
@@ -69,6 +70,7 @@
 				<div id="search-results">
 					<!-- Search results will go here -->
 				</div>
+				<button id="sign-in-button" disabled="1">Check In</button>
 			</div>
 		</section>
 	</main>

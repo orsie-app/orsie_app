@@ -8,8 +8,14 @@ window.onload = function () {
 	let mapOpen = false;
 
 	// search page elements
+	const searchPageInstruction = document.querySelector("#search-page #instruction");
 	const searchForm = document.querySelector("#search-form");
 	const searchResults = document.querySelector("#search-results");
+	const signInButton = document.querySelector("#sign-in-button");
+
+	// variables to store sign in info
+	let idClicked = "";
+	let nameToDisplay = "";
 
 	mapTab.addEventListener("touchmove", function (event) {
 		let touch = event.targetTouches[0];
@@ -226,6 +232,12 @@ window.onload = function () {
 		e.preventDefault();
 		let displayMsg = "";
 
+		// resetting sign in variables
+		idClicked = "";
+		nameToDisplay = "";
+		signInButton.style.display = "none";
+		signInButton.setAttribute("disabled", "1");
+
 		// checking if the search field is empty or not
 		if (searchForm.firstElementChild.value) {
 			// if text entered
@@ -247,6 +259,7 @@ window.onload = function () {
 		// set service URL
 		let url = "https://services.mullasuleman.com/search.php";
 		let displayMsg = "";
+
 		// fetching data from the database
 		fetch(url, {
 				body: searchData,
@@ -267,21 +280,21 @@ window.onload = function () {
 							<p>${guest.guest_type ? guest.guest_type : ""}</p>
 						</div>`;
 					});
+					signInButton.style.display = "block";
 				} else {
 					// set to no result if no names are found
 					displayMsg = `
 					<div class="result" id="error">
-						<p>No results found. Make sure you entered your name correctly. If you did not register for the event, register now.</p>
+						<p>No results found. Make sure you entered your name correctly. If you did not register for the event, you can register now.</p>
 					</div>
 					<div class="result" id="register">
-						<a href="../registration" target="blank">Please Register Here</a>
+						<a href="../registration" target="blank">Register Here</a>
 					</div>
 					`;
 				}
 				updateDisplayData(displayMsg);
 			})
 			.catch(error => {
-				console.log(error);
 				// if search text not entered
 				displayMsg = `
 				<div class="result" id="error">
@@ -293,43 +306,51 @@ window.onload = function () {
 
 	// handling name list click event
 	// adding event listener on the parent div because children divs are dynamically generated
-	searchResults.addEventListener("click", e => {
-		let idClicked = "";
+	searchResults.addEventListener("click", function (e) {
 		let elementClicked;
-		let nameToDisplay = "";
 		// if result div is clicked
 		if (e.target.matches(".result")) {
-			// alert(e.target.getAttribute("data-id"));
 			elementClicked = e.target;
 		} else if (e.target.matches(".result *")) {
 			// else if any of the inside elements are clicked
-			// alert(e.target.parentNode.getAttribute("data-id"));
 			elementClicked = e.target.parentNode;
 		}
 
-		nameToDisplay = elementClicked.firstElementChild.innerText;
-		idClicked = elementClicked.getAttribute("data-id");
+		Array.from(searchResults.children).forEach(result => {
+			result.classList.remove("selected");
+		});
+
 		// handler to sign users in ONLY if the proper element is clicked
-		if (idClicked) {
+		if (elementClicked) {
 			console.log(idClicked);
+			idClicked = elementClicked.getAttribute("data-id");
+			nameToDisplay = elementClicked.firstElementChild.innerText;
 			// animating the name clicked
-			TweenMax.to(elementClicked, 0.1, {
-				scale: 0.9,
-				repeat: 1,
-				yoyo: true
-			})
-			// handle sign in stuff here
-			showSpinner();
-			signIn(idClicked, nameToDisplay);
+			elementClicked.classList.add("selected");
+			signInButton.removeAttribute("disabled");
+			// TweenMax.to(elementClicked, 0.1, {
+			// 	scale: 0.9,
+			// 	repeat: 1,
+			// 	yoyo: true
+			// })
 		}
 	});
+
+	signInButton.addEventListener("click", function () {
+		// sign the user in when sign in is clicked
+		showSpinner();
+		signIn(idClicked, nameToDisplay);
+	})
 
 	// function to handle sign in and send data
 	// and update the div as needed
 	function signIn(id, name) {
 		let displayMsg = ""
+
+		// setting form data to send for signing in
 		let formData = new FormData();
 		formData.append('id', id);
+		formData.append('event_name', document.querySelector("#event_name").value);
 		let url = "https://services.mullasuleman.com/sign_in.php";
 		// fetching data from the database
 		fetch(url, {
@@ -341,28 +362,35 @@ window.onload = function () {
 				// when fetch data complete
 				console.log(message);
 				displayMsg = "";
-				// set the name list if any data found
+				// show welcome message if sign in successful
 				if (message.id == 0) {
 					displayMsg += `
-						<div class="result" id="success">
-							<p>Awesome, ${name}!</p>
-							<p>Enjoy the Research Day 2020!</p>
-						</div>`;
+					<div class="result" id="success">
+						<p>Welcome, ${name}!</p>
+						<p>Enjoy Research Day 2020!</p>
+					</div>`;
+
+					// disabling form and sign in buttons
+					signInButton.style.display = "none";
+					signInButton.setAttribute("disabled", "1");
+					searchForm.style.display = "none";
+					searchPageInstruction.innerText = "You have checked in!"
+
 				} else {
 					// set to no result if no names are found
 					displayMsg = `
-						<div class="result" id="error">
-							<p>There was a problem signing in. Please try again</p>
-						</div>
-						`;
+					<div class="result" id="error">
+						<p>There was a problem signing in. Please try again</p>
+					</div>
+					`;
 				}
 				updateDisplayData(displayMsg);
 			}).catch(error => {
 				// code to execute if internet fails
 				displayMsg += `
-					<div class="result" id="error">
-					<p>Check your connection and try again.</p>
-					</div>`;
+				<div class="result" id="error">
+				<p>Check your connection and try again.</p>
+				</div>`;
 				updateDisplayData(displayMsg);
 			});
 	}
