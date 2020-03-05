@@ -22,13 +22,20 @@ window.onload = function () {
     // form elements
     const insertForm = document.querySelector("#registration-form");
     const inputFields = document.querySelectorAll("input");
-    const submitButton = this.document.querySelector("#submit");
+    const submitButton = document.querySelector("#submit");
     const spinner = document.querySelector("#spinner");
     const registerText = document.querySelector("#register");
+    let guestTypeRadio = document.querySelectorAll("input[type=radio]");
+    let consentCheck = document.querySelector("#consent_check");
 
     // position form page logo on start
     let h = (formPage.offsetHeight / 2) - (formPage.offsetHeight / 5.5);
 
+    // If user has scrolled down, resets the scroll to the top
+    TweenMax.to("html", 0.5, {
+        scrollTo: 0,
+        ease: Sine.easeOut
+    });
 
     // animate splash onto screen, then animate form
     TweenMax.to(splashPage, 0.5, {
@@ -72,6 +79,21 @@ window.onload = function () {
         })
     }
 
+    // event handler for the radio buttons to check if the guest option has been selected
+    guestTypeRadio.forEach(radio => {
+        radio.addEventListener("change", function (e) {
+            if (e.target.value == "Guest") {
+                // showing the checkbox
+                consentCheck.classList.add("visible");
+            } else {
+                // hiding the checkbox and unchecking it
+                consentCheck.classList.remove("visible");
+                document.querySelector("#consent").checked = false;
+            }
+        })
+    });
+    
+
 
     // animate form in and call to animate orsie logo
     function showForm() {
@@ -113,9 +135,55 @@ window.onload = function () {
         });
     })
 
+    // event handler for the submit button
+    submitButton.addEventListener("click", (e) => {
+        let checkedRadio = document.querySelector("input[type=radio]:checked");
+        let invalidInput = document.querySelectorAll("input:invalid");
+
+        // resetting the style of each input
+        TweenMax.staggerTo("input", 0.25, {
+            borderBottom: "2px solid #522C1B"
+        })
+
+        TweenMax.staggerTo("#type_selector", 0.25, {
+            borderBottom: "2px solid transparent"
+        })
+
+        TweenMax.to("#formNote", 0.25, {
+            color: "#383838"
+        });
+
+        // if text inputs are not empty
+        if (invalidInput.length == "") {
+            return;
+        } else {
+            // else if text inputs are empty
+            e.preventDefault();
+            TweenMax.staggerTo(invalidInput, 0.25, {
+                borderBottom: "2px solid red"
+            })
+            TweenMax.to("#formNote", 0.25, {
+                color: "red"
+            });
+        }
+
+        // if radio option is selected
+        if (checkedRadio) {
+            return;
+        } else {
+            // if radio button is not selected
+            e.preventDefault();
+            TweenMax.staggerTo("#type_selector", 0.25, {
+                borderBottom: "2px solid red"
+            })
+            TweenMax.to("#formNote", 0.25, {
+                color: "red"
+            });
+        }
+    });
+
     // event listener to handel the form submit and send data
     insertForm.addEventListener("submit", (e) => {
-        console.log("submitting");
         e.preventDefault();
 
         // disable button, hide text, show spinner
@@ -124,7 +192,7 @@ window.onload = function () {
         spinner.style.display = "block";
 
         // sending/fetching data from the server
-        let url = "https://services.mullasuleman.com/insert_data.php";
+        let url = "services/insert_data.php";
         fetch(url, {
                 body: new FormData(e.target),
                 method: "post"
@@ -132,13 +200,42 @@ window.onload = function () {
             .then(response => response.json())
             .then(message => {
                 // code if connection is successful
-                console.log(message);
                 if (message.id == 0) {
                     // show success message if data inserted
-                    registerText.innerHTML = `Awesome, ${inputFields[0].value}! <br>See you at the event.`;
+                    registerText.innerHTML = `Thank you for your registration, ${inputFields[0].value}! <br>See you at the event.`;
                     spinner.style.display = "none";
                     registerText.style.display = "block";
 
+                    // disabling the form
+                    document.querySelectorAll("input, label").forEach(input => {
+                        TweenMax.to(input, 0.3, {
+                            opacity: 0.5
+                        });
+                        input.setAttribute("disabled", "disabled");
+                    });
+
+                } else if (message.id == 3) {
+                    // show failure message if data insertion fails
+                    // change color to red
+                    TweenMax.to(submitButton, 0.5, {
+                        backgroundColor: "#D33222",
+                        onComplete: function () {
+                            // spinner.style.display = "none";
+                            registerText.innerHTML = `You have already registered for this event.`;
+                            spinner.style.display = "none";
+                            registerText.style.display = "block";
+                        }
+                    })
+                    // enable button, change text back to register, change color back to green
+                    // executed after 3 seconds
+                    TweenMax.to(submitButton, 2, {
+                        delay: 3,
+                        backgroundColor: "#0b8261",
+                        onComplete: function () {
+                            registerText.innerHTML = `Register`;
+                            submitButton.removeAttribute("disabled");
+                        }
+                    })
                 } else {
                     // show failure message if data insertion fails
                     // change color to red
@@ -165,7 +262,6 @@ window.onload = function () {
             })
             .catch(error => {
                 // code to execute if internet fails
-                console.log(error);
                 // show failure message
                 // change color to red
                 TweenMax.to(submitButton, 0.5, {

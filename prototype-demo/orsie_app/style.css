@@ -15,12 +15,15 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	scroll-behavior: smooth;
 }
 
 body {
 	font-family: urbane, sans-serif;
 	font-size: 1em;
 	letter-spacing: 0.5px;
+	overflow: hidden;
+	position: fixed;
 }
 
 ::-webkit-scrollbar {
@@ -40,29 +43,42 @@ header {
 	left: 0;
 	height: 10vh;
 	width: 100vw;
-	/* border: 1px solid rgba(56, 56, 56, 0.2); */
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: left;
 	z-index: 899;
-	background: #eee;
-	/* color: #da0000; */
+	background: #0b8261;
+	color: rgb(186, 252, 188);
+	border-bottom: 1px solid rgba(4, 61, 12, 0.151);
+	box-shadow: 0 5px 7px 2px rgba(48, 33, 5, 0.13);
 }
 
 h1 {
 	font-size: 1.3rem;
 	font-weight: normal;
-	/* text-transform: uppercase; */
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 h2 {
 	font-size: 0.9rem;
 	font-weight: 400;
+	text-transform: uppercase;
+	color: #fffaf0;
+	letter-spacing: 1px;
+	text-align: center;
 }
 
 header h1 {
-	border-bottom: 1px solid rgba(11, 130, 97, 1);
-	padding: 1rem;
+	width: auto;
+	text-align: left;
+	padding: 0.7rem;
+	padding-left: 1.4rem;
+}
+#profileIcon {
+	width: 35px;
+	position: absolute;
+	right: 1rem;
 }
 
 #map-button,
@@ -70,7 +86,6 @@ header h1 {
 	padding: 1.2vh;
 	height: 7vh;
 	width: 7vh;
-	/* width: 15vw; */
 	background: #37987D;
 	border-radius: 50%;
 	box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.3);
@@ -87,13 +102,12 @@ header h1 {
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 	left: -40px;
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
 }
 
 #map-button {
 	margin-left: 60px;
 	z-index: 999;
-	/* border-top-left-radius: 2rem; */
-	/* border-bottom-left-radius: 2rem; */
 }
 
 #events-tab {
@@ -113,7 +127,6 @@ header h1 {
 #events-button {
 	z-index: 99998;
 	margin-right: 3vw;
-	background: #fff;
 	bottom: 30vw;
 	right: 0;
 	position: absolute;
@@ -123,7 +136,7 @@ header h1 {
 	align-content: center;
 	align-items: center;
 	opacity: 0;
-	box-shadow: 2px 2px 7px #000;
+	box-shadow: inset -2px -2px 7px #000;
 	cursor: pointer;
 	user-select: none;
 }
@@ -141,51 +154,91 @@ header h1 {
 	width: 100%;
 	height: 90vh;
 	padding: 1rem;
+	padding-top: 1.4rem;
 	overflow: scroll;
-	background: #eee;
+	background: #0b8261;
 	z-index: 888;
 }
 
-#events-page #current-events-container,
-#events-page #upcoming-events-container {
+#events-page #current-events-container{
 	width: 100%;
 	margin: 1rem auto;
-	/* border: 1px solid rgba(0, 0, 0, 0.5); */
+	margin-bottom: 10vh;
 	border-radius: 10px;
 	padding: 0.5rem 0;
 }
 
 #events-page #current-events-container {
 	height: 35%;
-	white-space: nowrap;
-	overflow-x: scroll;
-	overflow-y: hidden;
 }
-
-#events-page #upcoming-events-container {
-	/* To be changed to auto when functional */
-	height: 50%;
-	overflow: visible;
-}
-
-#events-page #current-events-container .event-box,
-#events-page #upcoming-events-container .event-box {
-	background: #fff;
-	border-radius: 10px;
-	box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.1);
+#events-page #current-events-container:last-child {
+	margin-bottom: 2715px;
 }
 
 #events-page #current-events-container .event-box {
+	background: rgb(253, 252, 249);
+	border-radius: 5px;
+	border: 1px solid rgba(0, 128, 0, 0.13);
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
+	position: relative;
+
 	display: inline-block;
-	height: 100%;
-	width: 99%;
-	margin: 0 0.25%;
+	height: fit-content;
+	width: 100%;
+	margin: auto;
+	padding: 0.5rem;
+	vertical-align: top;
+	margin-bottom: 4%;
 }
 
-#events-page #upcoming-events-container .event-box {
-	height: 25%;
-	width: 100%;
+#events-page #current-events-container .event-box-inner {
+	border-left: 4px solid orange;
+	height: 100%;
+	padding: 3px;
+	padding-left: 10px;
+	border-radius: 3px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+#events-page #current-events-container .event-box h3{
 	margin-bottom: 0.5rem;
+	width: 90%;
+	height: auto;
+	white-space: normal;
+	font-weight: 550;
+}
+
+#events-page #current-events-container .event-box h4{
+	margin-bottom: 0.5rem;
+	width: 90%;
+	font-size: 0.9rem;
+	font-weight: 400;
+	height: auto;
+	white-space: normal;
+	position: relative;
+	padding-left: 25px;
+}
+
+#events-page #current-events-container .event-box h4::before{
+	content: url("./images/reserveTime.svg");
+	max-width: 20px;
+	min-width: 23px;
+	position: absolute;
+	left:-3px;
+	top:-1px;
+}
+#events-page #current-events-container .event-box p{
+	margin-bottom: 0.5rem;
+	width: 90%;
+	height: auto;
+	white-space: normal;
+}
+#events-page #current-events-container .event-box p.event-description {
+	font-size: 0.8rem;
+	/* padding-left: 25px; */
 }
 
 #map-page {
@@ -198,6 +251,7 @@ header h1 {
 	border-bottom-right-radius: 600px;
 	right: 100vw;
 	top: 50vh;
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
 
 	/* use for reverse effect || from flat to round
 
@@ -212,7 +266,7 @@ header h1 {
 }
 
 #map {
-	height: 60%;
+	height: 100%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -221,10 +275,15 @@ header h1 {
 	background-size: 70%;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-color: #f7f7f7;
-	border-bottom-right-radius: 50px;
-	border-bottom-left-radius: 50px;
+	background-color: #0b8261;
+	border: 1px solid #fff;
 	color: #0b8261;
+}
+
+#floorMap {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 }
 
 
@@ -237,37 +296,52 @@ header h1 {
 	background-color: #00000010;
 	position: absolute;
 }
-
 #map-info {
-	color: #eee;
-	width: 80%;
-	margin-left: 10%;
-	margin-top: 10vw;
+	background-color: whitesmoke;
+	padding: 8%;
+	padding-bottom: 5%;
+	overflow: scroll;
+	height: 40vh;
 	opacity: 0;
 }
 
-#map-info-title {
-	margin-bottom: 5vw;
-	-webkit-user-select: none;
-	/* Safari */
-	-moz-user-select: none;
-	/* Firefox */
-	-ms-user-select: none;
-	/* IE10+/Edge */
-	user-select: none;
-	/* Standard */
+#map-info-inner{
+	/* background-color: whitesmoke; */
+	color: #000;
+	width: 80%;
+	height: fit-content;
+	/* padding: 8%; */
+	padding-left: 8%;
+	border-left: 5px solid orange;
+	border-radius: 3px;
+	/* margin-left: 10%;
+	margin-top: 10vw; */
+	/* opacity: 0; */
+	/* overflow: scroll; */
+	/* border: 1px solid orange; */
 }
 
-#map-info-text {
+#map-info-title{
+	margin-bottom: 3vw;
+	font-weight: 550;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+}
+#map-info-location {
+	font-size: 1rem;
+	margin-bottom: 5%;
+}
+#map-info-text{
 	margin-bottom: 5vw;
-	-webkit-user-select: none;
-	/* Safari */
-	-moz-user-select: none;
-	/* Firefox */
-	-ms-user-select: none;
-	/* IE10+/Edge */
-	user-select: none;
-	/* Standard */
+	/* font-size: 0.9rem; */
+	font-size: 0.8rem;
+	font-weight: 400;
+	-webkit-user-select: none; /* Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
 }
 
 /* used for laptop demonstration purposes  */
