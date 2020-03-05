@@ -377,6 +377,15 @@ window.onload = function () {
 
 					// updating instruction text on sign in page
 					searchPageInstruction.innerText = "You have checked in!"
+					gsap.to("#search-page", {
+						delay: 1,
+						duration: 0.5,
+						opacity: 0,
+					});
+					gsap.to("#search-page", {
+						delay: 1.5,
+						display: "none"
+					})
 
 				} else {
 					// display message to show if could not sign in because of PHP error
@@ -388,6 +397,8 @@ window.onload = function () {
 				}
 				updateDisplayData(displayMsg);
 			}).catch(error => {
+				console.log(error);
+				
 				// error message to show if internet fails
 				displayMsg += `
 				<div class="result" id="error">
