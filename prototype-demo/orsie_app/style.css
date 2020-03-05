@@ -314,6 +314,7 @@ img {
 	margin: 0.5rem auto;
 	text-align: center;
 	color: var(--dc-orange);
+	font-size: 1.2rem;
 }
 
 #search-page #content-box h2 {
