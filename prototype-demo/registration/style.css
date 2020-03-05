@@ -111,6 +111,13 @@ p {
     font-family: 'Lato', sans-serif;
 }
 
+#registration-date {
+    margin: 0.5rem;
+    color: var(--dc-orange);
+    /* font-size: 1.25rem; */
+    font-family: 'Lato', sans-serif;
+}
+
 #registration-form-instruction {
     margin: 1rem 1rem;
     font-size: 1rem;
@@ -200,9 +207,95 @@ input:focus {
     background: rgba(69, 85, 96, 0.3);
 }
 
-#type_selector input:checked + label {
+#type_selector input:checked+label {
     background: var(--dc-green);
     color: #fff;
+}
+
+#consent_check {
+    width: 95%;
+    max-height: 0;
+    padding: 0 10px;
+    margin: 0 auto;
+    background: rgba(69, 85, 96, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    user-select: none;
+    transition: 0.7s ease;
+    cursor: pointer;
+}
+
+.visible {
+    max-height: 250px !important;
+    padding: 10px !important;
+    margin: 0.5rem auto !important;
+}
+
+#consent_check span {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    margin: 5px 5px;
+}
+
+#consent_check label:hover {
+    cursor: pointer;
+}
+
+#consent_check label {
+    width: 90%;
+}
+
+#consent_check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+#consent_check #checkmark {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    margin: 4px 15px 0 0;
+    border: 2px solid var(--dc-green);
+    border-radius: 2px;
+    transition: 0.2s;
+}
+
+#consent_check:hover input~#checkmark {
+    background-color: #eee;
+}
+
+#consent_check input:checked~#checkmark {
+    background-color: var(--dc-green);
+}
+
+#consent_check #checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 1px;
+    left: 6px;
+    width: 5px;
+    height: 12px;
+    border: 2px solid white;
+    border-radius: 1px;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#consent_check input:checked~#checkmark:after {
+    display: block;
 }
 
 #formNote {
@@ -256,7 +349,8 @@ button:disabled:hover {
 @keyframes spin {
     from {
         transform: rotate(0deg);
-    } 
+    }
+
     to {
         transform: rotate(360deg);
     }

@@ -18,7 +18,7 @@
         <section id="splash" class="page">
             <!-- dc logo -->
             <h2>Research Day 2020</h2>
-            <img id="splash-dc-logo" src="./images/dc-logo-new.svg" alt="DC Logo">
+            <img id="splash-dc-logo" src="./images/dc-logo.svg" alt="Durham College Logo">
         </section>
 
         <!-- main form -->
@@ -28,9 +28,14 @@
             <object id="registration-form-logo" data="./images/orsie-logo.svg" type="image/svg+xml"></object>
             <!-- Event title -->
             <h4 id="registration-event" class="reveal">Research Day 2020</h4>
+            <p id="registration-date" class="reveal">Thursday April 2, 2020 <br>4:00PM - 6:30PM <br>
+            Centre for Collaborative Education,<br>Durham College, Oshawa Campus</p>
             <!-- Registration Instructions -->
-            <p id="registration-form-instruction" class="reveal">Enter your information below to register for the
+            <p id="registration-form-instruction" class="reveal">Enter your information below to register</p>
+                <!-- 
+<p id="registration-form-instruction" class="reveal">Enter your information below to register for the
                 ORSIE's Research Day 2020.</p>
+ -->
             <!-- Registration form -->
             <form id="registration-form" method="post" class="reveal">
                 <input type="text" name="name_first" placeholder="*First Name" class="reveal" required>
@@ -75,6 +80,13 @@
                 </p>
                 <input type="hidden" name="event_name" value="ORSIE Research Day 2020" />
                 <p class="reveal" id="formNote">* Required</p>
+                <label id="consent_check">
+                    <span>
+                        <input type="checkbox" name="consent" id="consent" value="Yes"/>
+                        <span id="checkmark"></span>
+                        <label for="consent">I consent to Durham College sending me information and promotional electronic messages.</label>
+                    </span>
+                </label>
                 <button type="submit" class="reveal" id="submit">
                     <span id="spinner"></span>
                     <span id="register">Register</span>

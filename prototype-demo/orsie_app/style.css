@@ -3,10 +3,19 @@
 /* importing fonts from Adobe Fonts */
 @import url("https://use.typekit.net/nat8tym.css");
 
+:root {
+	--dc-green: #0b8261;
+	--dc-yellowgreen: #45A046;
+	--dc-brown: #522C1B;
+	--dc-grey: #455560;
+	--dc-orange: #D33222;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -14,6 +23,7 @@ body {
 	font-size: 1em;
 	letter-spacing: 0.5px;
 	overflow: hidden;
+	position: fixed;
 }
 
 ::-webkit-scrollbar {
@@ -33,30 +43,42 @@ header {
 	left: 0;
 	height: 10vh;
 	width: 100vw;
-	/* border: 1px solid rgba(56, 56, 56, 0.2); */
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: left;
 	z-index: 899;
-	background: #eee;
-	color: #da0000;
+	background: #0b8261;
+	color: rgb(186, 252, 188);
+	border-bottom: 1px solid rgba(4, 61, 12, 0.151);
+	box-shadow: 0 5px 7px 2px rgba(48, 33, 5, 0.13);
 }
 
 h1 {
 	font-size: 1.3rem;
 	font-weight: normal;
 	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 h2 {
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-weight: 400;
 	text-transform: uppercase;
+	color: #fffaf0;
+	letter-spacing: 1px;
+	text-align: center;
 }
 
 header h1 {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-	padding: 1rem;
+	width: auto;
+	text-align: left;
+	padding: 0.7rem;
+	padding-left: 1.4rem;
+}
+#profileIcon {
+	width: 35px;
+	position: absolute;
+	right: 1rem;
 }
 
 #map-button,
@@ -64,14 +86,13 @@ header h1 {
 	padding: 1.2vh;
 	height: 7vh;
 	width: 7vh;
-	/* width: 15vw; */
 	background: #37987D;
 	border-radius: 50%;
 	box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.3);
 	transition: 0.4s ease-in-out;
 }
 
-#map-tab{
+#map-tab {
 	z-index: 998;
 	width: 100px;
 	height: 7vh;
@@ -81,16 +102,15 @@ header h1 {
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 	left: -40px;
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
 }
 
 #map-button {
 	margin-left: 60px;
 	z-index: 999;
-	/* border-top-left-radius: 2rem; */
-	/* border-bottom-left-radius: 2rem; */
 }
 
-#events-tab{
+#events-tab {
 	z-index: 99998;
 	width: 60px;
 	height: 7vh;
@@ -107,7 +127,6 @@ header h1 {
 #events-button {
 	z-index: 99998;
 	margin-right: 3vw;
-	background: #fff;
 	bottom: 30vw;
 	right: 0;
 	position: absolute;
@@ -117,7 +136,7 @@ header h1 {
 	align-content: center;
 	align-items: center;
 	opacity: 0;
-	box-shadow: 2px 2px 7px #000;
+	box-shadow: inset -2px -2px 7px #000;
 	cursor: pointer;
 	user-select: none;
 }
@@ -135,47 +154,53 @@ header h1 {
 	width: 100%;
 	height: 90vh;
 	padding: 1rem;
+	padding-top: 1.4rem;
 	overflow: scroll;
-	background: #eee;
+	background: #0b8261;
 	z-index: 888;
 }
 
-#events-page #current-events-container,
-#events-page #upcoming-events-container {
+#events-page #current-events-container{
 	width: 100%;
 	margin: 1rem auto;
-	/* border: 1px solid rgba(0, 0, 0, 0.5); */
+	margin-bottom: 10vh;
 	border-radius: 10px;
 	padding: 0.5rem 0;
 }
 
 #events-page #current-events-container {
 	height: 35%;
-	white-space: nowrap;
-	overflow-x: scroll;
-	overflow-y: hidden;
 }
-
-#events-page #upcoming-events-container {
-	/* To be changed to auto when functional */
-	height: 50%;
-	overflow: visible;
-}
-
-#events-page #current-events-container .event-box, 
-#events-page #upcoming-events-container .event-box {
-	background: #fff;
-	border-radius: 10px;
-	box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.1);
+#events-page #current-events-container:last-child {
+	margin-bottom: 2715px;
 }
 
 #events-page #current-events-container .event-box {
+	background: rgb(253, 252, 249);
+	border-radius: 5px;
+	border: 1px solid rgba(0, 128, 0, 0.13);
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
+	position: relative;
+
 	display: inline-block;
-	height: 100%;
-	width: 95%;
-	margin-right: 0.5rem;
+	height: fit-content;
+	width: 100%;
+	margin: auto;
 	padding: 0.5rem;
-	vertical-align: top
+	vertical-align: top;
+	margin-bottom: 4%;
+}
+
+#events-page #current-events-container .event-box-inner {
+	border-left: 4px solid orange;
+	height: 100%;
+	padding: 3px;
+	padding-left: 10px;
+	border-radius: 3px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 #events-page #current-events-container .event-box h3{
@@ -183,26 +208,37 @@ header h1 {
 	width: 90%;
 	height: auto;
 	white-space: normal;
+	font-weight: 550;
 }
 
 #events-page #current-events-container .event-box h4{
 	margin-bottom: 0.5rem;
 	width: 90%;
+	font-size: 0.9rem;
+	font-weight: 400;
 	height: auto;
 	white-space: normal;
+	position: relative;
+	padding-left: 25px;
 }
 
+#events-page #current-events-container .event-box h4::before{
+	content: url("./images/reserveTime.svg");
+	max-width: 20px;
+	min-width: 23px;
+	position: absolute;
+	left:-3px;
+	top:-1px;
+}
 #events-page #current-events-container .event-box p{
 	margin-bottom: 0.5rem;
 	width: 90%;
 	height: auto;
 	white-space: normal;
 }
-
-#events-page #upcoming-events-container .event-box {
-	height: 25%;
-	width: 100%;
-	margin-bottom: 0.5rem;
+#events-page #current-events-container .event-box p.event-description {
+	font-size: 0.8rem;
+	/* padding-left: 25px; */
 }
 
 #map-page {
@@ -215,6 +251,7 @@ header h1 {
 	border-bottom-right-radius: 600px;
 	right: 100vw;
 	top: 50vh;
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
 
 	/* use for reverse effect || from flat to round
 
@@ -229,7 +266,7 @@ header h1 {
 }
 
 #map {
-	height: 60%;
+	height: 100%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -254,29 +291,53 @@ header h1 {
 	/* required for effect z-index: 900; */
 	/* The z-index below is the baseline for scrolling */
 	z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    background-color: #00000010;
-    position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: #00000010;
+	position: absolute;
 }
-
-#map-info{
-	color: #eee;
-	width: 80%;
-	margin-left: 10%;
-	margin-top: 10vw;
+#map-info {
+	background-color: whitesmoke;
+	padding: 8%;
+	padding-bottom: 5%;
+	overflow: scroll;
+	height: 40vh;
 	opacity: 0;
 }
 
+#map-info-inner{
+	/* background-color: whitesmoke; */
+	color: #000;
+	width: 80%;
+	height: fit-content;
+	/* padding: 8%; */
+	padding-left: 8%;
+	border-left: 5px solid orange;
+	border-radius: 3px;
+	/* margin-left: 10%;
+	margin-top: 10vw; */
+	/* opacity: 0; */
+	/* overflow: scroll; */
+	/* border: 1px solid orange; */
+}
+
 #map-info-title{
-	margin-bottom: 5vw;
+	margin-bottom: 3vw;
+	font-weight: 550;
 	-webkit-user-select: none; /* Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
 }
+#map-info-location {
+	font-size: 1rem;
+	margin-bottom: 5%;
+}
 #map-info-text{
 	margin-bottom: 5vw;
+	/* font-size: 0.9rem; */
+	font-size: 0.8rem;
+	font-weight: 400;
 	-webkit-user-select: none; /* Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
@@ -284,10 +345,232 @@ header h1 {
 }
 
 /* used for laptop demonstration purposes  */
-img{
+img {
 	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-drag: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
+}
+
+
+/* SEARCH PAGE STYLES */
+
+#search-page {
+	position: absolute;
+	/* top: 0vh; */
+	width: 100vw;
+	height: 100vh;
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2500;
+	overflow: hidden;
+	background: url("./images/bg.svg");
+	background: fixed contain;
+}
+
+#search-page #content-box {
+	width: 95%;
+	max-width: 360px;
+	max-height: calc(100vh - 2rem);
+	padding: 2rem 2rem;
+	text-align: center;
+	border: 5px solid var(--dc-green);
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+	overflow: scroll;
+}
+
+#search-page #content-box h1 {
+	margin: 0.5rem auto;
+	text-align: center;
+	color: var(--dc-orange);
+	font-size: 1.2rem;
+}
+
+#search-page #content-box h2 {
+	text-align: center;
+	font-weight: lighter;
+	color: var(--dc-green);
+}
+
+#search-form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 1rem;
+}
+
+#search-form input,
+#search-form button {
+	padding: 0.5rem;
+	border-radius: 5px;
+}
+
+#search-form #search-input {
+	width: 79%;
+	font-size: 1.2rem;
+	border: 2px solid transparent;
+	/* background: rgba(0, 0, 0, 0.05); */
+	background: #eee;
+	transition: 0.3s;
+}
+
+#search-form #search-input::placeholder {
+	font-size: 1rem;
+}
+
+#search-form #search-input:focus {
+	outline: none;
+	border: 2px solid var(--dc-green);
+	background: transparent;
+}
+
+#search-form #submit {
+	width: 19%;
+	background: var(--dc-green);
+	color: #ffffff;
+	border: 2px solid var(--dc-green);
+}
+
+#search-form #submit:focus {
+	outline: none;
+	animation: click 0.1s alternate linear;
+}
+
+@keyframes click {
+	to {
+		transform: scale(0.9);
+	}
+}
+
+#search-form #submit img {
+	width: 70%;
+}
+
+#search-results {
+	width: 100%;
+	max-height: 300px;
+	overflow: scroll;
+	text-align: left;
+	margin: 0.5rem auto;
+	border-radius: 5px;
+}
+
+.result {
+	margin: 0.5rem auto;
+	padding: 0.5rem;
+	width: 100%;
+	background: #eee;
+	border-radius: 5px;
+	animation: load-entry 0.5s ease-out;
+	transform-origin: center;
+	transition: 0.1s;
+}
+
+.selected {
+	background: var(--dc-green);
+	color: #fff;
+}
+
+.selected p {
+	color: #fff !important;
+	transition: 0.1s;
+	opacity: 0.8;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+@keyframes load-entry {
+	from {
+		opacity: 0;
+		margin: -1rem auto;
+		/* transform: scaleY(0); */
+		overflow: hidden;
+	}
+}
+
+.result h3 {
+	font-weight: normal;
+}
+
+.result p {
+	text-align: left;
+	color: #888;
+	font-size: 0.9rem;
+}
+
+#spinner-box {
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+
+#spinner {
+	margin: auto;
+	height: 1.45rem;
+	width: 1.45rem;
+	border-radius: 50%;
+	background: transparent;
+	border: 3px solid transparent;
+	border-top: 3px solid var(--dc-green);
+	border-bottom: 3px solid var(--dc-green);
+	animation: spin 1s forwards infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+#error p {
+	text-align: center;
+	color: var(--dc-orange);
+}
+
+#success {
+	background-color: var(--dc-green);
+}
+
+#success p {
+	text-align: center;
+	color: #ffffff;
+}
+
+#register {
+	text-align: center;
+	background-color: var(--dc-green);
+}
+
+#register a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#sign-in-button {
+	display: none;
+	width: 100%;
+	background-color: var(--dc-green);
+	color: #fff;
+	padding: 0.5rem;
+	font-size: 1rem;
+	font-family: urbane, sans-serif;
+	letter-spacing: 0.7px;
+	border-radius: 5px;
+	border: none;
+	transition: 0.5s;
+}
+
+#sign-in-button:disabled {
+	opacity: 0.4;
 }

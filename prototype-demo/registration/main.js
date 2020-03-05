@@ -25,6 +25,8 @@ window.onload = function () {
     const submitButton = document.querySelector("#submit");
     const spinner = document.querySelector("#spinner");
     const registerText = document.querySelector("#register");
+    let guestTypeRadio = document.querySelectorAll("input[type=radio]");
+    let consentCheck = document.querySelector("#consent_check");
 
     // position form page logo on start
     let h = (formPage.offsetHeight / 2) - (formPage.offsetHeight / 5.5);
@@ -77,6 +79,21 @@ window.onload = function () {
         })
     }
 
+    // event handler for the radio buttons to check if the guest option has been selected
+    guestTypeRadio.forEach(radio => {
+        radio.addEventListener("change", function (e) {
+            if (e.target.value == "Guest") {
+                // showing the checkbox
+                consentCheck.classList.add("visible");
+            } else {
+                // hiding the checkbox and unchecking it
+                consentCheck.classList.remove("visible");
+                document.querySelector("#consent").checked = false;
+            }
+        })
+    });
+    
+
 
     // animate form in and call to animate orsie logo
     function showForm() {
@@ -118,10 +135,12 @@ window.onload = function () {
         });
     })
 
+    // event handler for the submit button
     submitButton.addEventListener("click", (e) => {
         let checkedRadio = document.querySelector("input[type=radio]:checked");
         let invalidInput = document.querySelectorAll("input:invalid");
 
+        // resetting the style of each input
         TweenMax.staggerTo("input", 0.25, {
             borderBottom: "2px solid #522C1B"
         })
@@ -131,12 +150,14 @@ window.onload = function () {
         })
 
         TweenMax.to("#formNote", 0.25, {
-            color: "grey"
+            color: "#383838"
         });
 
+        // if text inputs are not empty
         if (invalidInput.length == "") {
             return;
         } else {
+            // else if text inputs are empty
             e.preventDefault();
             TweenMax.staggerTo(invalidInput, 0.25, {
                 borderBottom: "2px solid red"
@@ -146,9 +167,11 @@ window.onload = function () {
             });
         }
 
+        // if radio option is selected
         if (checkedRadio) {
             return;
         } else {
+            // if radio button is not selected
             e.preventDefault();
             TweenMax.staggerTo("#type_selector", 0.25, {
                 borderBottom: "2px solid red"
@@ -169,7 +192,7 @@ window.onload = function () {
         spinner.style.display = "block";
 
         // sending/fetching data from the server
-        let url = "https://services.mullasuleman.com/insert_data.php";
+        let url = "services/insert_data.php";
         fetch(url, {
                 body: new FormData(e.target),
                 method: "post"
@@ -179,9 +202,11 @@ window.onload = function () {
                 // code if connection is successful
                 if (message.id == 0) {
                     // show success message if data inserted
-                    registerText.innerHTML = `Awesome, ${inputFields[0].value}! <br>See you at the event.`;
+                    registerText.innerHTML = `Thank you for your registration, ${inputFields[0].value}! <br>See you at the event.`;
                     spinner.style.display = "none";
                     registerText.style.display = "block";
+
+                    // disabling the form
                     document.querySelectorAll("input, label").forEach(input => {
                         TweenMax.to(input, 0.3, {
                             opacity: 0.5

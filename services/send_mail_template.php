@@ -1,8 +1,8 @@
 <?php
-function sendMailTemplate($name, $email)
+function sendMailTemplate($name_first, $name_last, $email)
 {
     $to = "$email";
-    $subject = "ORSIE Research Day Registration";
+    $subject = "Durham College Research Day Registration";
     $from = "ORSIE Durham College <appliedresearch@durhamcollege.ca>";
     $headers = "MIME-Version: 1.0" . "\n";
     $headers .= "Content-type:text/html;charset=iso-8859-1" . "\n";
@@ -12,12 +12,12 @@ function sendMailTemplate($name, $email)
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta property="og:title" content="ORSIE Research Day Registration">
+	<meta property="og:title" content="Durham College Research Day Registration">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ORSIE Research Day Registration</title>
+	<title>Durham College Research Day Registration</title>
 
 	<style type="text/css">
 		p {
@@ -510,7 +510,7 @@ function sendMailTemplate($name, $email)
 <body id="archivebody" style="height: 100%; margin: 0px; padding: 0px; width: 100%; text-size-adjust: 100%;">
 	<!--[if !gte mso 9]><!----><span class="mcnPreviewText"
 		style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">You
-		are registered for the Research Day 2020</span>
+		are registered for Research Day 2020</span>
 	<!--<![endif]-->
 	<!---->
 	<center>
@@ -559,7 +559,7 @@ function sendMailTemplate($name, $email)
 
 
 																						<img align="center" alt=""
-																							src="https://mullasuleman.com/test/dc-logo.png"
+																							src="https://orsieevents.durhamcollege.ca/images/dc-logo-white.png"
 																							width="150"
 																							style="max-width: 300px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"
 																							class="mcnRetinaImage">
@@ -627,14 +627,14 @@ function sendMailTemplate($name, $email)
 																						style="padding: 0px 18px 9px;font-family: Lato, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #757575;font-size: 16px;line-height: 150%;text-align: left;">
 
 																						<h2 class="null"
-																							style="text-align: center;display: block;margin: 0;padding: 0;color: #222222;font-family: Helvetica;font-size: 34px;font-style: normal;font-weight: bold;line-height: 150%;letter-spacing: normal;">
+																							style="text-align: center;display: block;margin: 0;padding: 0;color: #222222;font-family: Helvetica;font-size: 28px;font-style: normal;font-weight: bold;line-height: 150%;letter-spacing: normal;">
 																							<span
-																								style="font-family:lato,helvetica neue,helvetica,arial,sans-serif">Awesome,
-																								' . $name . '!</span></h2>
+																								style="font-family:lato,helvetica neue,helvetica,arial,sans-serif">Thank you for your registration,
+																								' . $name_first . ' ' . $name_last . '!</span></h2>
 
 																						<div
 																							style="text-align: center;">
-																							You are registered for the
+																							You are registered for
 																							Research Day at Durham
 																							College.</div>
 
@@ -711,7 +711,7 @@ function sendMailTemplate($name, $email)
 																						<h3 class="null"
 																							style="text-align: left;display: block;margin: 0;padding: 0;color: #444444;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 150%;letter-spacing: normal;">
 																							<span
-																								style="color:#0B8261">ORSIE
+																								style="color:#0B8261">Durham College \'s
 																								Research Day 2020</span>
 																						</h3>
 
@@ -761,8 +761,8 @@ function sendMailTemplate($name, $email)
 																						<h3 class="null"
 																							style="display: block;margin: 0;padding: 0;color: #444444;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 150%;letter-spacing: normal;text-align: left;">
 																							When</h3>
-																						Thursday. April 2, 2020<br>
-																						From 4pm to 6pm
+																						Thursday, April 2, 2020<br>
+																						From 4 to 6:30 p.m.
 																					</td>
 																				</tr>
 																			</tbody>
@@ -952,8 +952,8 @@ function sendMailTemplate($name, $email)
 																						<span
 																							style="font-size:12px">Tel:&nbsp;<a href="tel:905-721-2000">905-721-2000</a><br>
 																							Email:&nbsp;<a
-																								href="mailto:dccares@durhamcollege.ca"
-																								style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: underline;">dccares@durhamcollege.ca</a></span><br>
+																								href="mailto:appliedresearch@durhamcollege.ca"
+																								style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: underline;">appliedresearch@durhamcollege.ca</a></span><br>
 																						<a href="https://durhamcollege.ca/"
 																							target="_blank"
 																							style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: underline;">www.durhamcollege.ca</a>
