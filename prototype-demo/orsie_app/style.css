@@ -45,7 +45,7 @@ header {
 	width: 100vw;
 	display: flex;
 	align-items: center;
-	justify-content: left;
+	justify-content: flex-start;
 	z-index: 899;
 	background: #0b8261;
 	color: rgb(186, 252, 188);
@@ -371,7 +371,7 @@ img {
 	background: fixed contain;
 
 	/* uncomment below for testing the main app w/o signing in */
-	/* display: none; */
+	display: none;
 }
 
 #search-page #content-box {
