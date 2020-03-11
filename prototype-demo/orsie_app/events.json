@@ -6,7 +6,14 @@
             "name": "Experience Student Entrepreneurship",
             "location": "Global Classroom",
             "time": "16:35",
-            "description": "At FastStartDC we help innovate, develop and launch student businesses, and impactful social enterprise projects. Watch current students compete in lightning round pitch contests exploring: AI, food, and social enterprise."
+            "description": "At FastStartDC we help innovate, develop and launch student businesses, and impactful social enterprise projects. Watch current students compete in lightning round pitch contests exploring: AI, food, and social enterprise.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 2,
@@ -14,7 +21,14 @@
             "name": "Seed to Celebration",
             "location": "CFCE 116",
             "time": "16:35",
-            "description": "Learn about the W. Galen Weston Centre for Food’s ‘seed-to-celebration’ approach – from horticulture to food science and product development, from culinary to hospitality experiences, and gardens to craft brewing."
+            "description": "Learn about the W. Galen Weston Centre for Food’s ‘seed-to-celebration’ approach – from horticulture to food science and product development, from culinary to hospitality experiences, and gardens to craft brewing.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 3,
@@ -22,7 +36,14 @@
             "name": "Partnerships for Social Innovation",
             "location": "CFCE 117",
             "time": "16:35",
-            "description": "We build partnerships that put social innovation at the centre of research. Come and be inspired with our lightning talks and success stories, and explore our interactive sessions. There are prizes and surprises for everyone."
+            "description": "We build partnerships that put social innovation at the centre of research. Come and be inspired with our lightning talks and success stories, and explore our interactive sessions. There are prizes and surprises for everyone.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 4,
@@ -30,7 +51,14 @@
             "name": "Health Technology and Innovation",
             "location": "CFCE 118",
             "time": "16:35",
-            "description": "The future of health care at the community, provincial, and federal levels is dependent on advances in technology and innovation. Explore the research that is being conducted by students, faculty, and community members to improve health in our society."
+            "description": "The future of health care at the community, provincial, and federal levels is dependent on advances in technology and innovation. Explore the research that is being conducted by students, faculty, and community members to improve health in our society.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 5,
@@ -38,7 +66,14 @@
             "name": "Experience Autonomous Vehicles",
             "location": "CFCE 119",
             "time": "16:35",
-            "description": "The future is coming faster than you think! For insights into what life will be like with autonomous vehicles, visit the AVIN zone."
+            "description": "The future is coming faster than you think! For insights into what life will be like with autonomous vehicles, visit the AVIN zone.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 6,
@@ -46,7 +81,14 @@
             "name": "Research and Innovation in AI and Cybersecurity",
             "location": "CFCE 123 (FastStart)",
             "time": "16:35",
-            "description": "Engage with students on how they have applied Artificial Intelligence solutions to datasets to impact service optimization, proactive security measures, and overall ROI for companies across Ontario."
+            "description": "Engage with students on how they have applied Artificial Intelligence solutions to datasets to impact service optimization, proactive security measures, and overall ROI for companies across Ontario.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 7,
@@ -54,7 +96,14 @@
             "name": "Makerspace Magic",
             "location": "CFCE 123b",
             "time": "16:35",
-            "description": "Experience the magic of creative collisions! Check out FastStartDC’s interdisciplinary project with our SET & MAD team collaboration, and explore ‘Project X’ - FastStartDC’s new experiential partnership with OPG’s X-Lab."
+            "description": "Experience the magic of creative collisions! Check out FastStartDC’s interdisciplinary project with our SET & MAD team collaboration, and explore ‘Project X’ - FastStartDC’s new experiential partnership with OPG’s X-Lab.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 8,
@@ -62,7 +111,14 @@
             "name": "The Future of Mixed Realities",
             "location": "Atrium",
             "time": "16:35",
-            "description": "The MRC Studio is helping businesses to develop experiential applications that integrate motion capture, virtual reality, augmented reality and virtual production. Experience interactive demos that blend the physical and digital worlds."
+            "description": "The MRC Studio is helping businesses to develop experiential applications that integrate motion capture, virtual reality, augmented reality and virtual production. Experience interactive demos that blend the physical and digital worlds.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 9,
@@ -70,7 +126,14 @@
             "name": "The 10-year Journey of Innovation",
             "location": "CFCE/SSB link",
             "time": "16:35",
-            "description": "A great story can be told by the culmination of its moments. Visit us to experience some of the most remarkable achievements, projects, and impacts of ORSIE’s 10-year innovation journey at Durham College."
+            "description": "A great story can be told by the culmination of its moments. Visit us to experience some of the most remarkable achievements, projects, and impacts of ORSIE’s 10-year innovation journey at Durham College.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         },
         {
             "zone": 10,
@@ -78,7 +141,14 @@
             "name": "Student Innovations",
             "location": "SSB 116A/B",
             "time": "16:35",
-            "description": "Explore innovative new food and natural health products, developed by students of both the Food and Farming and the Pharmaceutical and Food Science programs. Meet the students to try these new products and hear all about their exciting projects."
+            "description": "Explore innovative new food and natural health products, developed by students of both the Food and Farming and the Pharmaceutical and Food Science programs. Meet the students to try these new products and hear all about their exciting projects.",
+            "schedule": [
+                {"when": "16:35", "what": "Zone Open"},
+                {"when": "18:15", "what": "Zone Closed"}
+            ],
+            "popUps": [
+                {"when": "23:00", "what": "The pop up says"}
+            ]
         }
     ]
 }
