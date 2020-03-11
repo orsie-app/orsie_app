@@ -267,6 +267,13 @@ header h1 {
 	/* padding-left: 25px; */
 }
 
+/* styles for schedule page */
+#full-schedule-container{
+	/* hide it by default */
+	display: none;
+	width: 100%;
+}
+
 #map-page {
 	position: absolute;
 	background: #0b8261;
