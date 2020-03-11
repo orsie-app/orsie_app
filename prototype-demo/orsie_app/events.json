@@ -31,7 +31,8 @@
                 {"when": "18:15", "what": "Zone Closed"}
             ],
             "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
+                {"when": "16:45", "what": "Happening now in the Global Classroom! FastStart's Food Foundry Pitch Contest!"},
+                {"when": "17:05", "what": "Catch the EnactusDC regional presentations in the Global class - right now!"}
             ]
         },
         {
@@ -65,7 +66,7 @@
                 {"when": "18:15", "what": "Zone Closed"}
             ],
             "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
+                {"when": "16:40", "what": "Beer Tasting and Sensory Evaluation starts in 15 minutes in CFCE 116"}
             ]
         },
         {
@@ -99,7 +100,9 @@
                 {"when": "18:15", "what": "Zone Closed"}
             ],
             "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
+                {"when": "17:05", "what": "Come to CFCE117 for a showcase of social innovation in action!"},
+                {"when": "17:25", "what": "Round 2 - Building Partnerships for Justice: lightning talks in CFCE117"},
+                {"when": "17:50", "what": "Round 3 - Highlighting DC's partnership with Durham Region"}
             ]
         },
         {
@@ -133,7 +136,10 @@
                 {"when": "18:15", "what": "Zone Closed"}
             ],
             "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
+                {"when": "16:45", "what": "Interested in Nursing simulations? Immerse yourself in the HELPERS simulation model used in the Durham College Nursing program"},
+                {"when": "17:00", "what": "Check out the latest from We Traq"},
+                {"when": "17:15", "what": "Check out the latest from Connex Health"},
+                {"when": "17:30", "what": "Check out the latest from ICare Home Health Services"}
             ]
         },
         {
@@ -166,9 +172,7 @@
                 {"when": "18:10", "what": ""},
                 {"when": "18:15", "what": "Zone Closed"}
             ],
-            "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
-            ]
+            "popUps": []
         },
         {
             "zone": 6,
@@ -201,7 +205,9 @@
                 {"when": "18:15", "what": "Zone Closed"}
             ],
             "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
+                {"when": "16:50", "what": "Autonomous vehicles will be the most impactful invention human kind has seen to date! See why! CFCE 119"},
+                {"when": "17:10", "what": "See why autonomous vehicles are already here! CFCE 119"},  
+                {"when": "17:35", "what": "Will community quality of life be better with autonomous vehicles? CFCE 119"}  
             ]
         },
         {
@@ -235,7 +241,7 @@
                 {"when": "18:15", "what": "Zone Closed"}
             ],
             "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
+                {"when": "17:40", "what": "Had a chance to talk to AI and cybersecurity technical experts? Stop by now!"}
             ]
         },
         {
@@ -251,7 +257,7 @@
                 {"when": "16:45", "what": ""},
                 {"when": "16:50", "what": ""},
                 {"when": "16:55", "what": ""},
-                {"when": "17:00", "what": "The Head': FastStart's Interdisciplinary Project presentation"},
+                {"when": "17:00", "what": "The Head: FastStart's Interdisciplinary Project presentation"},
                 {"when": "17:05", "what": ""},
                 {"when": "17:10", "what": ""},
                 {"when": "17:15", "what": ""},
@@ -269,7 +275,7 @@
                 {"when": "18:15", "what": "Zone Closed"}
             ],
             "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
+                {"when": "16:55", "what": "Curious about 'the head'? Learn about this great makerspace project in CFCE123B in 5 minutes!"}
             ]
         },
         {
@@ -302,9 +308,7 @@
                 {"when": "18:10", "what": ""},
                 {"when": "18:15", "what": "Zone Closed"}
             ],
-            "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
-            ]
+            "popUps": []
         },
         {
             "zone": 10,
@@ -336,9 +340,7 @@
                 {"when": "18:10", "what": ""},
                 {"when": "18:15", "what": "Zone Closed"}
             ],
-            "popUps": [
-                {"when": "23:00", "what": "The pop up says"}
-            ]
+            "popUps": []
         }
     ]
 }
