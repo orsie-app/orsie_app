@@ -78,16 +78,62 @@ object.onload = function () {
 
     //function for room click results
     function roomClick(eventCard) {
-        closeMap();
+        //check is user has an ios device
+        let isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+
         //get meta data for viewport
         viewport = document.querySelector("#viewport");
         original = viewport.attributes.content.value;
-        force_scale = original + ", maximum-scale=1";
-        viewport.setAttribute("content", force_scale);
-        //reset to allow for user zoom
-        setTimeout(function () {
-            viewport.setAttribute("content", original);
-        }, 100);
+        force_scale = original + ", maximum-scale = 1";
+        if(isIOS){
+            viewport.setAttribute('content', "width=device-width, initial-scale=0");
+            //basically same as the closeMap function but with additional hard coded values
+            gsap.to(eventsButton, {
+                duration: 0.01,
+                right: 0,
+                opacity: 0,
+            });
+            // remove the map page from the screen
+            gsap.to(mapPage, {
+                duration: 0.33,
+                // the top here is to position close to the center of where the map tab is
+                top: mapTab.offsetTop - window.innerWidth * 0.45,
+                right: 4000,
+                height: 300,
+                borderTopRightRadius: 600,
+                borderBottomRightRadius: 600,
+                ease: "Power3.Out",
+                onComplete: function () {
+                    gsap.to(eventsButton, {
+                        right: 0,
+                        duration: 0.2
+                    })
+                }
+            });
+            gsap.to(["#map", "#map-info"], {
+                duration: 0.05,
+                opacity: 0,
+            })
+            // map is now closed
+            mapOpen = false;
+            //event.preventDefault();
+            // set fader div to 0.9 alpha black and put fader below other elements
+            gsap.to("#fader", {
+                duration: 0.5,
+                backgroundColor: "rgba(0,0,0,0)",
+                ease: "Power3.InOut",
+                onComplete: function () {
+                    document.getElementById('fader').style.zIndex = -1;
+                }
+            })
+        }else{
+            closeMap();
+            viewport.setAttribute("content", force_scale);
+                    //reset to allow for user zoom
+            setTimeout(function () {
+                viewport.setAttribute("content", original);
+            }, 100);
+        }
         //scroll relevant card into view
         eventCard.scrollIntoView();
         //highlight it briefly
