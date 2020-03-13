@@ -1,3 +1,8 @@
+//global variable to hold pop up info
+let popUps = [];
+//global variable to hold all zone schedules
+let masterSchedule = [];
+
 function getData(){
     fetch('./events.json')
     .then(data => data.json())
@@ -6,6 +11,15 @@ function getData(){
         let eventData = data.events;
 
         for(zone of eventData){
+            //add all pop ups to the global pop up array
+            for(popup of zone.popUps){
+                popUps.push({location: zone.location, time: popup.when, msg: popup.what});
+            };
+
+            //push zone schedule to masterSchedule
+            masterSchedule.push(zone.schedule)
+
+            //create event cards
             currentEventsContainer.innerHTML += `
                 <div id="zone${zone.zone}" data-mapId="${zone.mapId}" class="event-box">
                     <div class="event-box-inner">
@@ -15,7 +29,7 @@ function getData(){
                         <p class="event-description">${zone.description}</p>
                     </div>
                 </div>
-            `
+            `;
         }
     })
 }

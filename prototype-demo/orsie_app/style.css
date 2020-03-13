@@ -45,7 +45,7 @@ header {
 	width: 100vw;
 	display: flex;
 	align-items: center;
-	justify-content: left;
+	justify-content: flex-start;
 	z-index: 899;
 	background: #0b8261;
 	color: rgb(186, 252, 188);
@@ -58,6 +58,32 @@ h1 {
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+}
+
+nav{
+	display: grid;
+	grid-template-columns: 3fr 1fr 3fr;
+	grid-template-rows: 1fr;
+	width: 100%;
+}
+
+.navItem{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#eventsNav{
+	grid-column: 1/2;
+}
+
+nav div{
+	grid-column: 2/3;
+	color: #fffaf0;
+}
+
+#scheduleNav{
+	grid-column: 3/4;
 }
 
 h2 {
@@ -241,6 +267,13 @@ header h1 {
 	/* padding-left: 25px; */
 }
 
+/* styles for schedule page */
+#full-schedule-container{
+	/* hide it by default */
+	display: none;
+	width: 100%;
+}
+
 #map-page {
 	position: absolute;
 	background: #0b8261;
@@ -371,7 +404,7 @@ img {
 	background: fixed contain;
 
 	/* uncomment below for testing the main app w/o signing in */
-	/* display: none; */
+	display: none;
 }
 
 #search-page #content-box {

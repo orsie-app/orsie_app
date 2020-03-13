@@ -14,15 +14,26 @@
 <body>
 	<main id="container">
 		<header>
-			<h1>Research Day 2020</h1>
+			<!-- add the actual logo -->
+			<img src="" alt="The ORSIE logo">
+			<marquee id="newsTicker" direction="left">
+				<!-- placeholder text for demo purposes -->
+				Global Classroom: New thing happening at 5pm! &nbsp; &nbsp; &nbsp; Other Classroom: New thing happening at 5pm! &nbsp; &nbsp; &nbsp; Third Classroom: Even Newer things!
+			</marquee>
+			<!-- <h1>Research Day 2020</h1>
 			<img id="profileIcon" src="./images/profile3.svg" alt="profile">
-			<!-- <div id="events-button">
-				<img src="./images/map-icon.png" alt="Map Button" />
-			</div> -->
+			-->
 		</header>
 		<section id="events-page">
-			<h2>Events</h2>
+			<nav>
+				<h2 id="eventsNav"  class="navItem">Events</h2>
+				<div class="navItem">|</div>
+				<h2 id="scheduleNav"  class="navItem">Schedule</h2>
+			</nav>
 			<div id="current-events-container">
+				<!-- will be dynamically generated from json data -->
+			</div>
+			<div id="full-schedule-container">
 				<!-- will be dynamically generated from json data -->
 			</div>
 		</section>
@@ -79,8 +90,17 @@
 	<!-- TOUCH INPUTS SCRIPT -->
 	<script src="./touchInputs.js"></script>
 
-		<!-- SEARCH SCRIPT -->
-		<script src="./search.js"></script>
+	<!-- SEARCH SCRIPT -->
+	<script src="./search.js"></script>
+
+	<!-- POP UPS SCRIPT -->
+	<script src="./popUps.js"></script>
+
+	<!-- SCHEDULE SCRIPT -->
+	<script src="./schedule.js"></script>
+
+	<!-- NAV SCRIPT -->
+	<script src="./nav.js"></script>
 	
 </body>
 
