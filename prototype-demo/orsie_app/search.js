@@ -7,6 +7,7 @@ const signInButton = document.querySelector("#sign-in-button");
 // variables to store sign in info
 let idClicked = "";
 let nameToDisplay = "";
+let emailInput = ""
 
 
 /*****************  SEARCH PAGE SCRIPTS  *********************/
@@ -47,7 +48,7 @@ searchForm.addEventListener("submit", (e) => {
 	} else {
 		// if search text not entered
 		displayMsg = `
-				<div class="result" id="error">
+				<div id="error">
 					<p>Please enter your name or email to search.</p>
 				</div>`;
 		updateDisplayData(displayMsg);
@@ -68,7 +69,7 @@ function search(searchData) {
 		.then(response => response.json())
 		.then(contents => {
 			// when fetch data complete
-			console.log(contents);
+			console.table(contents);
 			displayMsg = "";
 			// set the names list if any data found
 			if (contents) {
@@ -78,6 +79,7 @@ function search(searchData) {
 							<h3>${guest.a_name}</h3>
 							<p>${guest.organization_name ? guest.organization_name : ""}</p>
 							<p>${guest.guest_type ? guest.guest_type : ""}</p>
+							<input type="text" id="email_${guest.id}" placeholder="Confirm your email" data-email="${guest.email}" />
 						</div>`;
 				});
 				signInButton.style.display = "block";
@@ -86,20 +88,22 @@ function search(searchData) {
 				// also shows link to registration page
 				// TODO: Update the registration page link
 				displayMsg = `
-					<div class="result" id="error">
+					<div id="error">
 						<p>No results found. Make sure you entered your name correctly. If you did not register for the event, you can register now.</p>
 					</div>
-					<div class="result" id="register">
-						<a href="../registration" target="blank">Register Here</a>
+					<div id="register">
+						<a href="https://orsieevents.durhamcollege.ca" target="_blank">Register Here</a>
 					</div>
 					`;
 			}
 			updateDisplayData(displayMsg);
 		})
 		.catch(error => {
+			console.error(error);
+			
 			// error to show when search text not entered
 			displayMsg = `
-				<div class="result" id="error">
+				<div id="error">
 					<p>Please check your connection and try again.</p>
 				</div>`;
 			updateDisplayData(displayMsg);
@@ -128,6 +132,11 @@ searchResults.addEventListener("click", function (e) {
 		// setting values for signing in
 		idClicked = elementClicked.getAttribute("data-id");
 		nameToDisplay = elementClicked.firstElementChild.innerText;
+		emailInput = elementClicked.querySelector(`#email_${idClicked}`);
+		console.log(emailInput);
+		
+		emailInput.focus();
+		
 
 		// animating the name clicked
 		elementClicked.classList.add("selected");
