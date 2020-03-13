@@ -403,8 +403,8 @@ img {
 	background: url("./images/bg.svg");
 	background: fixed contain;
 
-	/* uncomment below for testing the main app w/o signing in */
-	display: none;
+	/* !uncomment below for testing the main app w/o signing in */
+	/* display: none; */
 }
 
 #search-page #content-box {
