@@ -1,6 +1,7 @@
 /*****************  SEARCH PAGE SCRIPTS  *********************/
 
 // search page elements
+const searchPage = document.querySelector("#search-page");
 const searchPageInstruction = document.querySelector("#search-page #instruction");
 const searchForm = document.querySelector("#search-form");
 const searchResults = document.querySelector("#search-results");
@@ -13,6 +14,43 @@ let idClicked = "";
 let nameToDisplay = "";
 let emailClicked = ""
 
+// getting local storage data
+getLocalStorage();
+
+// function to write to local storage
+function updateLocalStorage(id, name) {
+	localStorage.setItem("guestID", id);
+	localStorage.setItem("guestName", name);
+}
+
+// function to check local storage for guest data
+function getLocalStorage() {
+	// variables for guest data
+	let guestID = localStorage.getItem("guestID");
+	let guestName = localStorage.getItem("guestName");
+	console.log(guestID);
+	console.log(guestName);
+
+	// if guest data exists, hide the sign in page
+	if (guestID && guestName) {
+		searchPage.style.display = "none";
+	}
+}
+
+// function to show the search page
+function showSignInPage() {
+	gsap.to(searchPage, {
+		delay: 0,
+		display: "flex"
+	})
+	gsap.fromTo(searchPage, {
+		opacity: 0
+	}, {
+		delay: 0,
+		duration: 0.5,
+		opacity: 1
+	});
+}
 
 // function to update search results
 function updateSearchList(displayData) {
@@ -199,7 +237,7 @@ function signIn(id, name) {
 	formData.append('id', id);
 	formData.append('event_name', document.querySelector("#event_name").value);
 	let url = "https://services.mullasuleman.com/sign_in.php";
-	
+
 	// fetching data from the database
 	fetch(url, {
 			body: formData,
@@ -223,16 +261,20 @@ function signIn(id, name) {
 				hideSignIn();
 
 				// updating instruction text on sign in page
+				// and hiding search page
 				searchPageInstruction.innerText = "You have checked in!"
-				gsap.to("#search-page", {
-					delay: 2,
+				gsap.to(searchPage, {
+					delay: 1.5,
 					duration: 0.5,
 					opacity: 0,
 				});
-				gsap.to("#search-page", {
-					delay: 2.5,
+				gsap.to(searchPage, {
+					delay: 2,
 					display: "none"
 				})
+
+				// writing data to local storage
+				updateLocalStorage(id, name);
 
 			} else {
 				// display message to show if could not sign in because of PHP error
