@@ -73,6 +73,7 @@ function showSpinner() {
 	updateSearchList(spinner);
 }
 
+// function to hide sign in button and email input
 function hideSignIn() {
 	signInButton.style.display = "none";
 	signInButton.setAttribute("disabled", "1");
