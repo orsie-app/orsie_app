@@ -401,7 +401,7 @@ img {
 	z-index: 2500;
 	overflow: hidden;
 	background: url("./images/bg.svg");
-	background: fixed contain;
+	background-size: 250px;
 
 	/* !uncomment below for testing the main app w/o signing in */
 	/* display: none; */
@@ -553,7 +553,7 @@ img {
 	max-height: 100px;
 	background: #eee;
 	margin: 5px auto 10px auto;
-	padding: 10px 5px;
+	padding: 10px 10px;
 	border: 2px solid transparent;
 	border-radius: 5px;
 	font-size: 0.9rem;

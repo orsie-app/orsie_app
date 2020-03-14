@@ -107,7 +107,7 @@ function search(searchData) {
 		})
 		.catch(error => {
 			console.error(error);
-			
+
 			// error to show when search text not entered
 			displayMsg = `
 				<div id="error">
@@ -149,9 +149,20 @@ searchResults.addEventListener("click", function (e) {
 });
 
 signInButton.addEventListener("click", function () {
-	// sign the user in when sign in is clicked
-	showSpinner();
-	signIn(idClicked, nameToDisplay);
+	let emailPattern = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+	if (emailInput.value == "") {
+		console.log("Email cannot be empty");
+	} else if (emailPattern.test(emailInput.value)) {
+		if (emailInput.value == emailClicked) {
+			// sign the user in when sign in is clicked
+			showSpinner();
+			// signIn(idClicked, nameToDisplay);
+		} else {
+			console.log("Email didn't match");
+		}
+	} else {
+		console.log("Please enter a proper email.")
+	}
 })
 
 // function to handle sign in and send data
