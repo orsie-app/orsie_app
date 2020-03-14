@@ -2,12 +2,13 @@
 const searchPageInstruction = document.querySelector("#search-page #instruction");
 const searchForm = document.querySelector("#search-form");
 const searchResults = document.querySelector("#search-results");
+const emailInput = document.querySelector("#confirm-email-input");
 const signInButton = document.querySelector("#sign-in-button");
 
 // variables to store sign in info
 let idClicked = "";
 let nameToDisplay = "";
-let emailInput = ""
+let emailClicked = ""
 
 
 /*****************  SEARCH PAGE SCRIPTS  *********************/
@@ -28,6 +29,13 @@ function showSpinner() {
 	updateDisplayData(spinner);
 }
 
+function hideSignIn() {
+	signInButton.style.display = "none";
+	// emailInput.style.display = "none";
+	signInButton.setAttribute("disabled", "1");
+	emailInput.setAttribute("disabled", "1");
+}
+
 // event handler to handle when the form is submitted
 searchForm.addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -36,8 +44,7 @@ searchForm.addEventListener("submit", (e) => {
 	// resetting sign in variables
 	idClicked = "";
 	nameToDisplay = "";
-	signInButton.style.display = "none";
-	signInButton.setAttribute("disabled", "1");
+	hideSignIn();
 
 	// checking if the search field is empty or not
 	if (searchForm.firstElementChild.value) {
@@ -75,14 +82,14 @@ function search(searchData) {
 			if (contents) {
 				contents.forEach(guest => {
 					displayMsg += `
-						<div class="result" data-id="${guest.id}">
+						<div class="result" data-id="${guest.id}" data-email="${guest.email}">
 							<h3>${guest.a_name}</h3>
 							<p>${guest.organization_name ? guest.organization_name : ""}</p>
 							<p>${guest.guest_type ? guest.guest_type : ""}</p>
-							<input type="text" id="email_${guest.id}" placeholder="Confirm your email" data-email="${guest.email}" />
 						</div>`;
 				});
 				signInButton.style.display = "block";
+				// emailInput.style.display = "block";
 			} else {
 				// error to show if no names are found
 				// also shows link to registration page
@@ -132,15 +139,12 @@ searchResults.addEventListener("click", function (e) {
 		// setting values for signing in
 		idClicked = elementClicked.getAttribute("data-id");
 		nameToDisplay = elementClicked.firstElementChild.innerText;
-		emailInput = elementClicked.querySelector(`#email_${idClicked}`);
-		console.log(emailInput);
-		
-		emailInput.focus();
-		
+		emailClicked = elementClicked.getAttribute("data-email");
 
 		// animating the name clicked
 		elementClicked.classList.add("selected");
 		signInButton.removeAttribute("disabled");
+		emailInput.removeAttribute("disabled");
 	}
 });
 
@@ -173,15 +177,13 @@ function signIn(id, name) {
 			// show welcome message if sign in successful
 			if (message.id == 0) {
 				displayMsg += `
-					<div class="result" id="success">
+					<div id="success">
 						<p>Welcome, ${name}!</p>
 						<p>Enjoy Research Day 2020!</p>
 					</div>`;
 
 				// disabling form and sign in buttons
-				signInButton.style.display = "none";
-				signInButton.setAttribute("disabled", "1");
-				searchForm.style.display = "none";
+				hideSignIn();
 
 				// updating instruction text on sign in page
 				searchPageInstruction.innerText = "You have checked in!"
