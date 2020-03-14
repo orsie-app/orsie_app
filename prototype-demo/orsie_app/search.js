@@ -2,6 +2,7 @@
 const searchPageInstruction = document.querySelector("#search-page #instruction");
 const searchForm = document.querySelector("#search-form");
 const searchResults = document.querySelector("#search-results");
+const messageBox = document.querySelector("#message-box")
 const emailInput = document.querySelector("#confirm-email-input");
 const signInButton = document.querySelector("#sign-in-button");
 
@@ -13,9 +14,14 @@ let emailClicked = ""
 
 /*****************  SEARCH PAGE SCRIPTS  *********************/
 
-// function to update display data
-function updateDisplayData(displayData) {
+// function to update search results
+function updateSearchList(displayData) {
 	searchResults.innerHTML = displayData;
+}
+
+// function to update messages
+function updateMessages(displayData) {
+	messageBox.innerHTML = displayData;
 }
 
 // function to show a spinner whenever necessary 
@@ -26,7 +32,7 @@ function showSpinner() {
 					<span id="spinner"></span>
 				</div>
 			</div>`;
-	updateDisplayData(spinner);
+	updateSearchList(spinner);
 }
 
 function hideSignIn() {
@@ -55,10 +61,10 @@ searchForm.addEventListener("submit", (e) => {
 	} else {
 		// if search text not entered
 		displayMsg = `
-				<div id="error">
-					<p>Please enter your name or email to search.</p>
-				</div>`;
-		updateDisplayData(displayMsg);
+			<div id="error">
+				<p>Please enter your name or email to search.</p>
+			</div>`;
+		updateMessages(displayMsg);
 	}
 });
 
@@ -66,7 +72,9 @@ searchForm.addEventListener("submit", (e) => {
 function search(searchData) {
 	// set service URL
 	let url = "https://services.mullasuleman.com/search.php";
-	let displayMsg = "";
+	let searchMsg = "";
+	let errorMsg = "";
+	updateMessages(errorMsg);
 
 	// fetching data from the database
 	fetch(url, {
@@ -77,11 +85,11 @@ function search(searchData) {
 		.then(contents => {
 			// when fetch data complete
 			console.table(contents);
-			displayMsg = "";
+			searchMsg = "";
 			// set the names list if any data found
 			if (contents) {
 				contents.forEach(guest => {
-					displayMsg += `
+					searchMsg += `
 						<div class="result" data-id="${guest.id}" data-email="${guest.email}">
 							<h3>${guest.a_name}</h3>
 							<p>${guest.organization_name ? guest.organization_name : ""}</p>
@@ -94,7 +102,7 @@ function search(searchData) {
 				// error to show if no names are found
 				// also shows link to registration page
 				// TODO: Update the registration page link
-				displayMsg = `
+				errorMsg = `
 					<div id="error">
 						<p>No results found. Make sure you entered your name correctly. If you did not register for the event, you can register now.</p>
 					</div>
@@ -103,17 +111,17 @@ function search(searchData) {
 					</div>
 					`;
 			}
-			updateDisplayData(displayMsg);
+			updateMessages(errorMsg);
+			updateSearchList(searchMsg);
 		})
 		.catch(error => {
 			console.error(error);
-
 			// error to show when search text not entered
 			displayMsg = `
 				<div id="error">
 					<p>Please check your connection and try again.</p>
 				</div>`;
-			updateDisplayData(displayMsg);
+			updateMessages(displayMsg);
 		});
 }
 
@@ -149,20 +157,36 @@ searchResults.addEventListener("click", function (e) {
 });
 
 signInButton.addEventListener("click", function () {
+	// email regex pattern to check proper format
 	let emailPattern = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+	let displayMsg = ``;
+
+	// checking if the input is empty
 	if (emailInput.value == "") {
-		console.log("Email cannot be empty");
+		displayMsg = `<div id="error">
+			<p>Please enter your email.</p>
+		</div>`;
 	} else if (emailPattern.test(emailInput.value)) {
+		// checking if the email is proper format
+		// if proper format, check if emails match and sign in
 		if (emailInput.value == emailClicked) {
 			// sign the user in when sign in is clicked
 			showSpinner();
-			// signIn(idClicked, nameToDisplay);
+			signIn(idClicked, nameToDisplay);
 		} else {
-			console.log("Email didn't match");
+			// show error if emails don't match
+			displayMsg = `<div id="error">
+				<p>Email does not match. Please enter email that was used to register.</p>
+			</div>`;
 		}
 	} else {
-		console.log("Please enter a proper email.")
+		// show error if email is not in proper format
+		displayMsg = `<div id="error">
+			<p>Please enter email in a proper format.</p>
+		</div>`;
 	}
+
+	updateMessages(displayMsg);
 })
 
 // function to handle sign in and send data
@@ -194,37 +218,39 @@ function signIn(id, name) {
 					</div>`;
 
 				// disabling form and sign in buttons
+				searchForm.style.display = "none";
 				hideSignIn();
 
 				// updating instruction text on sign in page
 				searchPageInstruction.innerText = "You have checked in!"
 				gsap.to("#search-page", {
-					delay: 1,
+					delay: 2,
 					duration: 0.5,
 					opacity: 0,
 				});
 				gsap.to("#search-page", {
-					delay: 1.5,
+					delay: 2.5,
 					display: "none"
 				})
 
 			} else {
 				// display message to show if could not sign in because of PHP error
 				displayMsg = `
-					<div class="result" id="error">
+					<div id="error">
 						<p>There was a problem signing in. Please try again</p>
 					</div>
 					`;
 			}
-			updateDisplayData(displayMsg);
+			updateMessages(displayMsg);
+			updateSearchList("");
 		}).catch(error => {
 			console.log(error);
 
 			// error message to show if internet fails
 			displayMsg += `
-				<div class="result" id="error">
+				<div id="error">
 				<p>Check your connection and try again.</p>
 				</div>`;
-			updateDisplayData(displayMsg);
+			updateMessages(displayMsg);
 		});
 }
