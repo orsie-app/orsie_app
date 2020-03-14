@@ -1,3 +1,5 @@
+/*****************  SEARCH PAGE SCRIPTS  *********************/
+
 // search page elements
 const searchPageInstruction = document.querySelector("#search-page #instruction");
 const searchForm = document.querySelector("#search-form");
@@ -11,8 +13,6 @@ let idClicked = "";
 let nameToDisplay = "";
 let emailClicked = ""
 
-
-/*****************  SEARCH PAGE SCRIPTS  *********************/
 
 // function to update search results
 function updateSearchList(displayData) {
@@ -37,7 +37,6 @@ function showSpinner() {
 
 function hideSignIn() {
 	signInButton.style.display = "none";
-	// emailInput.style.display = "none";
 	signInButton.setAttribute("disabled", "1");
 	emailInput.setAttribute("disabled", "1");
 }
@@ -97,7 +96,6 @@ function search(searchData) {
 						</div>`;
 				});
 				signInButton.style.display = "block";
-				// emailInput.style.display = "block";
 			} else {
 				// error to show if no names are found
 				// also shows link to registration page
@@ -111,6 +109,7 @@ function search(searchData) {
 					</div>
 					`;
 			}
+			// updating searchlist and messagebox
 			updateMessages(errorMsg);
 			updateSearchList(searchMsg);
 		})
@@ -186,6 +185,7 @@ signInButton.addEventListener("click", function () {
 		</div>`;
 	}
 
+	// updating searchlist and messagebox
 	updateMessages(displayMsg);
 })
 
@@ -199,6 +199,7 @@ function signIn(id, name) {
 	formData.append('id', id);
 	formData.append('event_name', document.querySelector("#event_name").value);
 	let url = "https://services.mullasuleman.com/sign_in.php";
+	
 	// fetching data from the database
 	fetch(url, {
 			body: formData,
@@ -241,6 +242,7 @@ function signIn(id, name) {
 					</div>
 					`;
 			}
+			// updating searchlist and messagebox
 			updateMessages(displayMsg);
 			updateSearchList("");
 		}).catch(error => {
