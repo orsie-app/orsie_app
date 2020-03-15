@@ -163,6 +163,7 @@ object.onload = function () {
         cards.forEach(card => {
             // add event listener to the show location on map button
             card.querySelector('.event-map').addEventListener("click", function(){cardClick(map.querySelector(`${card.dataset.mapid}`))});
+            card.querySelector('.event-schedule').addEventListener("click", function(){showSchedule(card.dataset.location)});
         })
     };
 

@@ -286,6 +286,7 @@ header h1 {
 	display: none;
 	width: 100%;
 	margin: 1rem auto;
+	color: #fffaf0;
 }
 
 #events-page #full-schedule-container .schedule-box {
@@ -308,6 +309,7 @@ header h1 {
 	padding: 0.5rem;
 	vertical-align: top;
 	margin-bottom: 4%;
+	color: #000;
 }
 
 #full-schedule-container .schedule-time {
@@ -666,4 +668,12 @@ img {
 
 #sign-in-button:disabled {
 	opacity: 0.4;
+}
+
+/* nav classes for high-lighting */
+.highlight{
+	text-decoration: underline;
+	text-decoration-style: solid;
+	text-decoration-color: orange;
+	text-decoration-thickness: 90px;
 }

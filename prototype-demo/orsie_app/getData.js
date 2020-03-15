@@ -40,12 +40,13 @@ function getData(){
 
             //create event cards
             currentEventsContainer.innerHTML += `
-                <div id="zone${zone.zone}" data-mapId="${zone.mapId}" class="event-box">
+                <div id="zone${zone.zone}" data-mapId="${zone.mapId}" data-location="${zone.location}" class="event-box">
                     <div class="event-box-inner">
                         <h3 class="event-name">${zone.name}</h3>
                         <p class="event-location">${zone.location}</p>
                         <p class="event-description">${zone.description}</p>
-                        <h4 class="event-map">Show Location on Map</h4> 
+                        <h4 class="event-map">Show Location on Map</h4>
+                        <h4 class="event-schedule">Show Zone Schedule</h4>
                     </div>
                 </div>
             `;

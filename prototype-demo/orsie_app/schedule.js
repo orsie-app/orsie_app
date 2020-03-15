@@ -13,6 +13,10 @@ function scheduleSorter(location){
     for(schedule of sortedSchedule){
         fullScheduleContainer.innerHTML += schedule.html;
     };
+
+    if(fullScheduleContainer.innerHTML == ''){
+        fullScheduleContainer.innerHTML = "the events in this room are on-going go to the location to see for yourself!"
+    }
 };
 
 //function to reset the schedule page to default
