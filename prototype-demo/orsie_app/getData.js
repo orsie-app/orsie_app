@@ -2,6 +2,8 @@
 let popUps = [];
 //global variable to hold all zone schedules
 let masterSchedule = [];
+//global variable to hold full schedule html
+let fullScheduleHTML;
 
 function getData(){
     fetch('./events.json')
@@ -30,7 +32,9 @@ function getData(){
 					        <div class="schedule-zone">${zone.name}</div>
                         </div>`,
                         //convert the time string to a full number for sorting 
-                        time: `${evt.when.replace(/:/, '')}`});
+                        time: `${evt.when.replace(/:/, '')}`,
+                        location: `${zone.location}`}
+                    );
                 }
             });
 
@@ -55,5 +59,10 @@ function getData(){
         for(schedule of masterSchedule){
             fullScheduleContainer.innerHTML += schedule.html;
         }
+    })
+    .then(data => {
+        let fullScheduleContainer = document.querySelector('#full-schedule-container');
+        //add the default schedule html to the appropriate global variable
+        fullScheduleHTML = fullScheduleContainer.innerHTML;
     })
 }
