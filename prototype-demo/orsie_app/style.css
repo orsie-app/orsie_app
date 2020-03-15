@@ -320,6 +320,7 @@ header h1 {
 }
 #full-schedule-container .schedule-title {
 	grid-area: title;
+	overflow-y: scroll;
 }
 #full-schedule-container .schedule-location {
 	grid-area: location;
