@@ -284,7 +284,50 @@ header h1 {
 	/* hide it by default */
 	display: none;
 	width: 100%;
+	margin: 1rem auto;
 }
+
+#events-page #full-schedule-container .schedule-box {
+	background: rgb(253, 252, 249);
+	border-radius: 5px;
+	border: 1px solid rgba(0, 128, 0, 0.13);
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
+	position: relative;
+
+	display: grid;
+	grid-template-columns: 15% 75%;
+	grid-template-rows: 35% 10% 35%;
+	grid-template-areas: 'time title'
+						 'time location'
+						 'time zone';
+	gap: 0.8rem;
+	height: 150px;
+	width: 100%;
+	margin: auto;
+	padding: 0.5rem;
+	vertical-align: top;
+	margin-bottom: 4%;
+}
+
+#full-schedule-container .schedule-time {
+	grid-area: time;
+	writing-mode: tb-rl;
+    transform: rotate(-180deg);
+	background: orange;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#full-schedule-container .schedule-title {
+	grid-area: title;
+}
+#full-schedule-container .schedule-location {
+	grid-area: location;
+}
+#full-schedule-container .schedule-zone {
+	grid-area: zone;
+}
+
 
 #map-page {
 	position: absolute;
@@ -416,7 +459,7 @@ img {
 	background: fixed contain;
 
 	/* !uncomment below for testing the main app w/o signing in */
-	/* display: none; */
+	display: none;
 }
 
 #search-page #content-box {
