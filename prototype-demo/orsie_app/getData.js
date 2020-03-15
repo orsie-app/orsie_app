@@ -9,7 +9,7 @@ function getData(){
     .then(data => {
         let currentEventsContainer = document.querySelector('#current-events-container');
         let eventData = data.events;
-        
+
         for(zone of eventData){
             //add all pop ups to the global pop up array
             for(popup of zone.popUps){
@@ -39,9 +39,9 @@ function getData(){
                 <div id="zone${zone.zone}" data-mapId="${zone.mapId}" class="event-box">
                     <div class="event-box-inner">
                         <h3 class="event-name">${zone.name}</h3>
-                        <h4 class="event-time">${zone.time}</h4>
                         <p class="event-location">${zone.location}</p>
                         <p class="event-description">${zone.description}</p>
+                        <h4 class="event-map">Show Location on Map</h4> 
                     </div>
                 </div>
             `;

@@ -161,7 +161,8 @@ object.onload = function () {
             })
         }
         cards.forEach(card => {
-            card.addEventListener("click", function(){cardClick(map.querySelector(`${card.dataset.mapid}`))});
+            // add event listener to the show location on map button
+            card.querySelector('.event-map').addEventListener("click", function(){cardClick(map.querySelector(`${card.dataset.mapid}`))});
         })
     };
 

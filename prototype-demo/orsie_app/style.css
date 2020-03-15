@@ -257,11 +257,12 @@ header h1 {
 	height: auto;
 	white-space: normal;
 	position: relative;
-	padding-left: 25px;
+	/* padding-left: 25px; */
 }
 
 #events-page #current-events-container .event-box h4::before{
-	content: url("./images/reserveTime.svg");
+	/* use code below to add image before the text on the show map location area */
+	/* content: url("./images/map-icon.png"); */
 	max-width: 20px;
 	min-width: 23px;
 	position: absolute;
