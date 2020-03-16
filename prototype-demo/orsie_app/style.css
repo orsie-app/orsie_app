@@ -311,7 +311,7 @@ header h1 {
 	position: relative;
 
 	display: grid;
-	grid-template-columns: 15% 75%;
+	grid-template-columns: 15% 80%;
 	grid-template-rows: 35% 10% 35%;
 	grid-template-areas: 'time title'
 						 'time location'
@@ -355,6 +355,8 @@ header h1 {
 #full-schedule-container .schedule-zone {
 	grid-area: zone;
 	font-size: 0.85em;
+	display: flex;
+	align-items: flex-end;
 }
 
 
