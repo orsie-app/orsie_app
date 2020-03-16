@@ -174,7 +174,8 @@ header h1 {
 	align-content: center;
 	align-items: center;
 	opacity: 0;
-	box-shadow: inset -2px -2px 7px #000;
+	color: rgba(238, 238, 238, 0.797);
+	box-shadow:  2px 2px 5px rgb(4, 88, 63);
 	cursor: pointer;
 	user-select: none;
 }
