@@ -1,19 +1,65 @@
+/*****************  SEARCH PAGE SCRIPTS  *********************/
+
 // search page elements
+const searchPage = document.querySelector("#search-page");
 const searchPageInstruction = document.querySelector("#search-page #instruction");
 const searchForm = document.querySelector("#search-form");
 const searchResults = document.querySelector("#search-results");
+const messageBox = document.querySelector("#message-box")
+const emailInput = document.querySelector("#confirm-email-input");
 const signInButton = document.querySelector("#sign-in-button");
 
 // variables to store sign in info
 let idClicked = "";
 let nameToDisplay = "";
+let emailClicked = ""
 
+// getting local storage data
+getLocalStorage();
 
-/*****************  SEARCH PAGE SCRIPTS  *********************/
+// function to write to local storage
+function updateLocalStorage(id, name) {
+	localStorage.setItem("guestID", id);
+	localStorage.setItem("guestName", name);
+}
 
-// function to update display data
-function updateDisplayData(displayData) {
+// function to check local storage for guest data
+function getLocalStorage() {
+	// variables for guest data
+	let guestID = localStorage.getItem("guestID");
+	let guestName = localStorage.getItem("guestName");
+	console.log(guestID);
+	console.log(guestName);
+
+	// if guest data exists, hide the sign in page
+	if (guestID && guestName) {
+		searchPage.style.display = "none";
+	}
+}
+
+// function to show the search page
+function showSignInPage() {
+	gsap.to(searchPage, {
+		delay: 0,
+		display: "flex"
+	})
+	gsap.fromTo(searchPage, {
+		opacity: 0
+	}, {
+		delay: 0,
+		duration: 0.5,
+		opacity: 1
+	});
+}
+
+// function to update search results
+function updateSearchList(displayData) {
 	searchResults.innerHTML = displayData;
+}
+
+// function to update messages
+function updateMessages(displayData) {
+	messageBox.innerHTML = displayData;
 }
 
 // function to show a spinner whenever necessary 
@@ -24,7 +70,14 @@ function showSpinner() {
 					<span id="spinner"></span>
 				</div>
 			</div>`;
-	updateDisplayData(spinner);
+	updateSearchList(spinner);
+}
+
+// function to hide sign in button and email input
+function hideSignIn() {
+	signInButton.style.display = "none";
+	signInButton.setAttribute("disabled", "1");
+	emailInput.setAttribute("disabled", "1");
 }
 
 // event handler to handle when the form is submitted
@@ -35,8 +88,7 @@ searchForm.addEventListener("submit", (e) => {
 	// resetting sign in variables
 	idClicked = "";
 	nameToDisplay = "";
-	signInButton.style.display = "none";
-	signInButton.setAttribute("disabled", "1");
+	hideSignIn();
 
 	// checking if the search field is empty or not
 	if (searchForm.firstElementChild.value) {
@@ -47,10 +99,10 @@ searchForm.addEventListener("submit", (e) => {
 	} else {
 		// if search text not entered
 		displayMsg = `
-				<div class="result" id="error">
-					<p>Please enter your name or email to search.</p>
-				</div>`;
-		updateDisplayData(displayMsg);
+			<div id="error">
+				<p>Please enter your name or email to search.</p>
+			</div>`;
+		updateMessages(displayMsg);
 	}
 });
 
@@ -58,7 +110,9 @@ searchForm.addEventListener("submit", (e) => {
 function search(searchData) {
 	// set service URL
 	let url = "https://services.mullasuleman.com/search.php";
-	let displayMsg = "";
+	let searchMsg = "";
+	let errorMsg = "";
+	updateMessages(errorMsg);
 
 	// fetching data from the database
 	fetch(url, {
@@ -68,13 +122,13 @@ function search(searchData) {
 		.then(response => response.json())
 		.then(contents => {
 			// when fetch data complete
-			console.log(contents);
-			displayMsg = "";
+			console.table(contents);
+			searchMsg = "";
 			// set the names list if any data found
 			if (contents) {
 				contents.forEach(guest => {
-					displayMsg += `
-						<div class="result" data-id="${guest.id}">
+					searchMsg += `
+						<div class="result" data-id="${guest.id}" data-email="${guest.email}">
 							<h3>${guest.a_name}</h3>
 							<p>${guest.organization_name ? guest.organization_name : ""}</p>
 							<p>${guest.guest_type ? guest.guest_type : ""}</p>
@@ -85,24 +139,27 @@ function search(searchData) {
 				// error to show if no names are found
 				// also shows link to registration page
 				// TODO: Update the registration page link
-				displayMsg = `
-					<div class="result" id="error">
+				errorMsg = `
+					<div id="error">
 						<p>No results found. Make sure you entered your name correctly. If you did not register for the event, you can register now.</p>
 					</div>
-					<div class="result" id="register">
-						<a href="../registration" target="blank">Register Here</a>
+					<div id="register">
+						<a href="https://orsieevents.durhamcollege.ca" target="_blank">Register Here</a>
 					</div>
 					`;
 			}
-			updateDisplayData(displayMsg);
+			// updating searchlist and messagebox
+			updateMessages(errorMsg);
+			updateSearchList(searchMsg);
 		})
 		.catch(error => {
+			console.error(error);
 			// error to show when search text not entered
 			displayMsg = `
-				<div class="result" id="error">
+				<div id="error">
 					<p>Please check your connection and try again.</p>
 				</div>`;
-			updateDisplayData(displayMsg);
+			updateMessages(displayMsg);
 		});
 }
 
@@ -128,17 +185,47 @@ searchResults.addEventListener("click", function (e) {
 		// setting values for signing in
 		idClicked = elementClicked.getAttribute("data-id");
 		nameToDisplay = elementClicked.firstElementChild.innerText;
+		emailClicked = elementClicked.getAttribute("data-email");
 
 		// animating the name clicked
 		elementClicked.classList.add("selected");
 		signInButton.removeAttribute("disabled");
+		emailInput.removeAttribute("disabled");
 	}
 });
 
 signInButton.addEventListener("click", function () {
-	// sign the user in when sign in is clicked
-	showSpinner();
-	signIn(idClicked, nameToDisplay);
+	// email regex pattern to check proper format
+	let emailPattern = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+	let displayMsg = ``;
+
+	// checking if the input is empty
+	if (emailInput.value == "") {
+		displayMsg = `<div id="error">
+			<p>Please enter your email.</p>
+		</div>`;
+	} else if (emailPattern.test(emailInput.value)) {
+		// checking if the email is proper format
+		// if proper format, check if emails match and sign in
+		if (emailInput.value == emailClicked) {
+			// sign the user in when sign in is clicked
+			showSpinner();
+			signIn(idClicked, nameToDisplay);
+		} else {
+			// show error if emails don't match
+			displayMsg = `<div id="error">
+				<p>Email does not match. Please enter email that was used to register.</p>
+			</div>`;
+		}
+	} else {
+		// show error if email is not in proper format
+		displayMsg = `<div id="error">
+			<p>Please enter email in a proper format.</p>
+		</div>`;
+	}
+
+	// updating searchlist and messagebox
+	updateMessages(displayMsg);
 })
 
 // function to handle sign in and send data
@@ -151,6 +238,7 @@ function signIn(id, name) {
 	formData.append('id', id);
 	formData.append('event_name', document.querySelector("#event_name").value);
 	let url = "https://services.mullasuleman.com/sign_in.php";
+
 	// fetching data from the database
 	fetch(url, {
 			body: formData,
@@ -164,45 +252,50 @@ function signIn(id, name) {
 			// show welcome message if sign in successful
 			if (message.id == 0) {
 				displayMsg += `
-					<div class="result" id="success">
+					<div id="success">
 						<p>Welcome, ${name}!</p>
 						<p>Enjoy Research Day 2020!</p>
 					</div>`;
 
 				// disabling form and sign in buttons
-				signInButton.style.display = "none";
-				signInButton.setAttribute("disabled", "1");
 				searchForm.style.display = "none";
+				hideSignIn();
 
 				// updating instruction text on sign in page
+				// and hiding search page
 				searchPageInstruction.innerText = "You have checked in!"
-				gsap.to("#search-page", {
-					delay: 1,
+				gsap.to(searchPage, {
+					delay: 1.5,
 					duration: 0.5,
 					opacity: 0,
 				});
-				gsap.to("#search-page", {
-					delay: 1.5,
+				gsap.to(searchPage, {
+					delay: 2,
 					display: "none"
 				})
+
+				// writing data to local storage
+				updateLocalStorage(id, name);
 
 			} else {
 				// display message to show if could not sign in because of PHP error
 				displayMsg = `
-					<div class="result" id="error">
+					<div id="error">
 						<p>There was a problem signing in. Please try again</p>
 					</div>
 					`;
 			}
-			updateDisplayData(displayMsg);
+			// updating searchlist and messagebox
+			updateMessages(displayMsg);
+			updateSearchList("");
 		}).catch(error => {
 			console.log(error);
 
 			// error message to show if internet fails
 			displayMsg += `
-				<div class="result" id="error">
+				<div id="error">
 				<p>Check your connection and try again.</p>
 				</div>`;
-			updateDisplayData(displayMsg);
+			updateMessages(displayMsg);
 		});
 }

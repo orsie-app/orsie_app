@@ -401,7 +401,7 @@ img {
 	z-index: 2500;
 	overflow: hidden;
 	background: url("./images/bg.svg");
-	background: fixed contain;
+	background-size: 250px;
 
 	/* !uncomment below for testing the main app w/o signing in */
 	/* display: none; */
@@ -425,12 +425,14 @@ img {
 	text-align: center;
 	color: var(--dc-orange);
 	font-size: 1.2rem;
+	text-transform: unset;
 }
 
 #search-page #content-box h2 {
 	text-align: center;
 	font-weight: lighter;
 	color: var(--dc-green);
+	text-transform: unset;
 }
 
 #search-form {
@@ -449,7 +451,7 @@ img {
 #search-form #search-input {
 	width: 79%;
 	font-size: 1.2rem;
-	border: 2px solid transparent;
+	border: 2px solid #bbb;
 	/* background: rgba(0, 0, 0, 0.05); */
 	background: #eee;
 	transition: 0.3s;
@@ -500,11 +502,21 @@ img {
 	margin: 0.5rem auto;
 	padding: 0.5rem;
 	width: 100%;
-	background: #eee;
+	/* background: #eee; */
+	border: 2px solid var(--dc-green);
 	border-radius: 5px;
 	animation: load-entry 0.5s ease-out;
 	transform-origin: center;
 	transition: 0.1s;
+}
+
+@keyframes load-entry {
+	from {
+		opacity: 0;
+		margin: -1rem auto;
+		/* transform: scaleY(0); */
+		overflow: hidden;
+	}
 }
 
 .selected {
@@ -518,17 +530,12 @@ img {
 	opacity: 0.8;
 }
 
-.no-margin {
-	margin: 0;
+.selected input {
+	display: block !important;
 }
 
-@keyframes load-entry {
-	from {
-		opacity: 0;
-		margin: -1rem auto;
-		/* transform: scaleY(0); */
-		overflow: hidden;
-	}
+.no-margin {
+	margin: 0;
 }
 
 .result h3 {
@@ -539,6 +546,31 @@ img {
 	text-align: left;
 	color: #888;
 	font-size: 0.9rem;
+}
+
+#confirm-email-input {
+	/* display: none; */
+	width: 100%;
+	max-height: 100px;
+	background: #eee;
+	margin-bottom: 0.5rem;
+	padding: 0.5rem;
+	border: 2px solid #bbb;
+	border-radius: 5px;
+	font-size: 0.9rem;
+	font-family: urbane, sans-serif;
+	transition: 0.25s;
+}
+
+#confirm-email-input:disabled {
+	height: 0;
+	display: none;
+}
+
+#confirm-email-input:focus {
+	outline: none;
+    border: 2px solid var(--dc-green);
+    background: transparent;
 }
 
 #spinner-box {
@@ -569,13 +601,32 @@ img {
 	}
 }
 
+#error {
+	margin-bottom: 0.5rem;
+	padding: 0.5rem;
+	width: 100%;
+	background: #eee;
+	border-radius: 5px;
+	animation: load-entry 0.5s ease-out;
+	transform-origin: center;
+	transition: 0.1s;
+}
+
 #error p {
 	text-align: center;
+	font-size: 0.8rem;
 	color: var(--dc-orange);
 }
 
 #success {
 	background-color: var(--dc-green);
+	margin: 0.5rem auto;
+	padding: 0.5rem;
+	width: 100%;
+	border-radius: 5px;
+	animation: load-entry 0.5s ease-out;
+	transform-origin: center;
+	transition: 0.1s;
 }
 
 #success p {
@@ -586,6 +637,13 @@ img {
 #register {
 	text-align: center;
 	background-color: var(--dc-green);
+	margin: 0.5rem auto;
+	padding: 0.5rem;
+	width: 100%;
+	border-radius: 5px;
+	animation: load-entry 0.5s ease-out;
+	transform-origin: center;
+	transition: 0.1s;
 }
 
 #register a {
