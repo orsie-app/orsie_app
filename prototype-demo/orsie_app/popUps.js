@@ -20,7 +20,7 @@ function displayPopUps(){
         if(popup.time == currentTime){
             newPopUps = true;
             //change the news ticker content to the new pop up 
-            document.querySelector('#newsTicker').innerText += `&nbsp; &nbsp; &nbsp; ${popup.location}: ${popup.msg}`;
+            document.querySelector('#newsTicker').innerText += ` \xa0\xa0\xa0 | \xa0\xa0\xa0 ${popup.location}: ${popup.msg}`;
         };
     });
 

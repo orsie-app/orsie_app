@@ -53,6 +53,18 @@ header {
 	box-shadow: 0 5px 7px 2px rgba(48, 33, 5, 0.13);
 }
 
+#userInitials{
+	width: 47px;
+	height: 40px;
+	border: 2px solid #fffaf0;
+	border-radius: 50%;
+	margin-left: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fffaf0;
+}
+
 h1 {
 	font-size: 1.3rem;
 	font-weight: normal;
@@ -245,11 +257,12 @@ header h1 {
 	height: auto;
 	white-space: normal;
 	position: relative;
-	padding-left: 25px;
+	/* padding-left: 25px; */
 }
 
 #events-page #current-events-container .event-box h4::before{
-	content: url("./images/reserveTime.svg");
+	/* use code below to add image before the text on the show map location area */
+	/* content: url("./images/map-icon.png"); */
 	max-width: 20px;
 	min-width: 23px;
 	position: absolute;
@@ -272,7 +285,53 @@ header h1 {
 	/* hide it by default */
 	display: none;
 	width: 100%;
+	margin: 1rem auto;
+	color: #fffaf0;
 }
+
+#events-page #full-schedule-container .schedule-box {
+	background: rgb(253, 252, 249);
+	border-radius: 5px;
+	border: 1px solid rgba(0, 128, 0, 0.13);
+	box-shadow: 2px 2px 5px rgba(13, 51, 16, 0.699);
+	position: relative;
+
+	display: grid;
+	grid-template-columns: 15% 75%;
+	grid-template-rows: 35% 10% 35%;
+	grid-template-areas: 'time title'
+						 'time location'
+						 'time zone';
+	gap: 0.8rem;
+	height: 150px;
+	width: 100%;
+	margin: auto;
+	padding: 0.5rem;
+	vertical-align: top;
+	margin-bottom: 4%;
+	color: #000;
+}
+
+#full-schedule-container .schedule-time {
+	grid-area: time;
+	writing-mode: tb-rl;
+    transform: rotate(-180deg);
+	background: orange;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#full-schedule-container .schedule-title {
+	grid-area: title;
+	overflow-y: scroll;
+}
+#full-schedule-container .schedule-location {
+	grid-area: location;
+}
+#full-schedule-container .schedule-zone {
+	grid-area: zone;
+}
+
 
 #map-page {
 	position: absolute;
@@ -404,7 +463,7 @@ img {
 	background-size: 250px;
 
 	/* !uncomment below for testing the main app w/o signing in */
-	/* display: none; */
+	display: none;
 }
 
 #search-page #content-box {
@@ -667,4 +726,12 @@ img {
 
 #sign-in-button:disabled {
 	opacity: 0.4;
+}
+
+/* nav classes for high-lighting */
+.highlight{
+	text-decoration: underline;
+	text-decoration-style: solid;
+	text-decoration-color: orange;
+	text-decoration-thickness: 90px;
 }

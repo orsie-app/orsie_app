@@ -2,6 +2,8 @@
 let popUps = [];
 //global variable to hold all zone schedules
 let masterSchedule = [];
+//global variable to hold full schedule html
+let fullScheduleHTML;
 
 function getData(){
     fetch('./events.json')
@@ -16,20 +18,52 @@ function getData(){
                 popUps.push({location: zone.location, time: popup.when, msg: popup.what});
             };
 
-            //push zone schedule to masterSchedule
-            masterSchedule.push(zone.schedule)
+
+            //create schedule cards
+            zone.schedule.forEach(evt => {
+                if(evt.what != '' && evt.what != 'Zone Open' && evt.what != 'Zone Closed'){
+                    //push zone schedule to masterSchedule
+                    masterSchedule.push(
+                        {html:
+                        `<div class="schedule-box">
+					        <div class="schedule-time">${evt.when}</div>
+					        <div class="schedule-title">${evt.what}</div>
+					        <div class="schedule-location">${zone.location}</div>
+					        <div class="schedule-zone">${zone.name}</div>
+                        </div>`,
+                        //convert the time string to a full number for sorting 
+                        time: `${evt.when.replace(/:/, '')}`,
+                        location: `${zone.location}`}
+                    );
+                }
+            });
 
             //create event cards
             currentEventsContainer.innerHTML += `
-                <div id="zone${zone.zone}" data-mapId="${zone.mapId}" class="event-box">
+                <div id="zone${zone.zone}" data-mapId="${zone.mapId}" data-location="${zone.location}" class="event-box">
                     <div class="event-box-inner">
                         <h3 class="event-name">${zone.name}</h3>
-                        <h4 class="event-time">${zone.time}</h4>
                         <p class="event-location">${zone.location}</p>
                         <p class="event-description">${zone.description}</p>
+                        <h4 class="event-map">Show Location on Map</h4>
+                        <h4 class="event-schedule">Show Zone Schedule</h4>
                     </div>
                 </div>
             `;
         }
+    })
+    .then(data => {
+        let fullScheduleContainer = document.querySelector('#full-schedule-container');
+        //sort the schedule by time;
+        masterSchedule.sort((a,b) => a.time - b.time);
+        // create cards for all events in the master schedule
+        for(schedule of masterSchedule){
+            fullScheduleContainer.innerHTML += schedule.html;
+        }
+    })
+    .then(data => {
+        let fullScheduleContainer = document.querySelector('#full-schedule-container');
+        //add the default schedule html to the appropriate global variable
+        fullScheduleHTML = fullScheduleContainer.innerHTML;
     })
 }
