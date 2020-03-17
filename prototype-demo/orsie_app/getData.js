@@ -45,8 +45,11 @@ function getData(){
                         <h3 class="event-name">${zone.name}</h3>
                         <p class="event-location">${zone.location}</p>
                         <p class="event-description">${zone.description}</p>
-                        <h4 class="event-map">Show Location on Map</h4>
-                        <h4 class="event-schedule">Show Zone Schedule</h4>
+                        <div class="event-button-wrapper">
+                            <h4 class="event-map">Show on Map</h4>
+                            <div class="eventDivider">|</div>
+                            <h4 class="event-schedule">Timetable</h4>
+                        </div>
                     </div>
                 </div>
             `;

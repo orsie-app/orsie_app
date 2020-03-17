@@ -276,26 +276,46 @@ header h1 {
 	white-space: normal;
 	font-weight: 550;
 }
-
+#events-page #current-events-container .event-box .event-button-wrapper {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 10px 7px 0 3px;
+	margin-top: 0.25rem;
+	margin-bottom: 0.3rem;
+	border-top: 2px solid rgb(194, 194, 194);
+}
 #events-page #current-events-container .event-box h4{
-	margin-bottom: 0.5rem;
 	width: 90%;
+	max-width: fit-content;
 	font-size: 0.9rem;
 	font-weight: 400;
 	height: auto;
 	white-space: normal;
 	position: relative;
-	/* padding-left: 25px; */
+	padding-left: 25px;
 }
-
-#events-page #current-events-container .event-box h4::before{
+#events-page #current-events-container .event-box .event-button-wrapper .eventDivider{
+	color: orange;
+	width: 10px;
+}
+#events-page #current-events-container .event-box h4.event-schedule::before{
 	/* use code below to add image before the text on the show map location area */
-	/* content: url("./images/map-icon.png"); */
-	max-width: 20px;
-	min-width: 23px;
+	content: url("./images/timetableicon.svg");
+	max-width: 21px;
+	min-width: 21px;
+	position: absolute;
+	left:-4px;
+	top:1px;
+}
+#events-page #current-events-container .event-box h4.event-map::before{
+	/* use code below to add image before the text on the show map location area */
+	content: url("./images/mapOrange.svg");
+	max-width: 21px;
+	min-width: 21px;
 	position: absolute;
 	left:-3px;
-	top:-1px;
+	top:-2px;
 }
 #events-page #current-events-container .event-box p{
 	margin-bottom: 0.5rem;
@@ -305,9 +325,7 @@ header h1 {
 }
 #events-page #current-events-container .event-box p.event-description {
 	font-size: 0.8rem;
-	/* padding-left: 25px; */
 }
-
 /* styles for schedule page */
 #full-schedule-container{
 	/* hide it by default */
@@ -316,7 +334,6 @@ header h1 {
 	margin: 1rem auto;
 	color: #fffaf0;
 }
-
 #events-page #full-schedule-container .schedule-box {
 	background: rgb(253, 252, 249);
 	border-radius: 5px;
