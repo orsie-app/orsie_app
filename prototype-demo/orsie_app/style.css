@@ -397,7 +397,7 @@ header h1 {
 	background-size: 30% 30%, cover;
 	background-position: 15% top, center center;
 	background-color: var(--dc-green);
-	border: 1px solid #fff;
+	/* borde r: 1px solid #fff; */
 	color: var(--dc-green);
 }
 
