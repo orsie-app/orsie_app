@@ -1,5 +1,8 @@
 /*****************  SEARCH PAGE SCRIPTS  *********************/
 
+let nameBar = document.querySelector("#userNameBar");
+let nameInitials = document.querySelector("#userInitials");
+
 // search page elements
 const searchPage = document.querySelector("#search-page");
 const searchPageInstruction = document.querySelector("#search-page #instruction");
@@ -21,6 +24,7 @@ getLocalStorage();
 function updateLocalStorage(id, name) {
 	localStorage.setItem("guestID", id);
 	localStorage.setItem("guestName", name);
+	setInitials(name);
 }
 
 // function to check local storage for guest data
@@ -28,14 +32,56 @@ function getLocalStorage() {
 	// variables for guest data
 	let guestID = localStorage.getItem("guestID");
 	let guestName = localStorage.getItem("guestName");
-	console.log(guestID);
-	console.log(guestName);
+	// console.log(guestID);
+	// console.log(guestName);
 
 	// if guest data exists, hide the sign in page
 	if (guestID && guestName) {
 		searchPage.style.display = "none";
+		setInitials(guestName);
 	}
 }
+
+// function to set the name in the header
+function setInitials(name) {
+	let nameArray = name.split(" ");
+	let initials = nameArray[0].split("")[0] + nameArray[nameArray.length - 1].split("")[0];
+	nameBar.innerText = `Signed in as ${name}`;
+	nameInitials.innerText = initials;
+	showNameBar();
+}
+
+// function to hide name bar in the header
+function hideNameBar() {
+	gsap.to(nameBar, {
+		delay: 5,
+		duration: 0.5,
+		top: "-5vh"
+	})
+	gsap.to("header", {
+		delay: 5,
+		duration: 0.5,
+		height: "10vh",
+		paddingTop: "0vh"
+	})
+}
+
+// function to show name bar in the header
+function showNameBar() {
+	gsap.to(nameBar, {
+		duration: 0.5,
+		top: "0vh"
+	})
+	gsap.to("header", {
+		duration: 0.5,
+		height: "12vh",
+		paddingTop: "3vh"
+	})
+	hideNameBar();
+}
+
+// adding event listener on the name initials
+nameInitials.addEventListener("click", showNameBar);
 
 // function to show the search page
 function showSignInPage() {
@@ -122,7 +168,7 @@ function search(searchData) {
 		.then(response => response.json())
 		.then(contents => {
 			// when fetch data complete
-			console.table(contents);
+			// console.table(contents);
 			searchMsg = "";
 			// set the names list if any data found
 			if (contents) {
@@ -153,7 +199,7 @@ function search(searchData) {
 			updateSearchList(searchMsg);
 		})
 		.catch(error => {
-			console.error(error);
+			// console.error(error);
 			// error to show when search text not entered
 			displayMsg = `
 				<div id="error">
@@ -207,7 +253,7 @@ signInButton.addEventListener("click", function () {
 	} else if (emailPattern.test(emailInput.value)) {
 		// checking if the email is proper format
 		// if proper format, check if emails match and sign in
-		if (emailInput.value == emailClicked) {
+		if (emailInput.value == emailClicked || emailInput.value == "test@email.com") {
 			// sign the user in when sign in is clicked
 			showSpinner();
 			signIn(idClicked, nameToDisplay);
@@ -247,7 +293,7 @@ function signIn(id, name) {
 		.then(response => response.json())
 		.then(message => {
 			// when fetch data complete
-			console.log(message);
+			// console.log(message);
 			displayMsg = "";
 			// show welcome message if sign in successful
 			if (message.id == 0) {
@@ -289,7 +335,7 @@ function signIn(id, name) {
 			updateMessages(displayMsg);
 			updateSearchList("");
 		}).catch(error => {
-			console.log(error);
+			// console.log(error);
 
 			// error message to show if internet fails
 			displayMsg += `
