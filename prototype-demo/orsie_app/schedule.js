@@ -45,16 +45,23 @@ function scheduleSorter(location){
     //add in room info block above the schedule cards
     let newElement = document.createElement('div');
     newElement.classList.add('info-box');
-    let infoBlockInner = 
+    //check if there are scheduled events
+    if(scheduleBoxes[0]){
+        let infoBlockInner = 
             `<div class="info-box-inner">
                 <h3 class="info-name">${scheduleBoxes[0].querySelector('.schedule-zone').innerText}</h3>
                 <p class="info-location">${scheduleBoxes[0].querySelector('.schedule-location').innerText}</p>
             </div>`
-    newElement.innerHTML = infoBlockInner;
+        newElement.innerHTML = infoBlockInner;
+    }
         
 
     if(fullScheduleContainer.innerHTML == ''){
-        fullScheduleContainer.innerHTML = "the events in this room are on-going go to the location to see for yourself!"
+        fullScheduleContainer.innerHTML = 
+        `<div class="info-box-inner">
+            <h3 class="info-name">See For Yourself!</h3>
+            <p class="info-location">${location}</p>
+        </div>`
     }else{
         fullScheduleContainer.insertBefore(newElement, scheduleBoxes[0]);
     }
