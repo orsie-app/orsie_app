@@ -357,6 +357,10 @@ header h1 {
 	color: #000;
 }
 
+#events-page #full-schedule-container .schedule-box marquee{
+	font-size: 0.85rem;
+	margin-left: 8px;
+}
 #full-schedule-container .schedule-time {
 	grid-area: time;
 	writing-mode: tb-rl;

@@ -19,7 +19,9 @@ function scheduleSorter(location){
 
     for(box of scheduleBoxes){
         //switch the box from grid to flex
-        box.style.height = '50px';
+        box.style.minHeight = '50px';
+        // box.style.height = 'fit-content';
+        box.style.height = '65px';
         box.style.display = 'flex';
         box.style.justifyContent = 'flex-start';
         box.style.alignItems = 'center';
@@ -39,6 +41,8 @@ function scheduleSorter(location){
         let originalTitle = box.querySelector('.schedule-title');
         let scrollingTitle = document.createElement('marquee');
         scrollingTitle.innerHTML = originalTitle.innerHTML;
+        scrollingTitle.setAttribute('scrollamount', "1");
+        scrollingTitle.setAttribute('direction', "up");
         box.replaceChild(scrollingTitle, originalTitle);
     }
 
