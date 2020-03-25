@@ -370,6 +370,8 @@ header h1 {
 	justify-content: center;
 	align-items: center;
 	border-radius: 0 5px 5px 0;
+
+	/* min-height: 80%; */
 }
 #full-schedule-container .schedule-title {
 	grid-area: title;
@@ -393,6 +395,15 @@ header h1 {
 	display: flex;
 	align-items: flex-end;
 }
+#events-page #full-schedule-container .schedule-box.zone-specific {
+	/* height: 65px; */
+	max-height: fit-content !important;
+}
+#events-page #full-schedule-container .schedule-box.zone-specific .schedule-time {
+	height: 80%;
+	min-height: 80% !important;
+}
+
 
 
 #map-page {
@@ -844,7 +855,7 @@ img {
 }
 
 /* for small mobile devices */
-@media only screen and (max-width: 374px) {
+@media only screen and (max-width: 375px) {
 
 	#events-page #current-events-container .event-box h4{
 		font-size: 0.8rem;
@@ -853,5 +864,12 @@ img {
 	#events-page #current-events-container .event-box .event-button-wrapper .eventDivider{
 		display: none !important;
 		color: #ffa50000;
+	}
+}
+
+/* targets Firefox only */
+@-moz-document url-prefix() {
+    #events-page #current-events-container .event-box .event-button-wrapper .eventDivider{
+        display: none;
 	}
 }
