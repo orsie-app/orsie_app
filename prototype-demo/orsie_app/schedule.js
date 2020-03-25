@@ -20,8 +20,8 @@ function scheduleSorter(location){
     for(box of scheduleBoxes){
         //switch the box from grid to flex
         box.style.minHeight = '50px';
-        // box.style.height = 'fit-content';
-        box.style.height = '65px';
+        box.style.height = 'fit-content';
+        // box.style.height = '65px';
         box.style.display = 'flex';
         box.style.justifyContent = 'flex-start';
         box.style.alignItems = 'center';
@@ -32,17 +32,17 @@ function scheduleSorter(location){
         box.querySelector('.schedule-time').style.transform = 'rotate(0deg)';
         box.querySelector('.schedule-time').style.writingMode = 'horizontal-tb';
         //resize remaining elements
-        box.querySelector('.schedule-time').style.height = '80%';
+        box.querySelector('.schedule-time').style.height = '90%';
+        // box.querySelector('.schedule-time').style.height = '80%';
         box.querySelector('.schedule-time').style.minWidth = '30%';
         box.querySelector('.schedule-title').style.height = '80%';
         box.querySelector('.schedule-title').style.minWidth = '70%';
         
         //switch title from div to marquee
         let originalTitle = box.querySelector('.schedule-title');
-        let scrollingTitle = document.createElement('marquee');
+        let scrollingTitle = document.createElement('p');
         scrollingTitle.innerHTML = originalTitle.innerHTML;
-        scrollingTitle.setAttribute('scrollamount', "1");
-        scrollingTitle.setAttribute('direction', "up");
+        scrollingTitle.classList.add('schedule-title');
         box.replaceChild(scrollingTitle, originalTitle);
     }
 

@@ -357,7 +357,7 @@ header h1 {
 	color: #000;
 }
 
-#events-page #full-schedule-container .schedule-box marquee{
+#events-page #full-schedule-container .schedule-box p{
 	font-size: 0.85rem;
 	margin-left: 8px;
 }
@@ -841,4 +841,17 @@ img {
 	top:2px;
 	left:0;
 	width: 14px;
+}
+
+/* for small mobile devices */
+@media only screen and (max-width: 374px) {
+
+	#events-page #current-events-container .event-box h4{
+		font-size: 0.8rem;
+	}
+
+	#events-page #current-events-container .event-box .event-button-wrapper .eventDivider{
+		display: none !important;
+		color: #ffa50000;
+	}
 }
