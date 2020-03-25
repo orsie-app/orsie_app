@@ -14,8 +14,60 @@ function scheduleSorter(location){
         fullScheduleContainer.innerHTML += schedule.html;
     };
 
+    //adjust location specific schedule styles
+    let scheduleBoxes = Array.from(document.querySelectorAll('.schedule-box'));
+
+    for(box of scheduleBoxes){
+        //switch the box from grid to flex
+        box.style.minHeight = '50px';
+        // box.style.height = 'fit-content';
+        box.style.height = '65px';
+        box.style.display = 'flex';
+        box.style.justifyContent = 'flex-start';
+        box.style.alignItems = 'center';
+        //hide unnecessary items
+        box.querySelector('.schedule-zone').style.display = 'none';
+        box.querySelector('.schedule-location').style.display = 'none';
+        //make time right-side up
+        box.querySelector('.schedule-time').style.transform = 'rotate(0deg)';
+        box.querySelector('.schedule-time').style.writingMode = 'horizontal-tb';
+        //resize remaining elements
+        box.querySelector('.schedule-time').style.height = '80%';
+        box.querySelector('.schedule-time').style.minWidth = '30%';
+        box.querySelector('.schedule-title').style.height = '80%';
+        box.querySelector('.schedule-title').style.minWidth = '70%';
+        
+        //switch title from div to marquee
+        let originalTitle = box.querySelector('.schedule-title');
+        let scrollingTitle = document.createElement('marquee');
+        scrollingTitle.innerHTML = originalTitle.innerHTML;
+        scrollingTitle.setAttribute('scrollamount', "1");
+        scrollingTitle.setAttribute('direction', "up");
+        box.replaceChild(scrollingTitle, originalTitle);
+    }
+
+    //add in room info block above the schedule cards
+    let newElement = document.createElement('div');
+    newElement.classList.add('info-box');
+    //check if there are scheduled events
+    if(scheduleBoxes[0]){
+        let infoBlockInner = 
+            `<div class="info-box-inner">
+                <h3 class="info-name">${scheduleBoxes[0].querySelector('.schedule-zone').innerText}</h3>
+                <p class="info-location">${scheduleBoxes[0].querySelector('.schedule-location').innerText}</p>
+            </div>`
+        newElement.innerHTML = infoBlockInner;
+    }
+        
+
     if(fullScheduleContainer.innerHTML == ''){
-        fullScheduleContainer.innerHTML = "the events in this room are on-going go to the location to see for yourself!"
+        fullScheduleContainer.innerHTML = 
+        `<div class="info-box-inner">
+            <h3 class="info-name">See For Yourself!</h3>
+            <p class="info-location">${location}</p>
+        </div>`
+    }else{
+        fullScheduleContainer.insertBefore(newElement, scheduleBoxes[0]);
     }
 };
 

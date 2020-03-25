@@ -78,6 +78,7 @@ object.onload = function () {
 
     //function for room click results
     function roomClick(eventCard) {
+        showEvents();
         //check is user has an ios device
         let isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
