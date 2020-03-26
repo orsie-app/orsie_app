@@ -62,9 +62,11 @@ function scheduleSorter(location){
 
     if(fullScheduleContainer.innerHTML == ''){
         fullScheduleContainer.innerHTML = 
-        `<div class="info-box-inner">
-            <h3 class="info-name">See For Yourself!</h3>
-            <p class="info-location">${location}</p>
+        `<div class="info-box">
+            <div class="info-box-inner">
+                <h3 class="info-name">Ongoing Events! <br> Come See For Yourself!</h3>
+                <p class="info-location">${location}</p>
+            </div>
         </div>`
     }else{
         fullScheduleContainer.insertBefore(newElement, scheduleBoxes[0]);
