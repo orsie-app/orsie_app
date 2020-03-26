@@ -18,10 +18,10 @@ function scheduleSorter(location){
     let scheduleBoxes = Array.from(document.querySelectorAll('.schedule-box'));
 
     for(box of scheduleBoxes){
+        box.classList.add('zone-specific');
         //switch the box from grid to flex
         box.style.minHeight = '50px';
-        // box.style.height = 'fit-content';
-        box.style.height = '65px';
+        box.style.height = 'fit-content';
         box.style.display = 'flex';
         box.style.justifyContent = 'flex-start';
         box.style.alignItems = 'center';
@@ -32,17 +32,17 @@ function scheduleSorter(location){
         box.querySelector('.schedule-time').style.transform = 'rotate(0deg)';
         box.querySelector('.schedule-time').style.writingMode = 'horizontal-tb';
         //resize remaining elements
-        box.querySelector('.schedule-time').style.height = '80%';
+        // box.querySelector('.schedule-time').style.minHeight = '80%';
+        // box.querySelector('.schedule-time').style.height = '80%';
         box.querySelector('.schedule-time').style.minWidth = '30%';
         box.querySelector('.schedule-title').style.height = '80%';
         box.querySelector('.schedule-title').style.minWidth = '70%';
         
         //switch title from div to marquee
         let originalTitle = box.querySelector('.schedule-title');
-        let scrollingTitle = document.createElement('marquee');
+        let scrollingTitle = document.createElement('p');
         scrollingTitle.innerHTML = originalTitle.innerHTML;
-        scrollingTitle.setAttribute('scrollamount', "1");
-        scrollingTitle.setAttribute('direction', "up");
+        scrollingTitle.classList.add('schedule-title');
         box.replaceChild(scrollingTitle, originalTitle);
     }
 
@@ -62,9 +62,11 @@ function scheduleSorter(location){
 
     if(fullScheduleContainer.innerHTML == ''){
         fullScheduleContainer.innerHTML = 
-        `<div class="info-box-inner">
-            <h3 class="info-name">See For Yourself!</h3>
-            <p class="info-location">${location}</p>
+        `<div class="info-box">
+            <div class="info-box-inner">
+                <h3 class="info-name">Ongoing Events! <br> Come See For Yourself!</h3>
+                <p class="info-location">${location}</p>
+            </div>
         </div>`
     }else{
         fullScheduleContainer.insertBefore(newElement, scheduleBoxes[0]);
