@@ -400,8 +400,9 @@ header h1 {
 	max-height: fit-content !important;
 }
 #events-page #full-schedule-container .schedule-box.zone-specific .schedule-time {
-	height: 80%;
+	/* height: 80%; */
 	min-height: 80% !important;
+	align-self: stretch;
 }
 
 

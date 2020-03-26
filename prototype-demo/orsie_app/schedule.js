@@ -33,7 +33,7 @@ function scheduleSorter(location){
         box.querySelector('.schedule-time').style.writingMode = 'horizontal-tb';
         //resize remaining elements
         // box.querySelector('.schedule-time').style.minHeight = '80%';
-        box.querySelector('.schedule-time').style.height = '80%';
+        // box.querySelector('.schedule-time').style.height = '80%';
         box.querySelector('.schedule-time').style.minWidth = '30%';
         box.querySelector('.schedule-title').style.height = '80%';
         box.querySelector('.schedule-title').style.minWidth = '70%';
